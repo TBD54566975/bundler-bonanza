@@ -11,17 +11,17 @@ This repo includes a bunch of barebones js projects across different runtimes us
 > Currently testing [this branch](https://github.com/tbd54566975/dwn-sdk-js/tree/bundling)
 > published version: `0.0.39-unstable-2023-07-10-aa51af9-unstable-2023-07-10-3ca8ac7`
 
-| Runtime / Platform | ESM / CJS | Bundler                                     | Working (Y/N) | Manual Setup Required? | Project                                          |
-| ------------------ | --------- | ------------------------------------------- | ------------- | ---------------------- | ------------------------------------------------ |
-| `node v20.3.0`     | ESM       | N/A                                         | ✔️             | N                      | [node-esm](./node-esm)                           |
-| `node v20.3.0`     | CJS       | N/A                                         | ✔️             | N                      | [node-cjs](./node-cjs)                           |
-| Electron           | CJS       | [electron-vite](https://electron-vite.org/) | ✔️             | [Y]()                  | [electron-vite](./electron-vite)                 |
-| Browser            | ESM       | esbuild                                     | X             | Y                      | [browser-esbuild](./browser-esbuild)             |
-| Browser            | ESM       | N/A                                         | ✔️             | N                      | [browser-nobundler-esm](./browser-nobundler-esm) |
-| Browser            | ESM       | Webpack                                     | ✔️             | [Y]()                  | [webpack](./webpack)                             |
-| Browser            | ESM       | Vite                                        | X             | Y                      | [vite](./vite)                                   |
-| Docusaurus         |           |                                             |               |                        |                                                  |
-| NextJS 2.0         |           |                                             |               |                        |                                                  |
+| Runtime / Platform | ESM / CJS | Bundler                                     | Working (Y/N) | Manual Setup Required?                                                                                      | Project                                          |
+| ------------------ | --------- | ------------------------------------------- | ------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
+| `node v20.3.0`     | ESM       | N/A                                         | ✔️             | N                                                                                                           | [node-esm](./node-esm)                           |
+| `node v20.3.0`     | CJS       | N/A                                         | ✔️             | N                                                                                                           | [node-cjs](./node-cjs)                           |
+| Electron           | CJS       | [electron-vite](https://electron-vite.org/) | ✔️             | [Y](https://github.com/TBD54566975/bundler-bonanza/blob/main/electron-vite/src/renderer/src/App.tsx#L9-L30) | [electron-vite](./electron-vite)                 |
+| Browser            | ESM       | esbuild                                     | X             | Y                                                                                                           | [browser-esbuild](./browser-esbuild)             |
+| Browser            | ESM       | N/A                                         | ✔️             | N                                                                                                           | [browser-nobundler-esm](./browser-nobundler-esm) |
+| Browser            | ESM       | Webpack                                     | ✔️             | [Y](https://github.com/TBD54566975/bundler-bonanza/blob/main/webpack/webpack.config.js#L10-L15)             | [webpack](./webpack)                             |
+| Browser            | ESM       | Vite                                        | X             | ?                                                                                                           | [vite](./vite)                                   |
+| Docusaurus         |           |                                             |               |                                                                                                             |                                                  |
+| NextJS 2.0         |           |                                             |               |                                                                                                             |                                                  |
 
 
 # Findings
@@ -41,7 +41,7 @@ level-wrapper.ts:14 Uncaught TypeError: Level is not a constructor
     at fulfilled (time.ts:18:1)
 ```
 
-had to manually instantiate all 3 stores and explicitly provide a level instance. Need to figure out why this is happening. maybe because it's a [dynamic import](https://github.com/TBD54566975/dwn-sdk-js/blob/main/src/store/level-wrapper.ts#L10-L19)
+had to [manually instantiate all 3 stores and explicitly provide a level instance](https://github.com/TBD54566975/bundler-bonanza/blob/main/electron-vite/src/renderer/src/App.tsx#L9-L30). Need to figure out why this is happening. maybe because it's a [dynamic import](https://github.com/TBD54566975/dwn-sdk-js/blob/main/src/store/level-wrapper.ts#L10-L19)
 
 
 ## [browser-esbuild](./browser-esbuild)
@@ -51,7 +51,7 @@ Not currently in a working state. Need to polyfill `stream-browserify` and `cryp
 
 ## [webpack](./webpack)
 
-Had to manually configure `stream-browserify` and `crypto-browserify` polyfills [here]()
+Had to manually configure `stream-browserify` and `crypto-browserify` polyfills [here](https://github.com/TBD54566975/bundler-bonanza/blob/main/webpack/webpack.config.js#L10-L15)
 
 
 ## [vite](./vite)
