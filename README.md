@@ -12,7 +12,7 @@ This repo includes a bunch of barebones js projects across different runtimes us
 > 
 > Currently testing [this branch](https://github.com/tbd54566975/dwn-sdk-js/tree/bundling)
 > 
-> published version: `0.0.39-unstable-2023-07-10-aa51af9-unstable-2023-07-10-3ca8ac7`
+> published version: `0.0.39-unstable-2023-07-11-e15b819`
 
 | Runtime / Platform | ESM / CJS | Bundler                                     | Working (Y/N) | Manual Setup Required?                                                                                      | Project                                          |
 | ------------------ | --------- | ------------------------------------------- | ------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
@@ -22,7 +22,7 @@ This repo includes a bunch of barebones js projects across different runtimes us
 | Browser            | ESM       | esbuild                                     | X             | Y                                                                                                           | [browser-esbuild](./browser-esbuild)             |
 | Browser            | ESM       | N/A                                         | ✔️             | N                                                                                                           | [browser-nobundler-esm](./browser-nobundler-esm) |
 | Browser            | ESM       | Webpack                                     | ✔️             | [Y](https://github.com/TBD54566975/bundler-bonanza/blob/main/webpack/webpack.config.js#L10-L15)             | [webpack](./webpack)                             |
-| Browser            | ESM       | Vite                                        | X             | ?                                                                                                           | [vite](./vite)                                   |
+| Browser            | ESM       | Vite                                        | ✔️             | Y                                                                                                           | [vite](./vite)                                   |
 | Docusaurus         |           |                                             |               |                                                                                                             |                                                  |
 | NextJS 2.0         |           |                                             |               |                                                                                                             |                                                  |
 
@@ -59,8 +59,7 @@ Had to manually configure `stream-browserify` and `crypto-browserify` polyfills 
 
 ## [vite](./vite)
 
-Currently running into this:
-
+Was running into this issue caused by lack of support for dynamic imports
 ```
 level-wrapper.ts:14 Uncaught TypeError: Level is not a constructor
     at Object.<anonymous> (level-wrapper.ts:14:10)
@@ -68,4 +67,13 @@ level-wrapper.ts:14 Uncaught TypeError: Level is not a constructor
     at fulfilled (time.ts:18:1)
 ```
 
-may have to explicitly instantiate as is done for `electron-vite`.
+[removing dynamic import](https://github.com/TBD54566975/dwn-sdk-js/commit/e15b81930f603c5c83a5db42af05dabc35fb1afd) fixed the issue. 
+
+> **Note**
+> this should fix the `electron-vite` issue as well
+>
+> Discuss ramifications of removing dynamic import with dwn core peeps
+
+---
+
+`npm run build` currently failing. need to polyfill `crypto-browserify` and `stream-browserify`

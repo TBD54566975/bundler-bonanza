@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@tbd54566975/dwn-sdk-js": "0.0.39-unstable-2023-07-10-aa51af9-unstable-2023-07-10-3ca8ac7"
+    "@tbd54566975/dwn-sdk-js": "0.0.39-unstable-2023-07-11-e15b819"
   },
   "devDependencies": {
     "vite": "^4.4.0"
