@@ -5,6 +5,11 @@ This repo includes a bunch of barebones js projects across different runtimes us
 > **Note**
 > This repo is currently WIP. It's being built out as we test `dwn-sdk-js` and `web5-js` compatibility
 
+# `dwn-sdk-js`
+
+> **Note**
+> Currently testing [this branch](https://github.com/tbd54566975/dwn-sdk-js/tree/bundling)
+> published version: `0.0.39-unstable-2023-07-10-aa51af9-unstable-2023-07-10-3ca8ac7`
 
 | Runtime / Platform | ESM / CJS | Bundler                                     | Working (Y/N) | Manual Setup Required? | Project                                          |
 | ------------------ | --------- | ------------------------------------------- | ------------- | ---------------------- | ------------------------------------------------ |
