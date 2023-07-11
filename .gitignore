@@ -1,0 +1,11 @@
+DATASTORE
+MESSAGESTORE
+EVENTLOG
+INDEX
+dist
+node_modules
+out
+.vscode
+!webpack/dist
+webpack/dist/*
+!webpack/dist/index.html

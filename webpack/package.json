@@ -1,0 +1,21 @@
+{
+  "name": "web5-webpack-test",
+  "version": "1.0.0",
+  "description": "",
+  "private": "true",
+  "scripts": {
+    "build": "webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@tbd54566975/dwn-sdk-js": "0.0.39-unstable-2023-07-10-aa51af9-unstable-2023-07-10-3ca8ac7",
+    "@types/webpack": "5.28.1",
+    "lodash": "4.17.21"
+  },
+  "devDependencies": {
+    "webpack": "5.88.1",
+    "webpack-cli": "5.1.4"
+  }
+}
