@@ -38,17 +38,17 @@ Describing perfect env setup here. Probably not necessary just to test bundling.
 
 #### Perfect environment setup (optional)
 
-- `which yarn`` should be /Users/{USER}/.yarn/bin/yarn
+- `which yarn` should be /Users/{USER}/.yarn/bin/yarn
 
-- `which rvm`` should be /Users/{USER}/.rvm/bin/rvm
+- `which rvm` should be /Users/{USER}/.rvm/bin/rvm
 
-- `which node`` should be /Users/{USER}/.nvm/versions/node/v18.16.0/bin/node
+- `which node` should be /Users/{USER}/.nvm/versions/node/v18.16.0/bin/node
 
-- `which npm`` should be /Users/{USER}/.nvm/versions/node/v18.16.0/bin/npm
+- `which npm` should be /Users/{USER}/.nvm/versions/node/v18.16.0/bin/npm
 
-- `nvm list`` should include -> v18.16.0
+- `nvm list` should include -> v18.16.0
 
-- `rvm list`` should include =\* ruby-2.7.4 [ arm64 ]
+- `rvm list` should include =\* ruby-2.7.4 [ arm64 ]
 
 ## Install
 
