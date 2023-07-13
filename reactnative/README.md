@@ -7,8 +7,8 @@ We are going to test bundling using iOS only so as to minimize the amount of env
 Describing perfect env setup here. Probably not necessary just to test bundling. As long as you have some recent version of node, yarn, npm, and ruby you should be ok on those. Setting up the rest will supercharge your env for mobile development and switching between envs.
 
 - node v16 or higher. ideally v18.
-- yarn v1. ideally installed globally and not inside node
-- npm. ideally installed of node
+- yarn v1. ideally installed globally and not inside of your node version.
+- npm. ideally installed inside of your selected node version.
 - watchman (installed via homebrew)
 - xcode and latest sdks
 - rvm
