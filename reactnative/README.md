@@ -18,7 +18,7 @@ We shim all of the following:
 - Event, EventTarget (plain js)
 - Various @noble bespoke shim code (as required by the @noble author)
 
-We also specify a custom metro in the following ways:
+We also customize the metro config in the following ways:
 
 - Explicitly specifying a handful of entrypoints
 - Explicitly selecting a node package over a browser package
