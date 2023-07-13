@@ -52,8 +52,7 @@ Describing perfect env setup here. Probably not necessary just to test bundling.
 
 ## Install
 
-1. `yarn`
-2. `npx pod-install@latest`
-3. `yarn start` (starts the bundler)
-4. build for emulator after opening the xcworkspace in the ios folder
-5. to learn in more depth how react native was adapted to web5 see: [DEEPDIVE.md](./DEEPDIVE.md)
+1. `yarn` to install node_modules
+2. `npx pod-install@latest` install iOS package
+3. `yarn start --clear` (starts the bundler, clear cache every time)
+4. build for any simulator after opening the xcworkspace in the ios folder
