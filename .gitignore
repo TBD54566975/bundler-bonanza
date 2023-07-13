@@ -9,3 +9,4 @@ out
 !webpack/dist
 webpack/dist/*
 !webpack/dist/index.html
+.DS_Store
