@@ -1,11 +1,12 @@
 {
   "type": "module",
   "dependencies": {
-    "@tbd54566975/dwn-sdk-js": "0.0.39-unstable-2023-07-10-aa51af9-unstable-2023-07-10-1a54c67",
+    "@tbd54566975/dwn-sdk-js": "0.1.0-unstable-2023-07-17-5eaa5e3",
     "crypto-browserify": "3.12.0",
     "stream-browserify": "3.0.0"
   },
   "devDependencies": {
+    "node-stdlib-browser": "1.2.0",
     "esbuild": "0.18.11"
   }
 }
