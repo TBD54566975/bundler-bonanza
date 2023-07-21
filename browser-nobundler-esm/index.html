@@ -2,17 +2,47 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 
 <body>
-    <script type="module">
-        import { Dwn } from 'https://cdn.jsdelivr.net/npm/@tbd54566975/dwn-sdk-js@0.0.39-unstable-2023-07-10-aa51af9-unstable-2023-07-10-1a54c67/dist/bundles/browser.js'
-        const dwn = await Dwn.create()
-        console.log(dwn);
-    </script>
+  <script type="module">
+    import { Dwn, DataStream, DidKeyResolver, Jws, RecordsWrite } from 'https://cdn.jsdelivr.net/npm/@tbd54566975/dwn-sdk-js@0.1.0-unstable-2023-07-18-09-24-a78a613/dist/bundles/dwn.js'
+    import { MessageStoreLevel, DataStoreLevel, EventLogLevel } from 'https://cdn.jsdelivr.net/npm/@tbd54566975/dwn-sdk-js@0.1.0-unstable-2023-07-18-09-24-a78a613/dist/bundles/level-stores.js'
+
+    const messageStore = new MessageStoreLevel();
+    const dataStore = new DataStoreLevel();
+    const eventLog = new EventLogLevel();
+    const dwn = await Dwn.create({ messageStore, dataStore, eventLog });
+
+    // generate a did:key DID
+    const didKey = await DidKeyResolver.generate();
+
+    // create some data
+    const encoder = new TextEncoder();
+    const data = encoder.encode('Hello, World!');
+
+    // create a RecordsWrite message
+    const recordsWrite = await RecordsWrite.create({
+      data,
+      dataFormat: 'application/json',
+      published: true,
+      schema: 'yeeter/post',
+      authorizationSignatureInput: Jws.createSignatureInput(didKey)
+    });
+
+    // get the DWN to process the RecordsWrite
+    const dataStream = DataStream.fromBytes(data);
+    const result = await dwn.processMessage(didKey.did, recordsWrite.message, dataStream);
+
+    console.log(result.status);
+    console.assert(result.status.code === 202)
+
+    await dwn.close()
+
+  </script>
 </body>
 
 </html>
