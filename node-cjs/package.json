@@ -2,6 +2,6 @@
   "type": "commonjs",
   "dependencies": {
     "@noble/curves": "1.1.0",
-    "@tbd54566975/dwn-sdk-js": "0.0.39-unstable-2023-07-10-aa51af9-unstable-2023-07-10-1a54c67"
+    "@tbd54566975/dwn-sdk-js": "0.1.0-unstable-2023-07-18-09-24-a78a613"
   }
 }
