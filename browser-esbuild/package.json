@@ -1,7 +1,7 @@
 {
   "type": "module",
   "dependencies": {
-    "@tbd54566975/dwn-sdk-js": "0.1.0-unstable-2023-07-17-5eaa5e3",
+    "@tbd54566975/dwn-sdk-js": "0.1.0-unstable-2023-07-18-09-24-a78a613",
     "crypto-browserify": "3.12.0",
     "stream-browserify": "3.0.0"
   },
