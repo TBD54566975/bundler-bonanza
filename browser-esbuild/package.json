@@ -8,5 +8,8 @@
   "devDependencies": {
     "node-stdlib-browser": "1.2.0",
     "esbuild": "0.18.11"
+  },
+  "scripts": {
+    "build": "node bundle.js"
   }
 }
