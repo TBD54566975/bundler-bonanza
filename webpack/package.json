@@ -4,18 +4,22 @@
   "description": "",
   "private": "true",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "dev": "webpack serve"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@tbd54566975/dwn-sdk-js": "0.0.39-unstable-2023-07-10-aa51af9-unstable-2023-07-10-3ca8ac7",
-    "@types/webpack": "5.28.1",
+    "@tbd54566975/dwn-sdk-js": "0.1.0-unstable-2023-07-18-09-24-a78a613",
     "lodash": "4.17.21"
   },
   "devDependencies": {
+    "@types/webpack": "5.28.1",
+    "crypto-browserify": "^3.12.0",
+    "stream-browserify": "^3.0.0",
     "webpack": "5.88.1",
-    "webpack-cli": "5.1.4"
+    "webpack-cli": "5.1.4",
+    "webpack-dev-server": "^4.15.1"
   }
 }

@@ -1,11 +1,5 @@
 import _ from 'lodash';
-import { Dwn } from '@tbd54566975/dwn-sdk-js'
-
-async function testDwn() {
-  const dwn = await Dwn.create();
-  console.log(dwn);
-  await dwn.close();
-}
+import { testDwn } from './dwn-sdk-test.js'
 
 async function component() {
   await testDwn()
