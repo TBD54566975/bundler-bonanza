@@ -2,12 +2,8 @@ import './style.css'
 import javascriptLogo from './javascript.svg'
 import viteLogo from '/vite.svg'
 import { setupCounter } from './counter.js'
-import { Dwn } from '@tbd54566975/dwn-sdk-js'
 
-const dwn = await Dwn.create()
-console.log(dwn);
-
-await dwn.close()
+import './dwn-sdk-test.js'
 
 document.querySelector('#app').innerHTML = `
   <div>

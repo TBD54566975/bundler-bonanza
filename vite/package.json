@@ -9,9 +9,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@tbd54566975/dwn-sdk-js": "0.0.39-unstable-2023-07-11-e15b819"
+    "@tbd54566975/dwn-sdk-js": "0.1.0-unstable-2023-07-18-09-24-a78a613"
   },
   "devDependencies": {
+    "crypto-browserify": "^3.12.0",
+    "node-stdlib-browser": "^1.2.0",
+    "stream-browserify": "^3.0.0",
     "vite": "^4.4.0"
   }
 }
