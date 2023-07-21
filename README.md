@@ -10,9 +10,9 @@ This repo includes a bunch of barebones js projects across different runtimes us
 
 > **Note**
 >
-> Currently testing [this branch](https://github.com/tbd54566975/dwn-sdk-js/tree/bundling)
+> Currently testing [this branch](https://github.com/tbd54566975/dwn-sdk-js/tree/bundling-strategy)
 >
-> version in test: `0.1.0-unstable-2023-07-17-5eaa5e3`
+> version in test: `0.1.0-unstable-2023-07-18-09-24-a78a613`
 
 | Runtime / Platform | ESM / CJS            | Bundler                                     | Working (Y/N) | Manual Setup Required?                                                                                      | Project                                          |
 | ------------------ | -------------------- | ------------------------------------------- | ------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
