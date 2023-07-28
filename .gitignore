@@ -3,6 +3,7 @@ MESSAGESTORE
 EVENTLOG
 INDEX
 dist
+data
 node_modules
 out
 .vscode
