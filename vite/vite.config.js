@@ -1,3 +1,6 @@
+import { defineConfig } from 'vite'
+import nodePolyfills from 'vite-plugin-node-stdlib-browser'
+
 /** @type {import('vite').UserConfig} */
 export default {
   build: {
@@ -6,10 +9,5 @@ export default {
   define: {
     global: 'globalThis'
   },
-  resolve: {
-    alias: {
-      'crypto': 'crypto-browserify',
-      'stream': 'stream-browserify'
-    }
-  }
+  plugins: [nodePolyfills()],
 }

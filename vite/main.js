@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import { setupCounter } from './counter.js'
 
 import './dwn-sdk-test.js'
+import './web5-test.js'
 
 document.querySelector('#app').innerHTML = `
   <div>
