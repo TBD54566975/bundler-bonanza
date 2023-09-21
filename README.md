@@ -16,18 +16,59 @@ This repo includes a bunch of barebones js projects across different runtimes us
 
 | Runtime / Platform | ESM / CJS            | Bundler                                     | Working (Y/N) | Manual Setup Required?                                                                                      | Project                                          |
 | ------------------ | -------------------- | ------------------------------------------- | ------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
-| `node v20.3.0`     | ESM                  | N/A                                         | ✔️             | N                                                                                                           | [node-esm](./node-esm)                           |
-| `node v20.3.0`     | CJS                  | N/A                                         | ✔️             | N                                                                                                           | [node-cjs](./node-cjs)                           |
-| Electron           | CJS                  | [electron-vite](https://electron-vite.org/) | ✔️             | [Y](https://github.com/TBD54566975/bundler-bonanza/blob/main/electron-vite/src/renderer/src/App.tsx#L9-L30) | [electron-vite](./electron-vite)                 |
-| Browser            | ESM                  | esbuild                                     | ✔️             | Y                                                                                                           | [browser-esbuild](./browser-esbuild)             |
-| Browser            | ESM                  | N/A                                         | ✔️             | N                                                                                                           | [browser-nobundler-esm](./browser-nobundler-esm) |
-| Browser            | ESM                  | Webpack                                     | ✔️             | [Y](https://github.com/TBD54566975/bundler-bonanza/blob/main/webpack/webpack.config.js#L10-L15)             | [webpack](./webpack)                             |
-| Browser            | ESM                  | Vite                                        | ✔️             | Y                                                                                                           | [vite](./vite)                                   |
-| React Native       | Both (ESM via Babel) | Metro                                       | ✔️             | [Y](./reactnative/README.md)                                                                                | [reactnative](./reactnative)                     |
-| Docusaurus         |                      |                                             |               |                                                                                                             |                                                  |
+| `node v20.3.0`     | ESM                  | N/A                                         | ✔️            | N                                                                                                           | [node-esm](./node-esm)                           |
+| `node v20.3.0`     | CJS                  | N/A                                         | ✔️            | N                                                                                                           | [node-cjs](./node-cjs)                           |
+| Electron           | CJS                  | [electron-vite](https://electron-vite.org/) | ✔️            | [Y](https://github.com/TBD54566975/bundler-bonanza/blob/main/electron-vite/src/renderer/src/App.tsx#L9-L30) | [electron-vite](./electron-vite)                 |
+| Browser            | ESM                  | esbuild                                     | ✔️            | Y                                                                                                           | [browser-esbuild](./browser-esbuild)             |
+| Browser            | ESM                  | N/A                                         | ✔️            | N                                                                                                           | [browser-nobundler-esm](./browser-nobundler-esm) |
+| Browser            | ESM                  | Webpack                                     | ✔️            | [Y](https://github.com/TBD54566975/bundler-bonanza/blob/main/webpack/webpack.config.js#L10-L15)             | [webpack](./webpack)                             |
+| Browser            | ESM                  | Vite                                        | ✔️            | Y                                                                                                           | [vite](./vite)                                   |
+| React Native       | Both (ESM via Babel) | Metro                                       | ✔️            | [Y](./reactnative/README.md)                                                                                | [reactnative](./reactnative)                     |
+| Docusaurus         | ESM                  | Webpack                                     | ✔️            | N                                                                                                           | [docusaurus](./docusaurus)                       |
+|                    |
 | NextJS 2.0         |                      |                                             |               |                                                                                                             |                                                  |
 
 # Findings
+
+## [docusaurus](./docusaurus/)
+
+Need to import with `import { Web5 } from '@web5/api/browser'
+
+This is the error thrown without the `/browser` at the end:
+
+```
+Module not found: Error: Can't resolve 'stream' in '/Users/ndejesus/Code/bundler-bonanza/docusaurus/node_modules/@tbd54566975/dwn-sdk-js/node_modules/readable-stream/lib/stream'
+BREAKING CHANGE: webpack < 5 used to include polyfills for node.js core modules by default.
+This is no longer the case. Verify if you need this module and configure a polyfill for it.
+
+If you want to include a polyfill, you need to:
+        - add a fallback 'resolve.fallback: { "stream": require.resolve("stream-browserify") }'
+        - install 'stream-browserify'
+If you don't want to include a polyfill, you can use an empty module like this:
+        resolve.fallback: { "stream": false }
+Module not found: Error: Can't resolve 'crypto' in '/Users/ndejesus/Code/bundler-bonanza/docusaurus/node_modules/eciesjs/dist'
+BREAKING CHANGE: webpack < 5 used to include polyfills for node.js core modules by default.
+This is no longer the case. Verify if you need this module and configure a polyfill for it.
+
+If you want to include a polyfill, you need to:
+        - add a fallback 'resolve.fallback: { "crypto": require.resolve("crypto-browserify") }'
+        - install 'crypto-browserify'
+If you don't want to include a polyfill, you can use an empty module like this:
+        resolve.fallback: { "crypto": false }
+Module not found: Error: Can't resolve 'crypto' in '/Users/ndejesus/Code/bundler-bonanza/docusaurus/node_modules/@tbd54566975/dwn-sdk-js/dist/esm/src/utils'
+BREAKING CHANGE: webpack < 5 used to include polyfills for node.js core modules by default.
+This is no longer the case. Verify if you need this module and configure a polyfill for it.
+
+If you want to include a polyfill, you need to:
+        - add a fallback 'resolve.fallback: { "crypto": require.resolve("crypto-browserify") }'
+        - install 'crypto-browserify'
+If you don't want to include a polyfill, you can use an empty module like this:
+        resolve.fallback: { "crypto": false }
+```
+
+### Todo
+
+Add actual Web5 functions
 
 ## [electron-vite](./electron-vite)
 
