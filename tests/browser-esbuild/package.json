@@ -1,5 +1,6 @@
 {
   "type": "module",
+  "name": "browser-esbuild",
   "dependencies": {
     "@tbd54566975/dwn-sdk-js": "0.1.0-unstable-2023-07-18-09-24-a78a613",
     "crypto-browserify": "3.12.0",
@@ -10,6 +11,7 @@
     "esbuild": "0.18.11"
   },
   "scripts": {
-    "build": "node bundle.js"
+    "build": "node bundle.js",
+    "test": "node bundle.js && node dwn-sdk-test.js"
   }
 }

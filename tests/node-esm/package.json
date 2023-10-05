@@ -1,5 +1,9 @@
 {
+  "name": "node-esm",
   "type": "module",
+  "scripts": {
+    "web5-test": "node web5-test.js"
+  },
   "dependencies": {
     "@tbd54566975/dwn-sdk-js": "0.1.0-unstable-2023-07-18-09-24-a78a613",
     "@tbd54566975/web5": "0.8.0-alpha-20230728-d004f01"
