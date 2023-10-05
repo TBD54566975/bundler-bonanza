@@ -1,6 +1,15 @@
-// import { Dwn, DataStream, DidKeyResolver, Jws, RecordsWrite } from '@tbd54566975/dwn-sdk-js';
-// import { DataStoreLevel, EventLogLevel, MessageStoreLevel } from '@tbd54566975/dwn-sdk-js/stores';
-import { Dwn } from "@web5/api";
+import {
+  Dwn,
+  DataStream,
+  DidKeyResolver,
+  Jws,
+  RecordsWrite,
+} from "@tbd54566975/dwn-sdk-js";
+import {
+  DataStoreLevel,
+  EventLogLevel,
+  MessageStoreLevel,
+} from "@tbd54566975/dwn-sdk-js/stores";
 
 const messageStore = new MessageStoreLevel();
 const dataStore = new DataStoreLevel();
