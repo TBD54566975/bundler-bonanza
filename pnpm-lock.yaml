@@ -2,6 +2,12 @@ lockfileVersion: 5.4
 
 importers:
 
+  .:
+    specifiers:
+      '@web5/api': 0.8.1
+    dependencies:
+      '@web5/api': 0.8.1
+
   tests/browser-esbuild:
     specifiers:
       '@tbd54566975/dwn-sdk-js': 0.1.0-unstable-2023-07-18-09-24-a78a613

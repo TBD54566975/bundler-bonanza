@@ -1,4 +1,4 @@
-import { Web5 } from "@tbd54566975/web5";
+import { Web5 } from "@web5/api";
 
 const checkWeb5 = async () => {
   let result = {
@@ -11,14 +11,16 @@ const checkWeb5 = async () => {
   };
 
   try {
-    result.web5 = await Web5.connect({
+    const web5 = await Web5.connect({
       techPreview: {
         dwnEndpoints: ["http://localhost:3000"],
       },
     });
-    did = result.web5.did;
+
+    result.web5 = web5.web5;
+    result.did = result.web5.did;
   } catch (error) {
-    console.log("Error:", error);
+    console.error("Web5.connect Error:", error);
   }
 
   try {
@@ -27,56 +29,45 @@ const checkWeb5 = async () => {
     });
     result.record = _record;
   } catch (error) {
-    console.log("Record Error:", error);
+    console.error("Create Record Error:", error);
   }
+
+  console.log("????", result.record._recordId);
 
   try {
     const { status } = await result.web5.dwn.records.read({
-      recordId: record.id,
+      recordId: result.record._recordId,
     });
 
     result.readStatus = status;
   } catch (error) {
-    console.log("Read Record Error:", error);
+    console.error("Read Record Error:", error);
   }
 
-  try {
-    const { status } = await result.web5.dwn.records.update({
-      recordId: record.id,
-      data: "Hello Update!",
-    });
+  // try {
+  //   const { status } = await result.web5.dwn.records.update({
+  //     recordId: result.record._recordId,
+  //     data: "Hello Update!",
+  //   });
 
-    result.updateStatus = status;
-  } catch (error) {
-    console.log("Update Record Error:", error);
-  }
+  //   result.updateStatus = status;
+  // } catch (error) {
+  //   console.error("Update Record Error:", error);
+  // }
 
-  try {
-    const { status } = await result.web5.dwn.records.delete({
-      recordId: record.id,
-    });
+  // try {
+  //   const { status } = await result.web5.dwn.records.delete({
+  //     recordId: result.record._recordId,
+  //   });
 
-    result.deleteStatus = status;
-  } catch (error) {
-    console.log("Delete Record Error:", error);
-  }
+  //   result.deleteStatus = status;
+  // } catch (error) {
+  //   console.error("Delete Record Error:", error);
+  // }
 
-  console.log(JSON.stringify(result, null, 2));
+  // console.log(JSON.stringify(result, null, 2));
 
   return result;
 };
 
 checkWeb5();
-
-// const { web5, did } = await Web5.connect({
-//   techPreview: {
-//     dwnEndpoints: ['http://localhost:3000']
-//   }
-// });
-
-// const { record, status } = await web5.dwn.records.write({
-//   data: 'Hello!'
-// });
-
-// console.log(JSON.stringify(status, null, 2));
-// console.log(record);
