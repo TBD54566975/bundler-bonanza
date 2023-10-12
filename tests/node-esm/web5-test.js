@@ -7,7 +7,9 @@ const checkWeb5 = async () => {
     record: null,
     readStatus: null,
     updateStatus: null,
+    didUpdate: false,
     deleteStatus: null,
+    didDelete: false,
   };
 
   try {
@@ -32,11 +34,9 @@ const checkWeb5 = async () => {
     console.error("Create Record Error:", error);
   }
 
-  console.log("????", result.record._recordId);
-
   try {
     const { status } = await result.web5.dwn.records.read({
-      recordId: result.record._recordId,
+      message: { recordId: result.record._recordId },
     });
 
     result.readStatus = status;
@@ -44,28 +44,25 @@ const checkWeb5 = async () => {
     console.error("Read Record Error:", error);
   }
 
-  // try {
-  //   const { status } = await result.web5.dwn.records.update({
-  //     recordId: result.record._recordId,
-  //     data: "Hello Update!",
-  //   });
+  try {
+    const { status } = await result.record.update({ data: "Updated!" });
+    result.record.updateStatus = status;
 
-  //   result.updateStatus = status;
-  // } catch (error) {
-  //   console.error("Update Record Error:", error);
-  // }
+    const readStatus = (await result.record.data.text()) === "Updated!";
+    result.didUpdate = readStatus;
+  } catch (error) {
+    console.error("Update Record Error:", error);
+  }
 
-  // try {
-  //   const { status } = await result.web5.dwn.records.delete({
-  //     recordId: result.record._recordId,
-  //   });
+  try {
+    const { status } = await result.record.delete();
+    result.deleteStatus = status.code;
+    result.didDelete = result.record.isDeleted;
+  } catch (error) {
+    console.error("Delete Record Error:", error);
+  }
 
-  //   result.deleteStatus = status;
-  // } catch (error) {
-  //   console.error("Delete Record Error:", error);
-  // }
-
-  // console.log(JSON.stringify(result, null, 2));
+  console.log(result);
 
   return result;
 };
