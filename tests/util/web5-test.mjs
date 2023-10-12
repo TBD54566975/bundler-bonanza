@@ -1,3 +1,19 @@
+function checkResult(result) {
+  if (!result.didUpdate) {
+    throw new Error("Record did not update!");
+  }
+
+  if (!result.didDelete) {
+    throw new Error("Record did not delete!");
+  }
+
+  if (result.readStatus.code !== 200) {
+    throw new Error("Read status code is not 200!");
+  }
+
+  console.log("All Checks Passed! ✅");
+}
+
 const checkWeb5 = async (Web5) => {
   let result = {
     web5: null,
@@ -46,8 +62,7 @@ const checkWeb5 = async (Web5) => {
     const { status } = await result.record.update({ data: "Updated!" });
     result.record.updateStatus = status;
 
-    const readStatus = (await result.record.data.text()) === "Updated!";
-    result.didUpdate = readStatus;
+    result.didUpdate = (await result.record.data.text()) === "Updated!";
   } catch (error) {
     console.error("Update Record Error:", error);
   }
@@ -60,7 +75,7 @@ const checkWeb5 = async (Web5) => {
     console.error("Delete Record Error:", error);
   }
 
-  console.log(result);
+  checkResult(result);
 
   return result;
 };
