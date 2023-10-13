@@ -23,6 +23,10 @@ function checkResult(result) {
     throw new Error("Web5 is not defined!");
   }
 
+  if (result.updateStatus.code !== 202) {
+    throw new Error("Update status is not defined!");
+  }
+
   console.log("All Checks Passed! ✅");
 }
 
@@ -72,7 +76,7 @@ const checkWeb5 = async (Web5) => {
 
   try {
     const { status } = await result.record.update({ data: "Updated!" });
-    result.record.updateStatus = status;
+    result.updateStatus = status;
 
     result.didUpdate = (await result.record.data.text()) === "Updated!";
   } catch (error) {
