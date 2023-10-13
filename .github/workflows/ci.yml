@@ -1,0 +1,93 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+  workflow_dispatch:
+    inputs:
+      web5ApiVersion:
+        type: string
+        description: "Select the desired @web5/api version"
+        required: false
+      dwnVersion:
+        type: string
+        description: "Select the desired @tbd54566975/dwn-sdk-js version"
+        required: false
+
+env:
+  CI: true
+  PNPM_CACHE_FOLDER: .pnpm-store
+
+jobs:
+  test-web5:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [20, 18]
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
+
+      - name: Update Web5 Version
+        if: ${{ github.event.inputs.web5ApiVersion }}
+        run: |
+          echo "Updating @web5/api to version ${{ github.event.inputs.web5ApiVersion }}"
+          sed -i "s/\"@web5\/api\": \".*\"/\"@web5\/api\": \"${{ github.event.inputs.web5ApiVersion }}\"/g" package.json
+          cat package.json
+
+      - name: install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Set up Node.js
+        uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c # v3.6.0
+        with:
+          node-version: ${{ matrix.node-version }}
+          registry-url: https://registry.npmjs.org/
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build all workspace packages
+        run: pnpm test:node
+
+  test-dwn:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [20, 18]
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
+
+      - name: Update DWN Version
+        if: ${{ github.event.inputs.dwnVersion }}
+        run: |
+          echo "Updating @tbd54566975/dwn-sdk-js to version ${{ github.event.inputs.dwnVersion }}"
+          sed -i "s/\"@tbd54566975\/dwn-sdk-js\": \".*\"/\"@tbd54566975\/dwn-sdk-js\": \"${{ github.event.inputs.dwnVersion }}\"/g" package.json
+          cat package.json
+
+      - name: install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Set up Node.js
+        uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c # v3.6.0
+        with:
+          node-version: ${{ matrix.node-version }}
+          registry-url: https://registry.npmjs.org/
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build all workspace packages
+        run: pnpm test:dwn
