@@ -1,6 +1,5 @@
-# Instructions
-1. run `npm install`
-2. run `node dwn-sdk-test.js` to test `dwn-sdk`
-3. run `node web5-test.js` to test `web5`
+# node-esm
 
-> ⚠️ `web5-test.js` hangs when using node >= `v20.4.0` 
+Test our web5 packages against a traditional node-esm app environment.
+
+> ⚠️ `web5-test.js` hangs when using node >= `v20.4.0`
