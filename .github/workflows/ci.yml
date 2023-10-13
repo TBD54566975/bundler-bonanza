@@ -57,7 +57,7 @@ jobs:
         run: pnpm install
 
       - name: Build all workspace packages
-        run: pnpm test:node
+        run: pnpm -r test:node
 
   test-dwn:
     runs-on: ubuntu-latest
@@ -92,4 +92,4 @@ jobs:
         run: pnpm install
 
       - name: Build all workspace packages
-        run: pnpm test:dwn
+        run: pnpm -r test:dwn
