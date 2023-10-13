@@ -4,6 +4,7 @@ EVENTLOG
 INDEX
 dist
 data
+DATA
 node_modules
 out
 .vscode

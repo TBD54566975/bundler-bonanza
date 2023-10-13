@@ -96,4 +96,4 @@ const checkWeb5 = async (Web5) => {
   return result;
 };
 
-export default checkWeb5;
+module.exports = checkWeb5;
