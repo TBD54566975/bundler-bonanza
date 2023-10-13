@@ -26,6 +26,7 @@ env:
 jobs:
   test-web5:
     strategy:
+      fail-fast: false
       matrix:
         node-version: [20, 18]
         os: [ubuntu-latest, windows-latest, macos-latest]
@@ -62,6 +63,7 @@ jobs:
 
   test-dwn:
     strategy:
+      fail-fast: false
       matrix:
         node-version: [20, 18]
         os: [ubuntu-latest, windows-latest, macos-latest]
