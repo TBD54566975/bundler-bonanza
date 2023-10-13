@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+      - leordev/* # TODO: remove
+
   pull_request:
 
   workflow_dispatch:
