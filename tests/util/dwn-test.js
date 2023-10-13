@@ -1,3 +1,5 @@
+require("./webcrypto-polyfill.js");
+
 const checkDwn = async (
   Dwn,
   DataStream,

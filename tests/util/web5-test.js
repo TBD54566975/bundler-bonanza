@@ -1,3 +1,5 @@
+require("./webcrypto-polyfill.js");
+
 function checkResult(result) {
   if (!result.didUpdate) {
     throw new Error("Record did not update!");

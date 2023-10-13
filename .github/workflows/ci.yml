@@ -59,7 +59,7 @@ jobs:
         run: pnpm install
 
       - name: 🧪 Run Web5 tests
-        run: pnpm -r --workspace-concurrency 1 --no-bail test:node
+        run: pnpm -r --workspace-concurrency 1 --no-bail test:web5
 
   test-dwn:
     strategy:
