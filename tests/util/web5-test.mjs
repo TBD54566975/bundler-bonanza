@@ -11,6 +11,18 @@ function checkResult(result) {
     throw new Error("Read status code is not 200!");
   }
 
+  if (!result.did) {
+    throw new Error("DID is not defined!");
+  }
+
+  if (!result.record) {
+    throw new Error("Record is not defined!");
+  }
+
+  if (!result.web5) {
+    throw new Error("Web5 is not defined!");
+  }
+
   console.log("All Checks Passed! ✅");
 }
 
