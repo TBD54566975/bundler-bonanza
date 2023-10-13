@@ -11,7 +11,11 @@ This repo includes a bunch of barebones js projects across different runtimes us
 ```sh
 # make sure you have node v20 or v18, and pnpm >=v8.8
 pnpm i
-pnpm test:node
+
+# test web5 in all supported environments
+pnpm test:web5
+
+# test dwn in all supported environments
 pnpm test:dwn
 ```
 
