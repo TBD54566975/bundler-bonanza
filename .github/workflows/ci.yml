@@ -1,4 +1,4 @@
-name: Continuous Integration
+name: Tests Runner
 
 on:
   push:
@@ -10,11 +10,9 @@ on:
   workflow_dispatch:
     inputs:
       web5ApiVersion:
-        type: string
         description: "Select the desired @web5/api version"
         required: false
       dwnVersion:
-        type: string
         description: "Select the desired @tbd54566975/dwn-sdk-js version"
         required: false
 
@@ -36,13 +34,6 @@ jobs:
       - name: ⬇️ Checkout source
         uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
 
-      - name: 🔃 Update Web5 Version
-        if: ${{ github.event.inputs.web5ApiVersion }}
-        run: |
-          echo "Updating @web5/api to version ${{ github.event.inputs.web5ApiVersion }}"
-          sed -i "s/\"@web5\/api\": \".*\"/\"@web5\/api\": \"${{ github.event.inputs.web5ApiVersion }}\"/g" package.json
-          cat package.json
-
       - name: 📦 Install pnpm
         uses: pnpm/action-setup@v2
         with:
@@ -56,6 +47,12 @@ jobs:
 
       - name: 📥 Install dependencies
         run: pnpm install
+
+      - name: 🔃 Update Web5 Version
+        if: ${{ github.event.inputs.web5ApiVersion }}
+        run: |
+          pnpm i -w @web5/api@${{ github.event.inputs.web5ApiVersion }}
+          cat package.json
 
       - name: 🧪 Run Web5 tests
         run: pnpm -r --workspace-concurrency 1 --no-bail test:web5
@@ -73,13 +70,6 @@ jobs:
       - name: ⬇️ Checkout source
         uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
 
-      - name: 🔃 Update DWN Version
-        if: ${{ github.event.inputs.dwnVersion }}
-        run: |
-          echo "Updating @tbd54566975/dwn-sdk-js to version ${{ github.event.inputs.dwnVersion }}"
-          sed -i "s/\"@tbd54566975\/dwn-sdk-js\": \".*\"/\"@tbd54566975\/dwn-sdk-js\": \"${{ github.event.inputs.dwnVersion }}\"/g" package.json
-          cat package.json
-
       - name: 📦 Install pnpm
         uses: pnpm/action-setup@v2
         with:
@@ -93,6 +83,12 @@ jobs:
 
       - name: 📥 Install dependencies
         run: pnpm install
+
+      - name: 🔃 Update dwn-sdk-js Version
+        if: ${{ github.event.inputs.dwnVersion }}
+        run: |
+          pnpm i -w @tbd54566975/dwn-sdk-js@${{ github.event.inputs.dwnVersion }}
+          cat package.json
 
       - name: 🧪 Run DWN tests
         run: pnpm -r --workspace-concurrency 1 --no-bail test:dwn
