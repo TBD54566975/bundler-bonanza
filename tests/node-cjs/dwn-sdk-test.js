@@ -4,12 +4,13 @@ const {
   DidKeyResolver,
   Jws,
   RecordsWrite,
-} = require("@tbd54566975/dwn-sdk-js");
-const {
+  RecordsRead,
+  RecordsDelete,
   MessageStoreLevel,
   DataStoreLevel,
   EventLogLevel,
-} = require("@tbd54566975/dwn-sdk-js/stores");
+} = require("@tbd54566975/dwn-sdk-js");
+
 const checkDwn = require("../util/dwn-test");
 
 checkDwn(
@@ -18,7 +19,9 @@ checkDwn(
   DidKeyResolver,
   Jws,
   RecordsWrite,
+  RecordsRead,
+  RecordsDelete,
   MessageStoreLevel,
   DataStoreLevel,
   EventLogLevel
-).then(() => process.exit());
+);

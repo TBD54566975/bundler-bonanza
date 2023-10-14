@@ -4,12 +4,12 @@ import {
   DidKeyResolver,
   Jws,
   RecordsWrite,
-} from "@tbd54566975/dwn-sdk-js";
-import {
+  RecordsRead,
+  RecordsDelete,
   DataStoreLevel,
   EventLogLevel,
   MessageStoreLevel,
-} from "@tbd54566975/dwn-sdk-js/stores";
+} from "@tbd54566975/dwn-sdk-js";
 
 import checkDwn from "../util/dwn-test.js";
 
@@ -19,7 +19,9 @@ checkDwn(
   DidKeyResolver,
   Jws,
   RecordsWrite,
+  RecordsRead,
+  RecordsDelete,
   MessageStoreLevel,
   DataStoreLevel,
   EventLogLevel
-).then(() => process.exit());
+);
