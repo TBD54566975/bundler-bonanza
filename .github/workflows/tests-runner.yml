@@ -1,0 +1,94 @@
+name: Tests Runner
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+
+  workflow_dispatch:
+    inputs:
+      web5ApiVersion:
+        description: "Select the desired @web5/api version"
+        required: false
+      dwnVersion:
+        description: "Select the desired @tbd54566975/dwn-sdk-js version"
+        required: false
+
+env:
+  CI: true
+  PNPM_CACHE_FOLDER: .pnpm-store
+
+jobs:
+  test-web5:
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [20, 18]
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: ⬇️ Checkout source
+        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
+
+      - name: 📦 Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: ⚙️ Set up Node.js
+        uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c # v3.6.0
+        with:
+          node-version: ${{ matrix.node-version }}
+          registry-url: https://registry.npmjs.org/
+
+      - name: 📥 Install dependencies
+        run: pnpm install
+
+      - name: 🔃 Update Web5 Version
+        if: ${{ github.event.inputs.web5ApiVersion }}
+        run: |
+          pnpm i -w @web5/api@${{ github.event.inputs.web5ApiVersion }}
+          cat package.json
+
+      - name: 🧪 Run Web5 tests
+        run: pnpm -r --workspace-concurrency 1 --no-bail test:web5
+
+  test-dwn:
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [20, 18]
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: ⬇️ Checkout source
+        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
+
+      - name: 📦 Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: ⚙️ Set up Node.js
+        uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c # v3.6.0
+        with:
+          node-version: ${{ matrix.node-version }}
+          registry-url: https://registry.npmjs.org/
+
+      - name: 📥 Install dependencies
+        run: pnpm install
+
+      - name: 🔃 Update dwn-sdk-js Version
+        if: ${{ github.event.inputs.dwnVersion }}
+        run: |
+          pnpm i -w @tbd54566975/dwn-sdk-js@${{ github.event.inputs.dwnVersion }}
+          cat package.json
+
+      - name: 🧪 Run DWN tests
+        run: pnpm -r --workspace-concurrency 1 --no-bail test:dwn

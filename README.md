@@ -6,6 +6,19 @@ This repo includes a bunch of barebones js projects across different runtimes us
 >
 > This repo is currently WIP. It's being built out as we test `dwn-sdk-js` and `web5-js` compatibility
 
+# Running instructions
+
+```sh
+# make sure you have node v20 or v18, and pnpm >=v8.8
+pnpm i
+
+# test web5 in all supported environments
+pnpm test:web5
+
+# test dwn in all supported environments
+pnpm test:dwn
+```
+
 # `dwn-sdk-js`
 
 > **Note**
