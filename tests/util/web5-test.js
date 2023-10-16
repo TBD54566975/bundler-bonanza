@@ -1,35 +1,43 @@
 require("./webcrypto-polyfill.js");
 
 function checkResult(result) {
+  console.info({ result });
+  const errors = [];
+
   if (!result.didUpdate) {
-    throw new Error("Record did not update!");
+    errors.push("Record did not update!");
   }
 
   if (!result.didDelete) {
-    throw new Error("Record did not delete!");
+    errors.push("Record did not delete!");
   }
 
   if (result.readStatus.code !== 200) {
-    throw new Error("Read status code is not 200!");
+    errors.push("Read status code is not 200!");
   }
 
   if (!result.did) {
-    throw new Error("DID is not defined!");
+    errors.push("DID is not defined!");
   }
 
   if (!result.record) {
-    throw new Error("Record is not defined!");
+    errors.push("Record is not defined!");
   }
 
   if (!result.web5) {
-    throw new Error("Web5 is not defined!");
+    errors.push("Web5 is not defined!");
   }
 
   if (result.updateStatus.code !== 202) {
-    throw new Error("Update status is not defined!");
+    errors.push("Update status is not defined!");
   }
 
-  console.log("All Checks Passed! ✅");
+  if (errors.length > 0) {
+    console.error({ errors });
+    throw new Error("One or more checks failed!");
+  } else {
+    console.info("All Checks Passed! ✅");
+  }
 }
 
 const checkWeb5 = async (Web5) => {
