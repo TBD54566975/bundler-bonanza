@@ -50,7 +50,7 @@ const checkResult = (result) => {
 
   if (errors.length > 0) {
     console.error({ errors });
-    throw new Error("One or more checks failed!");
+    throw new Error(`One or more checks failed:\n${errors.join("\n")}`);
   } else {
     console.info("All Checks Passed! ✅");
   }

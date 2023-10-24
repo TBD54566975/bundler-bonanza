@@ -1,3 +1,5 @@
+const jestExpect = require("expect").default;
+
 describe("DWN Tests", () => {
   beforeAll(async () => {
     await device.launchApp({ newInstance: true });
@@ -8,8 +10,13 @@ describe("DWN Tests", () => {
   });
 
   it("should have the DWN test as successful", async () => {
-    await expect(element(by.id("dwn-tests-result"))).toHaveText(
-      `"success": true`
-    );
+    const dwnTestResultElement = element(by.id("dwn-tests-result"));
+    await expect(dwnTestResultElement).toBeVisible();
+
+    const { text } = await dwnTestResultElement.getAttributes();
+    console.info(">>> DWN Test Results:", text);
+
+    const dwnTestResult = JSON.parse(text);
+    jestExpect(dwnTestResult.success).toBe(true);
   });
 });

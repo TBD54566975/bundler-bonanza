@@ -162,5 +162,5 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v3
         with:
-          name: detox-artifacts
+          name: test-rn-ios-detox-artifacts
           path: tests/reactnative/artifacts
