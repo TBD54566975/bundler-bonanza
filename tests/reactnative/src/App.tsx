@@ -9,7 +9,6 @@ export default function App() {
 
   useEffect(() => {
     // TODO: add proper web5 tests
-    // DidManager.createDids();
 
     const loadDwnAndTestsResults = async () => {
       try {
@@ -35,7 +34,6 @@ export default function App() {
 
   const onTestWeb5Press = async () => {
     try {
-      // await checkWeb5(Web5);
       // TODO: fix this with a custom rn agent
       const { web5, did } = await Web5.connect();
       console.info("connected", { web5, did });
