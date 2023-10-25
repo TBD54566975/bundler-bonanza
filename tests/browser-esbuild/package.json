@@ -12,6 +12,6 @@
   },
   "scripts": {
     "build": "node bundle.js",
-    "test": "node bundle.js && node dwn-sdk-test.js"
+    "test": "node bundle.js && node web5-test.js"
   }
 }
