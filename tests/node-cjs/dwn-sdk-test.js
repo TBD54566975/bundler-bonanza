@@ -1,4 +1,3 @@
-require("../util/node-polyfill");
 const {
   Dwn,
   DataStream,
