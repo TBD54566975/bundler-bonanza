@@ -1,3 +1,5 @@
+import "../util/node-polyfill.js";
+
 import {
   Dwn,
   DataStream,
