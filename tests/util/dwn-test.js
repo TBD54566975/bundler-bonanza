@@ -1,4 +1,4 @@
-require("./webcrypto-polyfill.js");
+require("./node-polyfill.js");
 
 const checkResult = (result) => {
   console.info({ result });

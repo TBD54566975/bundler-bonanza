@@ -1,5 +1,3 @@
-require("./webcrypto-polyfill.js");
-
 function checkResult(result) {
   console.info({ result });
   const errors = [];
