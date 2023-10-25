@@ -93,6 +93,7 @@ jobs:
       - name: 🧪 Run DWN tests
         run: pnpm -r --workspace-concurrency 1 --no-bail test:dwn
 
+  # reference: https://github.com/remarkablemark/react-native-cli-quickstart/blob/master/.github/workflows/e2e-ios.yml
   test-rn-ios:
     runs-on: macos-latest
     defaults:
@@ -127,17 +128,17 @@ jobs:
           bundler-cache: true
           ruby-version: 2.7.6
 
-      - name: Cache CocoaPods
-        id: cache-cocoapods
-        uses: actions/cache@v3
-        with:
-          path: tests/reactnative/ios/Pods
-          key: ${{ runner.os }}-pods-${{ hashFiles('tests/reactnative/ios/Podfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-pods-
+      # - name: Cache CocoaPods
+      #   id: cache-cocoapods
+      #   uses: actions/cache@v3
+      #   with:
+      #     path: tests/reactnative/ios/Pods
+      #     key: ${{ runner.os }}-pods-${{ hashFiles('tests/reactnative/ios/Podfile.lock') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-pods-
 
       - name: Install CocoaPods
-        if: steps.cache-cocoapods.outputs.cache-hit != 'true'
+        # if: steps.cache-cocoapods.outputs.cache-hit != 'true'
         run: cd ios ; pod install ; cd -
 
       - name: Detox rebuild framework cache
@@ -156,7 +157,7 @@ jobs:
         run: yarn detox build --configuration ios.sim.release
 
       - name: Detox test
-        run: yarn detox test --configuration ios.sim.release --cleanup --headless --record-logs all
+        run: yarn detox test --configuration ios.sim.release --cleanup --headless --record-logs all --take-screenshots failing
 
       - name: Upload artifacts
         if: failure()
