@@ -1,5 +1,3 @@
-global.Buffer = global.Buffer || require("buffer").Buffer;
-
 const checkResult = (result) => {
   console.info({ result });
   const errors = [];

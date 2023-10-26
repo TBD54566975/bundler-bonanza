@@ -20,6 +20,7 @@ const config = {
     locales: ["en"],
   },
   plugins: [require.resolve("./webpackPlugin")],
+  clientModules: [require.resolve("./src/bufferPolyfill.js")],
   presets: [
     [
       "classic",
