@@ -1,5 +1,3 @@
-require("./webcrypto-polyfill.js");
-
 const checkResult = (result) => {
   console.info({ result });
   const errors = [];
@@ -54,6 +52,8 @@ const checkResult = (result) => {
   } else {
     console.info("All Checks Passed! ✅");
   }
+
+  return result;
 };
 
 const checkDwn = async (
@@ -193,7 +193,7 @@ const checkDwn = async (
     console.error("close DWN Error:", error);
   }
 
-  checkResult(result);
+  return checkResult(result);
 };
 
 function streamToString(stream) {
