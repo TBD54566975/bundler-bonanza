@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@tbd54566975/dwn-sdk-js": "0.1.0-unstable-2023-07-18-09-24-a78a613",
+    "@tbd54566975/dwn-sdk-js": "0.2.4",
     "lodash": "4.17.21"
   },
   "devDependencies": {

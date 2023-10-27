@@ -1,32 +1,56 @@
-import { Dwn, DataStream, DidKeyResolver, Jws, RecordsWrite } from '@tbd54566975/dwn-sdk-js';
-import { DataStoreLevel, EventLogLevel, MessageStoreLevel } from '@tbd54566975/dwn-sdk-js/stores';
+import { Web5 } from "@web5/api";
+import checkDwn from "../util/dwn-test.js";
+import checkWeb5 from "../util/web5-test.js";
+import {
+  Dwn,
+  EventLogLevel,
+  MessageStoreLevel,
+  DataStoreLevel,
+  Jws,
+  RecordsWrite,
+  RecordsRead,
+  RecordsDelete,
+  DataStream,
+  DidKeyResolver,
+} from "@tbd54566975/dwn-sdk-js";
 
-const messageStore = new MessageStoreLevel();
-const dataStore = new DataStoreLevel();
-const eventLog = new EventLogLevel();
-const dwn = await Dwn.create({ messageStore, dataStore, eventLog });
+const handleCheckWeb5 = async () => {
+  const web5TestOutput = document.getElementById("web5-test-output");
 
-// generate a did:key DID
-const didKey = await DidKeyResolver.generate();
+  try {
+    const web5Result = await checkWeb5(Web5);
+    console.log("web5 connected", web5Result);
+    web5TestOutput.innerHTML = web5Result.did.connectedDid;
+  } catch (error) {
+    console.error("Error connecting to web5:", error);
+    web5TestOutput.innerHTML = "Error connecting to web5.";
+  }
+};
 
-// create some data
-const encoder = new TextEncoder();
-const data = encoder.encode('Hello, World!');
+const handleCheckDwn = async () => {
+  const dwnTestOutput = document.getElementById("dwn-test-output");
 
-// create a RecordsWrite message
-const recordsWrite = await RecordsWrite.create({
-  data,
-  dataFormat: 'application/json',
-  published: true,
-  schema: 'yeeter/post',
-  authorizationSignatureInput: Jws.createSignatureInput(didKey)
-});
+  try {
+    const dwnResult = await checkDwn(
+      Dwn,
+      DataStream,
+      DidKeyResolver,
+      Jws,
+      RecordsWrite,
+      RecordsRead,
+      RecordsDelete,
+      MessageStoreLevel,
+      DataStoreLevel,
+      EventLogLevel
+    );
+    console.log("dwn connected", dwnResult);
+    dwnTestOutput.innerHTML = JSON.stringify(dwnResult);
+  } catch (error) {
+    console.error("Error connecting to dwn:", error);
+    dwnTestOutput.innerHTML = "Error connecting to dwn.";
+  }
+};
 
-// get the DWN to process the RecordsWrite
-const dataStream = DataStream.fromBytes(data);
-const result = await dwn.processMessage(didKey.did, recordsWrite.message, dataStream);
+handleCheckWeb5();
 
-console.log(result)
-console.assert(result.status.code === 202)
-
-await dwn.close()
+handleCheckDwn();
