@@ -9,7 +9,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@tbd54566975/dwn-sdk-js": "0.2.4",
     "@tbd54566975/web5": "0.8.0-alpha-20230728-d004f01"
   },
   "devDependencies": {
