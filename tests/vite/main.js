@@ -1,27 +1,38 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+import { Buffer } from 'buffer';
+import './style.css';
+import { Web5 } from '@web5/api';
+import {
+  Dwn,
+  DataStream,
+  DidKeyResolver,
+  Jws,
+  RecordsWrite,
+  RecordsRead,
+  RecordsDelete,
+  DataStoreLevel,
+  EventLogLevel,
+  MessageStoreLevel,
+} from '@tbd54566975/dwn-sdk-js';
 
-import './dwn-sdk-test.js'
-import './web5-test.js'
+import checkWeb5 from '../util/web5-test.js';
+import checkDwn from '../util/dwn-test.js';
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+// import './dwn-sdk-test.js'
 
-setupCounter(document.querySelector('#counter'))
+if (typeof window !== 'undefined') {
+  window.Buffer = Buffer;
+}
+
+checkWeb5(Web5);
+checkDwn(
+  Dwn,
+  DataStream,
+  DidKeyResolver,
+  Jws,
+  RecordsWrite,
+  RecordsRead,
+  RecordsDelete,
+  MessageStoreLevel,
+  DataStoreLevel,
+  EventLogLevel
+);

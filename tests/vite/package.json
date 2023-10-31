@@ -8,15 +8,13 @@
     "build": "vite build",
     "preview": "vite preview"
   },
-  "dependencies": {
-    "@tbd54566975/web5": "0.8.0-alpha-20230728-d004f01"
-  },
   "devDependencies": {
     "crypto-browserify": "^3.12.0",
     "node-stdlib-browser": "^1.2.0",
     "process": "0.11.10",
     "stream-browserify": "^3.0.0",
     "vite": "^4.4.0",
+    "vite-plugin-commonjs": "^0.10.0",
     "vite-plugin-node-stdlib-browser": "^0.2.1"
   }
 }
