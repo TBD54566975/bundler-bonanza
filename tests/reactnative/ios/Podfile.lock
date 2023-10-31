@@ -343,6 +343,9 @@ PODS:
     - React-callinvoker
     - React-Core
     - ReactCommon/turbomodule/core
+  - react-native-blob-jsi-helper (0.3.1):
+    - React
+    - React-Core
   - react-native-quick-base64 (2.0.6):
     - React-Core
   - react-native-quick-crypto (0.6.1):
@@ -496,6 +499,7 @@ DEPENDENCIES:
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
   - react-native-bignumber (from `../node_modules/react-native-bignumber`)
+  - react-native-blob-jsi-helper (from `../node_modules/react-native-blob-jsi-helper`)
   - react-native-quick-base64 (from `../node_modules/react-native-quick-base64`)
   - react-native-quick-crypto (from `../node_modules/react-native-quick-crypto`)
   - React-NativeModulesApple (from `../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios`)
@@ -586,6 +590,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/logger"
   react-native-bignumber:
     :path: "../node_modules/react-native-bignumber"
+  react-native-blob-jsi-helper:
+    :path: "../node_modules/react-native-blob-jsi-helper"
   react-native-quick-base64:
     :path: "../node_modules/react-native-quick-base64"
   react-native-quick-crypto:
@@ -661,6 +667,7 @@ SPEC CHECKSUMS:
   React-jsinspector: d0b5bfd1085599265f4212034321e829bdf83cc0
   React-logger: b8103c9b04e707b50cdd2b1aeb382483900cbb37
   react-native-bignumber: 9850896db4534ea31e89dfd88182e7412eace199
+  react-native-blob-jsi-helper: 13c10135af4614dbc0712afba5960784cd44f043
   react-native-quick-base64: 62290829c619fbabca4c41cfec75ae759d08fc1c
   react-native-quick-crypto: 455c1b411db006dba1026a30681ececb19180187
   React-NativeModulesApple: 4f31a812364443cee6ef768d256c594ad3b20f53
