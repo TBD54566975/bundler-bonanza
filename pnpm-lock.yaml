@@ -149,6 +149,9 @@ importers:
       '@types/webpack':
         specifier: 5.28.1
         version: 5.28.1(webpack-cli@5.1.4)
+      buffer:
+        specifier: ^6.0.3
+        version: 6.0.3
       crypto-browserify:
         specifier: ^3.12.0
         version: 3.12.0
@@ -4910,7 +4913,6 @@ packages:
     dependencies:
       base64-js: 1.5.1
       ieee754: 1.2.1
-    dev: false
 
   /builtin-status-codes@3.0.0:
     resolution: {integrity: sha512-HpGFw18DgFWlncDfjTa2rcQ4W88O1mC8e8yZ2AvQY5KDaktSTwo+KRf6nHK6FRI5FyRyb/5T6+TSxfP7QyGsmQ==}
@@ -10990,7 +10992,7 @@ packages:
       schema-utils: 3.3.0
       serialize-javascript: 6.0.1
       terser: 5.21.0
-      webpack: 5.88.1
+      webpack: 5.88.1(webpack-cli@5.1.4)
 
   /terser@5.21.0:
     resolution: {integrity: sha512-WtnFKrxu9kaoXuiZFSGrcAvvBqAdmKx0SFNmVNYdJamMu9yyN3I/QF0FbH4QcqJQ+y1CJnzxGIKH0cSj+FGYRw==}
