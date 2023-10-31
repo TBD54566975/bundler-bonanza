@@ -4,14 +4,16 @@
   "description": "",
   "private": "true",
   "scripts": {
-    "build": "webpack",
-    "dev": "webpack serve"
+    "build": "webpack && cp ./index.html ./dist/index.html",
+    "dev": "webpack serve",
+    "start": "pnpm build && http-server ./dist -p 3000"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "lodash": "4.17.21"
+    "http-server": "^14.1.1",
+    "process": "0.11.10"
   },
   "devDependencies": {
     "@types/webpack": "5.28.1",
