@@ -2,6 +2,14 @@ import "@tbd54566975/web5-react-native-polyfills";
 
 import { registerRootComponent } from "expo";
 
+import { polyfillBlob } from "./src/util/blob-polyfill";
+
+if (!global.structuredClone) {
+  global.structuredClone = require("realistic-structured-clone");
+}
+
+polyfillBlob();
+
 import App from "./src/App";
 
 // registerRootComponent calls AppRegistry.registerComponent('main', () => App);
