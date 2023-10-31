@@ -1,8 +1,9 @@
+const webpack = require("webpack");
+
 module.exports = function (context, options) {
   return {
     name: "docusaurus-plugin-custom-webpack",
     configureWebpack(config, isServer, utils) {
-      console.log("config", config.webpack);
       return {
         resolve: {
           fallback: {
@@ -11,6 +12,11 @@ module.exports = function (context, options) {
             buffer: require.resolve("buffer"),
           },
         },
+        plugins: [
+          new webpack.ProvidePlugin({
+            process: "process/browser.js",
+          }),
+        ],
       };
     },
   };
