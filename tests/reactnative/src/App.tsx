@@ -14,12 +14,16 @@ export default function App() {
       try {
         const {
           web5: _web5,
-          record: _record,
-          did: _did,
+          record,
+          did,
           ...web5TestsResultRaw
         } = await getWeb5();
-        console.info({ web5TestsResultRaw });
-        const web5TestsResults = { success: true, ...web5TestsResultRaw };
+        const web5TestsResults = {
+          ...web5TestsResultRaw,
+          success: true,
+          dataCid: record?.dataCid,
+          did: did?.connectedDid.substr(0, 32) + "...",
+        };
         const web5TestsResultsStr = JSON.stringify(
           web5TestsResults,
           undefined,
@@ -40,9 +44,16 @@ export default function App() {
 
     const loadDwnAndTestsResults = async () => {
       try {
-        const { dwn: _dwn, ...testsResultsRaw } =
-          await DwnManager.initMemoryDwn();
-        const testsResults = { success: true, ...testsResultsRaw };
+        const {
+          dwn: _dwn,
+          didKey,
+          ...testsResultsRaw
+        } = await DwnManager.initMemoryDwn();
+        const testsResults = {
+          ...testsResultsRaw,
+          success: true,
+          did: didKey?.did,
+        };
         const testsResultsStr = JSON.stringify(testsResults, undefined, 2);
         setDwnTestsResults(testsResultsStr);
       } catch (error) {
