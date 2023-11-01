@@ -23,7 +23,6 @@ export default function App() {
         };
         const errorResultsStr = JSON.stringify(errorResults, undefined, 2);
         setWeb5TestsResults(errorResultsStr);
-        throw error;
       }
     };
 

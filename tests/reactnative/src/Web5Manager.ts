@@ -63,7 +63,7 @@ const initAgent = async () => {
 
   agent = await IdentityAgent.create({ dwnManager, appData, syncManager });
 
-  await agent.start({ passphrase: "unprotected-passphrase" });
+  await agent.start({ passphrase: "unprotectedpass" });
   await startSync();
 };
 
@@ -91,22 +91,23 @@ export const getWeb5 = async () => {
   const didMethod = "ion";
   let didOptions: DidIonCreateOptions | undefined;
 
+  console.info("initializing agent...");
+  await initAgent();
+  console.info("agent initialized!");
+  console.info({agent, agentDid: agent.agentDid});
+  
   const serviceEndpointNodes = await getTechPreviewDwnEndpoints();
   console.info({serviceEndpointNodes})
   didOptions = await DidIonMethod.generateDwnOptions({
     serviceEndpointNodes,
   });
+  console.info(JSON.stringify(didOptions, null, 2))
 
-  console.info("initializing agent...");
-  await initAgent();
-  console.info("agent initialized!");
-  console.info({agent, agentDid: agent.agentDid});
-
-  console.info("creating identity...");
+  console.info("creating identity...!!!");
   const identity = await agent.identityManager.create({
-    name: "default",
-    didMethod,
+    name: "Social",
     didOptions,
+    didMethod,
     kms,
   });
   console.info("identity created!");
