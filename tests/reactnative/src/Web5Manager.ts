@@ -14,9 +14,52 @@ import { DidIonMethod, type DidIonCreateOptions } from "@web5/dids";
 import { getTechPreviewDwnEndpoints, Web5 } from "@web5/api";
 
 import { MemoryLevelStore } from "./util/MemoryStore";
+import checkWeb5 from './util/web5-test';
 
 let agent: IdentityAgent;
 let dwn: Dwn;
+let web5: Web5;
+let did: string;
+
+export const getWeb5 = async () => {
+  const kms = "local";
+  const didMethod = "ion";
+  let didOptions: DidIonCreateOptions | undefined;
+
+  console.info("initializing agent...");
+  await initAgent();
+  console.info("agent initialized!");
+  console.info({agent, agentDid: agent.agentDid});
+  
+  const serviceEndpointNodes = await getTechPreviewDwnEndpoints();
+  didOptions = await DidIonMethod.generateDwnOptions({
+    serviceEndpointNodes,
+  });
+
+  console.info("creating identity...!!!");
+  const identity = await agent.identityManager.create({
+    name: "Social",
+    didOptions,
+    didMethod,
+    kms,
+  });
+  console.info("identity created!");
+
+  // Import the identity that was just created, using the agent's DID as the context,
+  // so that the agent can access that identity.
+  await agent.identityManager.import({
+    identity,
+    context: agent.agentDid,
+  });
+
+  web5 = new Web5({ agent, connectedDid: identity.did });
+  did = identity.did;
+
+  console.info("web5 initialized!", {did});
+
+  const result = await checkWeb5(web5);
+  return result;
+};
 
 const initWeb5LocalDwn = async () => {
   if (dwn) {
@@ -86,39 +129,3 @@ const startSync = async () => {
     });
   };
 
-export const getWeb5 = async () => {
-  const kms = "local";
-  const didMethod = "ion";
-  let didOptions: DidIonCreateOptions | undefined;
-
-  console.info("initializing agent...");
-  await initAgent();
-  console.info("agent initialized!");
-  console.info({agent, agentDid: agent.agentDid});
-  
-  const serviceEndpointNodes = await getTechPreviewDwnEndpoints();
-  console.info({serviceEndpointNodes})
-  didOptions = await DidIonMethod.generateDwnOptions({
-    serviceEndpointNodes,
-  });
-  console.info(JSON.stringify(didOptions, null, 2))
-
-  console.info("creating identity...!!!");
-  const identity = await agent.identityManager.create({
-    name: "Social",
-    didOptions,
-    didMethod,
-    kms,
-  });
-  console.info("identity created!");
-
-  // Import the identity that was just created, using the agent's DID as the context,
-  // so that the agent can access that identity.
-  await agent.identityManager.import({
-    identity,
-    context: agent.agentDid,
-  });
-
-  const web5 = new Web5({ agent, connectedDid: identity.did });
-  return { web5, did: identity.did };
-};

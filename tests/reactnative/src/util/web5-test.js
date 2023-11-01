@@ -40,7 +40,7 @@ function checkResult(result) {
   }
 }
 
-const checkWeb5 = async (Web5) => {
+const checkWeb5 = async (web5) => {
   let result = {
     web5: null,
     did: null,
@@ -53,14 +53,7 @@ const checkWeb5 = async (Web5) => {
   };
 
   try {
-    // TODO: fix this with a custom RN agent
-    const web5 = await Web5.connect({
-      techPreview: {
-        dwnEndpoints: ["http://localhost:3000"],
-      },
-    });
-
-    result.web5 = web5.web5;
+    result.web5 = web5;
     result.did = result.web5.did;
   } catch (error) {
     console.error("Web5.connect Error:", error);
@@ -107,4 +100,4 @@ const checkWeb5 = async (Web5) => {
   return result;
 };
 
-module.exports = checkWeb5;
+export default checkWeb5;
