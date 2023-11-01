@@ -1,7 +1,7 @@
 import "./webcrypto-polyfill.js";
 
 function checkResult(result) {
-  console.info({ result });
+  // console.info({ result });
   const errors = [];
 
   if (!result.didUpdate) {
@@ -34,9 +34,9 @@ function checkResult(result) {
 
   if (errors.length > 0) {
     console.error({ errors });
-    throw new Error("One or more checks failed!");
+    throw new Error(`One or more checks failed:\n${errors.join(", ")}`);
   } else {
-    console.info("All Checks Passed! ✅");
+    console.info("All Web5 Checks Passed! ✅");
   }
 }
 
@@ -69,8 +69,11 @@ const checkWeb5 = async (web5) => {
   }
 
   try {
-    const { status } = await result.web5.dwn.records.read({
-      message: { recordId: result.record._recordId },
+    const { status, record } = await result.web5.dwn.records.read({
+      // TODO: remove v0.8.1 code because RN requires the alpha
+      // version which uses a new dwn version requiring `filter`
+      // message: { recordId: result.record._recordId },
+      message: { filter: { recordId: result.record._recordId } },
     });
 
     result.readStatus = status;
@@ -82,7 +85,14 @@ const checkWeb5 = async (web5) => {
     const { status } = await result.record.update({ data: "Updated!" });
     result.updateStatus = status;
 
-    result.didUpdate = (await result.record.data.text()) === "Updated!";
+    const { record } = await result.web5.dwn.records.read({
+      // TODO: remove v0.8.1 code because RN requires the alpha
+      // version which uses a new dwn version requiring `filter`
+      // message: { recordId: result.record._recordId },
+      message: { filter: { recordId: result.record._recordId } },
+    });
+
+    result.didUpdate = (await record.data.text()) === "Updated!";
   } catch (error) {
     console.error("Update Record Error:", error);
   }
