@@ -12,8 +12,20 @@ export default function App() {
   useEffect(() => {
     const loadWeb5AndTestsResults = async () => {
       try {
-        const web5 = await getWeb5();
-        console.info({ web5 });
+        const {
+          web5: _web5,
+          record: _record,
+          did: _did,
+          ...web5TestsResultRaw
+        } = await getWeb5();
+        console.info({ web5TestsResultRaw });
+        const web5TestsResults = { success: true, ...web5TestsResultRaw };
+        const web5TestsResultsStr = JSON.stringify(
+          web5TestsResults,
+          undefined,
+          2
+        );
+        setWeb5TestsResults(web5TestsResultsStr);
       } catch (error) {
         console.error(error);
         const errorResults = {
