@@ -12,3 +12,5 @@ out
 webpack/dist/*
 !webpack/dist/index.html
 .DS_Store
+
+playwright-report
