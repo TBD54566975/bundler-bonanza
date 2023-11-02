@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.x] # Choose the Node.js version that matches your development environment
+        node-version: [20.x]
 
     steps:
       - uses: actions/checkout@v3

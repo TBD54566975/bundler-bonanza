@@ -30,14 +30,24 @@ async function displayResults() {
 
   try {
     const web5Results = await checkWeb5(Web5);
+    const did = web5Results.web5.did.connectedDid;
     document.querySelector("#web5-results").innerText = JSON.stringify(
-      web5Results,
+      {
+        success: true,
+        web5Results: did,
+      },
       null,
       2
     );
   } catch (error) {
-    document.querySelector("#web5-results").innerText =
-      "Web5 Test Error: " + error.message;
+    document.querySelector("#web5-results").innerText = JSON.stringify(
+      {
+        success: false,
+        error: error.message,
+      },
+      null,
+      2
+    );
   }
 
   try {
@@ -54,13 +64,22 @@ async function displayResults() {
       EventLogLevel
     );
     document.querySelector("#dwn-results").innerText = JSON.stringify(
-      dwnResults,
+      {
+        success: true,
+        dwnResults,
+      },
       null,
       2
     );
   } catch (error) {
-    document.querySelector("#dwn-results").innerText =
-      "Dwn Test Error: " + error.message;
+    document.querySelector("#dwn-results").innerText = JSON.stringify(
+      {
+        success: false,
+        error: error.message,
+      },
+      null,
+      2
+    );
   }
 }
 
