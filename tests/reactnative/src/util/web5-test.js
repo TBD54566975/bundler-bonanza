@@ -70,9 +70,6 @@ const checkWeb5 = async (web5) => {
 
   try {
     const { status, record } = await result.web5.dwn.records.read({
-      // TODO: remove v0.8.1 code because RN requires the alpha
-      // version which uses a new dwn version requiring `filter`
-      // message: { recordId: result.record._recordId },
       message: { filter: { recordId: result.record._recordId } },
     });
 
@@ -85,13 +82,15 @@ const checkWeb5 = async (web5) => {
     const { status } = await result.record.update({ data: "Updated!" });
     result.updateStatus = status;
 
+    // TODO: we need to figure out why this doesn't work in RN
+    // result.didUpdate = (await result.record.data.text()) === "Updated!";
+    // Currently we are receiving the following error:
+    // Update Record Error: [TypeError: dataBlob.text is not a function (it is undefined)]
+
+    // Forcing a re-read since above doesn't work in RN:
     const { record } = await result.web5.dwn.records.read({
-      // TODO: remove v0.8.1 code because RN requires the alpha
-      // version which uses a new dwn version requiring `filter`
-      // message: { recordId: result.record._recordId },
       message: { filter: { recordId: result.record._recordId } },
     });
-
     result.didUpdate = (await record.data.text()) === "Updated!";
   } catch (error) {
     console.error("Update Record Error:", error);
