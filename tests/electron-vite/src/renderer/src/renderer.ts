@@ -1,6 +1,5 @@
-import { Buffer } from "buffer";
-import { Web5 } from "@web5/api";
-
+import { Buffer } from 'buffer'
+import { Web5 } from '@web5/api'
 
 import {
   Dwn,
@@ -12,14 +11,14 @@ import {
   RecordsDelete,
   DataStoreLevel,
   EventLogLevel,
-  MessageStoreLevel,
-} from "@tbd54566975/dwn-sdk-js";
+  MessageStoreLevel
+} from '@tbd54566975/dwn-sdk-js'
 
-import checkWeb5 from "../../../../util/web5-test.js";
-import checkDwn from "../../../../util/dwn-test.js";
+import checkWeb5 from '../../../../util/web5-test.js'
+import checkDwn from '../../../../util/dwn-test.js'
 
-if (typeof window !== "undefined") {
-  window.Buffer = Buffer;
+if (typeof window !== 'undefined') {
+  window.Buffer = Buffer
 }
 
 export function init(): void {
@@ -30,12 +29,12 @@ export function init(): void {
   })
 }
 
-async function initWeb5() {
+async function initWeb5(): Promise<void> {
   await checkWeb5(Web5)
   replaceText('#web5-results', 'Web5 renderer is ready!')
 }
 
-async function initDwn() {
+async function initDwn(): Promise<void> {
   await checkDwn(
     Dwn,
     DataStream,
@@ -47,7 +46,7 @@ async function initDwn() {
     MessageStoreLevel,
     DataStoreLevel,
     EventLogLevel
-  );
+  )
   replaceText('#dwn-results', 'Dwn renderer is ready!')
 }
 

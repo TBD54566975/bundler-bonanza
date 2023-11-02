@@ -56,6 +56,9 @@ app.whenReady().then(() => {
     // dock icon is clicked and there are no other windows open.
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
   })
+
+  initDwn()
+  initWeb5()
 })
 
 // Quit when all windows are closed, except on macOS. There, it's common
@@ -69,3 +72,39 @@ app.on('window-all-closed', () => {
 
 // In this file you can include the rest of your app"s specific main process
 // code. You can also put them in separate files and require them here.
+import { Web5 } from '@web5/api'
+import {
+  Dwn,
+  DataStream,
+  DidKeyResolver,
+  Jws,
+  RecordsWrite,
+  RecordsRead,
+  RecordsDelete,
+  DataStoreLevel,
+  EventLogLevel,
+  MessageStoreLevel
+} from '@tbd54566975/dwn-sdk-js'
+
+import '../../../util/node-polyfill.js'
+import checkWeb5 from '../../../util/web5-test.js'
+import checkDwn from '../../../util/dwn-test.js'
+
+async function initWeb5(): Promise<void> {
+  await checkWeb5(Web5)
+}
+
+async function initDwn(): Promise<void> {
+  await checkDwn(
+    Dwn,
+    DataStream,
+    DidKeyResolver,
+    Jws,
+    RecordsWrite,
+    RecordsRead,
+    RecordsDelete,
+    MessageStoreLevel,
+    DataStoreLevel,
+    EventLogLevel
+  )
+}
