@@ -203,3 +203,8 @@ a:hover {
     width: 100%;
   }
 }
+
+.results {
+  display: flex;
+  justify-content: space-between;
+}
