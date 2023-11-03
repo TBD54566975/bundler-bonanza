@@ -21,7 +21,7 @@ env:
   PNPM_CACHE_FOLDER: .pnpm-store
 
 jobs:
-  test-web5:
+  test-node-web5:
     strategy:
       fail-fast: false
       matrix:
@@ -55,9 +55,9 @@ jobs:
           cat package.json
 
       - name: 🧪 Run Web5 tests
-        run: pnpm -r --workspace-concurrency 1 --no-bail test:web5
+        run: pnpm test:web5
 
-  test-dwn:
+  test-node-dwn:
     strategy:
       fail-fast: false
       matrix:
@@ -91,7 +91,7 @@ jobs:
           cat package.json
 
       - name: 🧪 Run DWN tests
-        run: pnpm -r --workspace-concurrency 1 --no-bail test:dwn
+        run: pnpm test:dwn
 
   # reference: https://github.com/remarkablemark/react-native-cli-quickstart/blob/master/.github/workflows/e2e-ios.yml
   test-rn-ios:
@@ -181,7 +181,7 @@ jobs:
       - name: Install Playwright Browsers
         run: pnpm playwright install --with-deps
       - name: Run browser tests
-        run: pnpm run test:browser
+        run: pnpm test:browser
       - uses: actions/upload-artifact@v3
         if: always()
         with:

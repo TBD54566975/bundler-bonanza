@@ -1,24 +1,23 @@
-import { devices } from "@playwright/test";
+import { devices, defineConfig } from "playwright/test";
 
-module.exports = {
+export default defineConfig({
   use: {
     browserName: "chromium",
     headless: true,
     viewport: { width: 1280, height: 720 },
   },
-  testDir: "./tests",
+  reporter: [["html"], ["list"]],
+  testDir: "./",
   testMatch: "**/*.spec.js",
   projects: [
     {
       name: "chromium",
       use: { ...devices["Desktop Chrome"] },
     },
-
     {
       name: "firefox",
       use: { ...devices["Desktop Firefox"] },
     },
-
     {
       name: "webkit",
       use: { ...devices["Desktop Safari"] },
@@ -46,4 +45,4 @@ module.exports = {
       },
     },
   ],
-};
+});

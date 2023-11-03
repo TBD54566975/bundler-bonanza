@@ -12,6 +12,8 @@
   },
   "scripts": {
     "build": "node bundle.js",
-    "start": "node bundle.js && http-server ./public -p 3000"
+    "start": "node bundle.js && http-server ./public -p 5173",
+    "test": "playwright test -c ../../playwright.config.js",
+    "test:browser": "start-server-and-test start http://localhost:5173 test"
   }
 }

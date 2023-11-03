@@ -6,9 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
-    "test": "playwright test",
-    "test:browser": "start-server-and-test dev http://localhost:5173 test"
+    "preview": "vite preview --port 5173",
+    "start": "pnpm build && pnpm preview",
+    "test": "playwright test -c ../../playwright.config.js",
+    "test:browser": "start-server-and-test start http://localhost:5173 test"
   },
   "devDependencies": {
     "crypto-browserify": "^3.12.0",
