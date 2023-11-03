@@ -13,7 +13,7 @@
   "scripts": {
     "build": "node bundle.js",
     "start": "node bundle.js && http-server ./public -p 5173",
-    "test": "playwright test -c ../../playwright.config.js",
+    "test": "PLAYWRIGHT_HTML_REPORT=../../playwright-report/browser-esbuild playwright test -c ../../playwright.config.js $TEST_PARAMS",
     "test:browser": "start-server-and-test start http://localhost:5173 test"
   }
 }

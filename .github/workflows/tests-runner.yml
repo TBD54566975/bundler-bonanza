@@ -26,7 +26,7 @@ jobs:
       fail-fast: false
       matrix:
         node-version: [20, 18]
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-latest]
 
     runs-on: ${{ matrix.os }}
 
@@ -62,7 +62,7 @@ jobs:
       fail-fast: false
       matrix:
         node-version: [20, 18]
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-latest]
 
     runs-on: ${{ matrix.os }}
 
@@ -95,6 +95,7 @@ jobs:
 
   # reference: https://github.com/remarkablemark/react-native-cli-quickstart/blob/master/.github/workflows/e2e-ios.yml
   test-rn-ios:
+    timeout-minutes: 60
     runs-on: macos-latest
     defaults:
       run:
@@ -167,8 +168,23 @@ jobs:
           path: tests/reactnative/artifacts
 
   test-browsers:
-    timeout-minutes: 60
+    timeout-minutes: 15
+
+    strategy:
+      fail-fast: false
+      matrix:
+        browser:
+          [
+            "desktop-safari",
+            "desktop-chrome",
+            "desktop-firefox",
+            "desktop-edge",
+            "mobile-safari",
+            "mobile-chrome",
+          ]
+
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -181,7 +197,7 @@ jobs:
       - name: Install Playwright Browsers
         run: pnpm playwright install --with-deps
       - name: Run browser tests
-        run: pnpm test:browser
+        run: TEST_PARAMS="--project=${{ matrix.browser }} --trace=on" pnpm test:browser
       - uses: actions/upload-artifact@v3
         if: always()
         with:

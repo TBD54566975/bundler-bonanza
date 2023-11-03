@@ -10,7 +10,7 @@
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
-    "test": "playwright test -c ../../playwright.config.js",
+    "test": "PLAYWRIGHT_HTML_REPORT=../../playwright-report/docusaurus playwright test -c ../../playwright.config.js $TEST_PARAMS",
     "test:browser": "start-server-and-test start http://localhost:5173 test",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids"
