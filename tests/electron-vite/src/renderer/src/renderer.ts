@@ -23,7 +23,7 @@ if (typeof window !== 'undefined') {
 
 export function init(): void {
   window.addEventListener('DOMContentLoaded', () => {
-    doAThing()
+    loadVersionsInfo()
     initWeb5()
     initDwn()
   })
@@ -50,7 +50,7 @@ async function initDwn(): Promise<void> {
   replaceText('#dwn-results', 'Dwn renderer is ready!')
 }
 
-function doAThing(): void {
+function loadVersionsInfo(): void {
   const versions = window.electron.process.versions
   replaceText('.electron-version', `Electron v${versions.electron}`)
   replaceText('.chrome-version', `Chromium v${versions.chrome}`)
