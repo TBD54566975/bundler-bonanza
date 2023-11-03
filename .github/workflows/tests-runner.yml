@@ -165,3 +165,26 @@ jobs:
         with:
           name: test-rn-ios-detox-artifacts
           path: tests/reactnative/artifacts
+
+  test-browsers:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - name: Install pnpm
+        run: npm install -g pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Install Playwright Browsers
+        run: pnpm playwright install --with-deps
+      - name: Run browser tests
+        run: pnpm run test:browser
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30

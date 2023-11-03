@@ -1,7 +1,7 @@
 import "./webcrypto-polyfill.js";
 
 function checkResult(result) {
-  console.info({ result });
+  // console.info({ result });
   const errors = [];
 
   if (!result.didUpdate) {
@@ -34,13 +34,13 @@ function checkResult(result) {
 
   if (errors.length > 0) {
     console.error({ errors });
-    throw new Error("One or more checks failed!");
+    throw new Error(`One or more checks failed:\n${errors.join(", ")}`);
   } else {
-    console.info("All Checks Passed! ✅");
+    console.info("All Web5 Checks Passed! ✅");
   }
 }
 
-const checkWeb5 = async (Web5) => {
+const checkWeb5 = async (web5) => {
   let result = {
     web5: null,
     did: null,
@@ -53,14 +53,7 @@ const checkWeb5 = async (Web5) => {
   };
 
   try {
-    // TODO: fix this with a custom RN agent
-    const web5 = await Web5.connect({
-      techPreview: {
-        dwnEndpoints: ["http://localhost:3000"],
-      },
-    });
-
-    result.web5 = web5.web5;
+    result.web5 = web5;
     result.did = result.web5.did;
   } catch (error) {
     console.error("Web5.connect Error:", error);
@@ -76,8 +69,8 @@ const checkWeb5 = async (Web5) => {
   }
 
   try {
-    const { status } = await result.web5.dwn.records.read({
-      message: { recordId: result.record._recordId },
+    const { status, record } = await result.web5.dwn.records.read({
+      message: { filter: { recordId: result.record._recordId } },
     });
 
     result.readStatus = status;
@@ -89,7 +82,16 @@ const checkWeb5 = async (Web5) => {
     const { status } = await result.record.update({ data: "Updated!" });
     result.updateStatus = status;
 
-    result.didUpdate = (await result.record.data.text()) === "Updated!";
+    // TODO: we need to figure out why this doesn't work in RN
+    // result.didUpdate = (await result.record.data.text()) === "Updated!";
+    // Currently we are receiving the following error:
+    // Update Record Error: [TypeError: dataBlob.text is not a function (it is undefined)]
+
+    // Forcing a re-read since above doesn't work in RN:
+    const { record } = await result.web5.dwn.records.read({
+      message: { filter: { recordId: result.record._recordId } },
+    });
+    result.didUpdate = (await record.data.text()) === "Updated!";
   } catch (error) {
     console.error("Update Record Error:", error);
   }
@@ -107,4 +109,4 @@ const checkWeb5 = async (Web5) => {
   return result;
 };
 
-module.exports = checkWeb5;
+export default checkWeb5;

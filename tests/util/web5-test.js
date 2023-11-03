@@ -10,7 +10,7 @@ function checkResult(result) {
     errors.push("Record did not delete!");
   }
 
-  if (result.readStatus.code !== 200) {
+  if (result.readStatus?.code !== 200) {
     errors.push("Read status code is not 200!");
   }
 
@@ -26,7 +26,7 @@ function checkResult(result) {
     errors.push("Web5 is not defined!");
   }
 
-  if (result.updateStatus.code !== 202) {
+  if (result.updateStatus?.code !== 202) {
     errors.push("Update status is not defined!");
   }
 

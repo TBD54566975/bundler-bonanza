@@ -1,7 +1,7 @@
 import React from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
-import { Web5 } from "@web5/api/browser";
+import { Web5 } from "@web5/api";
 import checkWeb5 from "../../../util/web5-test";
 import checkDwn from "../../../util/dwn-test";
 import {
