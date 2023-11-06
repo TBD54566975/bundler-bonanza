@@ -6,7 +6,9 @@
   "scripts": {
     "build": "webpack && cp ./index.html ./dist/index.html",
     "dev": "webpack serve",
-    "start": "pnpm build && http-server ./dist -p 3000"
+    "start": "pnpm build && http-server ./dist -p 5173",
+    "test": "PLAYWRIGHT_HTML_REPORT=../../playwright-report/webpack playwright test -c ../../playwright.config.js $TEST_PARAMS",
+    "test:browser": "start-server-and-test start http://localhost:5173 test"
   },
   "keywords": [],
   "author": "",

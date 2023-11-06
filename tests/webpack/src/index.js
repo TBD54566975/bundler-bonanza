@@ -14,8 +14,8 @@ import {
 } from "@tbd54566975/dwn-sdk-js";
 import { Web5 } from "@web5/api";
 
-import checkDwn from "../../util/dwn-test";
-import checkWeb5 from "../../util/web5-test";
+import browserCheck from "../../util/browser-check";
+const { checkWeb5, checkDwn } = browserCheck;
 
 if (typeof window !== "undefined") {
   window.Buffer = Buffer;
@@ -33,59 +33,22 @@ async function displayResults() {
   dwnResultsElement.id = "dwn-results";
   element.appendChild(dwnResultsElement);
 
-  try {
-    const web5Results = await checkWeb5(Web5);
-    const did = web5Results.web5.did.connectedDid;
-    web5ResultsElement.textContent = JSON.stringify(
-      {
-        success: true,
-        web5Results: did,
-      },
-      null,
-      2
-    );
-  } catch (error) {
-    web5ResultsElement.textContent = JSON.stringify(
-      {
-        success: false,
-        error: error.message,
-      },
-      null,
-      2
-    );
-  }
+  const web5Results = await checkWeb5(Web5);
+  web5ResultsElement.textContent = web5Results;
 
-  try {
-    const dwnResults = await checkDwn(
-      Dwn,
-      DataStream,
-      DidKeyResolver,
-      Jws,
-      RecordsWrite,
-      RecordsRead,
-      RecordsDelete,
-      MessageStoreLevel,
-      DataStoreLevel,
-      EventLogLevel
-    );
-    dwnResultsElement.textContent = JSON.stringify(
-      {
-        success: true,
-        dwnResults,
-      },
-      null,
-      2
-    );
-  } catch (error) {
-    dwnResultsElement.textContent = JSON.stringify(
-      {
-        success: false,
-        error: error.message,
-      },
-      null,
-      2
-    );
-  }
+  const dwnResult = await checkDwn(
+    Dwn,
+    DataStream,
+    DidKeyResolver,
+    Jws,
+    RecordsWrite,
+    RecordsRead,
+    RecordsDelete,
+    MessageStoreLevel,
+    DataStoreLevel,
+    EventLogLevel
+  );
+  dwnResultsElement.textContent = dwnResult;
 
   return element;
 }

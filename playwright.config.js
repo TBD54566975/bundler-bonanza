@@ -1,49 +1,33 @@
-import { devices } from "@playwright/test";
+import { devices, defineConfig } from "playwright/test";
 
-module.exports = {
-  use: {
-    browserName: "chromium",
-    headless: true,
-    viewport: { width: 1280, height: 720 },
-  },
-  testDir: "./tests",
+export default defineConfig({
+  reporter: [["html"], ["list"]],
+  testDir: "./",
   testMatch: "**/*.spec.js",
   projects: [
     {
-      name: "chromium",
-      use: { ...devices["Desktop Chrome"] },
-    },
-
-    {
-      name: "firefox",
-      use: { ...devices["Desktop Firefox"] },
-    },
-
-    {
-      name: "webkit",
+      name: "desktop-safari",
       use: { ...devices["Desktop Safari"] },
     },
     {
-      name: "Mobile Chrome",
+      name: "desktop-chrome",
+      use: { ...devices["Desktop Chrome"] },
+    },
+    {
+      name: "desktop-firefox",
+      use: { ...devices["Desktop Firefox"] },
+    },
+    {
+      name: "desktop-edge",
+      use: { ...devices["Desktop Edge"] },
+    },
+    {
+      name: "mobile-chrome",
       use: { ...devices["Pixel 5"] },
     },
     {
-      name: "Mobile Safari",
+      name: "mobile-safari",
       use: { ...devices["iPhone 12"] },
     },
-    {
-      name: "Microsoft Edge",
-      use: {
-        ...devices["Desktop Edge"],
-        channel: "msedge",
-      },
-    },
-    {
-      name: "Google Chrome",
-      use: {
-        ...devices["Desktop Chrome"],
-        channel: "chrome",
-      },
-    },
   ],
-};
+});

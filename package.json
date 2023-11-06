@@ -6,7 +6,7 @@
   "scripts": {
     "test:web5": "pnpm -r --workspace-concurrency 1 --no-bail test:web5",
     "test:dwn": "pnpm -r --workspace-concurrency 1 --no-bail test:dwn",
-    "test:browser": "pnpm -r run test:browser"
+    "test:browser": "pnpm -r --workspace-concurrency 1 --no-bail test:browser"
   },
   "devDependencies": {
     "playwright": "^1.39.0",
