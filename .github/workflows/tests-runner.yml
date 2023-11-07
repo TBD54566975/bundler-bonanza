@@ -235,7 +235,13 @@ jobs:
 
   test-electron:
     timeout-minutes: 60
-    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest, macos-latest]
+
+    runs-on: ${{ matrix.os }}
+
     defaults:
       run:
         working-directory: ./tests/electron-vite
@@ -253,6 +259,8 @@ jobs:
 
       - name: Install Yarn dependencies
         run: yarn --frozen-lockfile --prefer-offline
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
 
       - name: 🔃 Update Web5 Version
         if: ${{ github.event.inputs.web5ApiVersion }}
@@ -269,11 +277,13 @@ jobs:
       - name: Build electron app
         run: yarn build
 
-      - name: Install Playwright Browsers
-        run: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 yarn playwright install
-
-      - name: Run browser tests
+      - name: Run electron tests
         run: yarn test --trace=on
+        if: matrix.os != 'ubuntu-latest'
+
+      - name: Run electron tests (xvfb)
+        run: xvfb-run --auto-servernum --server-args="-screen 0 1280x960x24" -- yarn test --trace=on
+        if: matrix.os == 'ubuntu-latest'
 
       - uses: actions/upload-artifact@v3
         if: always()
