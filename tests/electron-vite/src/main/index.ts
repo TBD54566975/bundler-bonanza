@@ -38,9 +38,12 @@ function createWindow(): void {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.whenReady().then(() => {
+app.whenReady().then(async () => {
   // Set app user model id for windows
   electronApp.setAppUserModelId('com.electron')
+
+  await initDwn()
+  await initWeb5()
 
   // Default open or close DevTools by F12 in development
   // and ignore CommandOrControl + R in production.
@@ -56,9 +59,6 @@ app.whenReady().then(() => {
     // dock icon is clicked and there are no other windows open.
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
   })
-
-  initDwn()
-  initWeb5()
 })
 
 // Quit when all windows are closed, except on macOS. There, it's common
@@ -90,21 +90,46 @@ import '../../../util/node-polyfill.js'
 import checkWeb5 from '../../../util/web5-test.js'
 import checkDwn from '../../../util/dwn-test.js'
 
+let web5Error
+let dwnError
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const customApp = app as any
+
 async function initWeb5(): Promise<void> {
-  await checkWeb5(Web5)
+  try {
+    await checkWeb5(Web5)
+  } catch (error) {
+    web5Error = error
+  }
 }
 
-async function initDwn(): Promise<void> {
-  await checkDwn(
-    Dwn,
-    DataStream,
-    DidKeyResolver,
-    Jws,
-    RecordsWrite,
-    RecordsRead,
-    RecordsDelete,
-    MessageStoreLevel,
-    DataStoreLevel,
-    EventLogLevel
-  )
+export function getWeb5Error(): Error {
+  return web5Error
 }
+
+customApp.getWeb5Error = getWeb5Error
+
+async function initDwn(): Promise<void> {
+  try {
+    await checkDwn(
+      Dwn,
+      DataStream,
+      DidKeyResolver,
+      Jws,
+      RecordsWrite,
+      RecordsRead,
+      RecordsDelete,
+      MessageStoreLevel,
+      DataStoreLevel,
+      EventLogLevel
+    )
+  } catch (error) {
+    dwnError = error
+  }
+}
+
+export function getDwnError(): Error {
+  return dwnError
+}
+
+customApp.getDwnError = getDwnError
