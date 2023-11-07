@@ -1,19 +1,6 @@
 import React from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
-import { Web5 } from "@web5/api";
-import {
-  Dwn,
-  EventLogLevel,
-  MessageStoreLevel,
-  DataStoreLevel,
-  Jws,
-  RecordsWrite,
-  RecordsRead,
-  RecordsDelete,
-  DataStream,
-  DidKeyResolver,
-} from "@tbd54566975/dwn-sdk-js";
 
 import browserCheck from "../../../util/browser-check";
 const { checkWeb5, checkDwn } = browserCheck;
@@ -25,11 +12,25 @@ export default function Home() {
 
   React.useEffect(() => {
     async function handleWeb5Connect() {
+      const { Web5 } = await import("@web5/api");
       const result = await checkWeb5(Web5);
       setWeb5(result);
     }
 
     async function handleDwnConnect() {
+      const {
+        Dwn,
+        EventLogLevel,
+        MessageStoreLevel,
+        DataStoreLevel,
+        Jws,
+        RecordsWrite,
+        RecordsRead,
+        RecordsDelete,
+        DataStream,
+        DidKeyResolver,
+      } = await import("@tbd54566975/dwn-sdk-js");
+
       const dwnResult = await checkDwn(
         Dwn,
         DataStream,
