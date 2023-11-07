@@ -14,8 +14,8 @@ import {
   MessageStoreLevel
 } from '@tbd54566975/dwn-sdk-js'
 
-import checkWeb5 from '../../../../util/web5-test.js'
-import checkDwn from '../../../../util/dwn-test.js'
+import browserCheck from '../../../../util/browser-check.js'
+const { checkWeb5, checkDwn } = browserCheck
 
 if (typeof window !== 'undefined') {
   window.Buffer = Buffer
@@ -30,12 +30,12 @@ export function init(): void {
 }
 
 async function initWeb5(): Promise<void> {
-  await checkWeb5(Web5)
-  replaceText('#web5-results', 'Web5 renderer is ready!')
+  const result = await checkWeb5(Web5)
+  replaceText('#web5-results', result)
 }
 
 async function initDwn(): Promise<void> {
-  await checkDwn(
+  const result = await checkDwn(
     Dwn,
     DataStream,
     DidKeyResolver,
@@ -47,7 +47,7 @@ async function initDwn(): Promise<void> {
     DataStoreLevel,
     EventLogLevel
   )
-  replaceText('#dwn-results', 'Dwn renderer is ready!')
+  replaceText('#dwn-results', result)
 }
 
 function loadVersionsInfo(): void {

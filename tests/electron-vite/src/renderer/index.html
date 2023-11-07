@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <title>Electron</title>
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta content="script-src 'self' blob:" http-equiv="Content-Security-Policy">
+    <meta content="script-src 'self' blob:" http-equiv="Content-Security-Policy" />
 
     <link href="./assets/styles.css" type="text/css" rel="stylesheet" />
   </head>
@@ -42,10 +42,15 @@
       </div>
 
       <div class="results">
-        <div id="web5-results"></div>
-        <div id="dwn-results"></div>
+        <div>
+          <h2>Web5 Results</h2>
+          <div id="web5-results"></div>
+        </div>
+        <div>
+          <h2>DWN Results</h2>
+          <div id="dwn-results"></div>
+        </div>
       </div>
-
     </div>
 
     <script type="module" src="./src/renderer.ts"></script>

@@ -17,7 +17,8 @@
     "postinstall": "electron-builder install-app-deps",
     "build:win": "npm run build && electron-builder --win --config",
     "build:mac": "npm run build && electron-builder --mac --config",
-    "build:linux": "npm run build && electron-builder --linux --config"
+    "build:linux": "npm run build && electron-builder --linux --config",
+    "test": "playwright test"
   },
   "dependencies": {
     "@electron-toolkit/preload": "^2.0.0",
@@ -29,11 +30,13 @@
     "@electron-toolkit/eslint-config-prettier": "^1.0.1",
     "@electron-toolkit/eslint-config-ts": "^1.0.0",
     "@electron-toolkit/tsconfig": "^1.0.1",
+    "@playwright/test": "^1.39.0",
     "@types/node": "^18.17.5",
     "electron": "^25.6.0",
     "electron-builder": "^24.6.3",
     "electron-vite": "^1.0.27",
     "eslint": "^8.47.0",
+    "node-stdlib-browser": "^1.2.0",
     "prettier": "^3.0.2",
     "typescript": "^5.1.6",
     "vite": "^4.4.9",
