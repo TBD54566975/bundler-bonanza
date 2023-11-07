@@ -1,4 +1,4 @@
-name: Tests Runner
+name: Bundling Tests
 
 on:
   push:
@@ -52,7 +52,6 @@ jobs:
         if: ${{ github.event.inputs.web5ApiVersion }}
         run: |
           pnpm i -w @web5/api@${{ github.event.inputs.web5ApiVersion }}
-          cat package.json
 
       - name: 🧪 Run Web5 tests
         run: pnpm test:web5
@@ -88,7 +87,6 @@ jobs:
         if: ${{ github.event.inputs.dwnVersion }}
         run: |
           pnpm i -w @tbd54566975/dwn-sdk-js@${{ github.event.inputs.dwnVersion }}
-          cat package.json
 
       - name: 🧪 Run DWN tests
         run: pnpm test:dwn
@@ -114,6 +112,18 @@ jobs:
 
       - name: Install Yarn dependencies
         run: yarn --frozen-lockfile --prefer-offline
+
+      - name: 🔃 Update Web5 Version
+        if: ${{ github.event.inputs.web5ApiVersion }}
+        run: |
+          yarn add @web5/api@${{ github.event.inputs.web5ApiVersion }}
+          cat package.json
+
+      - name: 🔃 Update dwn-sdk-js Version
+        if: ${{ github.event.inputs.dwnVersion }}
+        run: |
+          yarn add @tbd54566975/dwn-sdk-js@${{ github.event.inputs.dwnVersion }}
+          cat package.json
 
       - name: Install macOS dependencies
         run: |
@@ -187,20 +197,87 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
       - uses: actions/setup-node@v3
         with:
           node-version: 20
+
       - name: Install pnpm
         run: npm install -g pnpm
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
+      - name: 🔃 Update Web5 Version
+        if: ${{ github.event.inputs.web5ApiVersion }}
+        run: |
+          pnpm i -w @web5/api@${{ github.event.inputs.web5ApiVersion }}
+          cat package.json
+
+      - name: 🔃 Update dwn-sdk-js Version
+        if: ${{ github.event.inputs.dwnVersion }}
+        run: |
+          pnpm i -w @tbd54566975/dwn-sdk-js@${{ github.event.inputs.dwnVersion }}
+          cat package.json
+
       - name: Install Playwright Browsers
         run: pnpm playwright install --with-deps
+
       - name: Run browser tests
         run: TEST_PARAMS="--project=${{ matrix.browser }} --trace=on" pnpm test:browser
+
       - uses: actions/upload-artifact@v3
         if: always()
         with:
           name: playwright-report
           path: playwright-report/
+          retention-days: 30
+
+  test-electron:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./tests/electron-vite
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          cache: yarn
+          node-version: 18
+          cache-dependency-path: ./tests/electron-vite/yarn.lock
+
+      - name: Install Yarn dependencies
+        run: yarn --frozen-lockfile --prefer-offline
+
+      - name: 🔃 Update Web5 Version
+        if: ${{ github.event.inputs.web5ApiVersion }}
+        run: |
+          yarn add @web5/api@${{ github.event.inputs.web5ApiVersion }}
+          cat package.json
+
+      - name: 🔃 Update dwn-sdk-js Version
+        if: ${{ github.event.inputs.dwnVersion }}
+        run: |
+          yarn add @tbd54566975/dwn-sdk-js@${{ github.event.inputs.dwnVersion }}
+          cat package.json
+
+      - name: Build electron app
+        run: yarn build
+
+      - name: Install Playwright Browsers
+        run: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 yarn playwright install
+
+      - name: Run browser tests
+        run: yarn test --trace=on
+
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: playwright-report
+          path: tests/electron-vite/playwright-report/
           retention-days: 30

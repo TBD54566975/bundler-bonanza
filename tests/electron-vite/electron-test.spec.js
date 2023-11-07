@@ -1,6 +1,6 @@
 import { test, expect, _electron as electron } from '@playwright/test'
 
-const SCREENSHOT_FOLDER = '../../playwright-report/electron-vite/screenshots'
+const SCREENSHOT_FOLDER = './playwright-report/screenshots'
 
 test.describe('App Test Results', () => {
   let app
