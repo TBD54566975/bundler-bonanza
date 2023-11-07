@@ -4,6 +4,7 @@ export default defineConfig({
   reporter: [["html"], ["list"]],
   testDir: "./",
   testMatch: "**/*.spec.js",
+  testIgnore: "tests/electron-vite/**",
   projects: [
     {
       name: "desktop-safari",
