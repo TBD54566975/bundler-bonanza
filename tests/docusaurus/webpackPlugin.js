@@ -16,6 +16,12 @@ module.exports = function (context, options) {
           new webpack.ProvidePlugin({
             process: "process/browser.js",
           }),
+          new webpack.NormalModuleReplacementPlugin(
+            /node:crypto/,
+            (resource) => {
+              resource.request = resource.request.replace(/^node:/, "");
+            }
+          ),
         ],
       };
     },

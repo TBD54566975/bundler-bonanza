@@ -24,7 +24,7 @@
     "@electron-toolkit/preload": "^2.0.0",
     "@electron-toolkit/utils": "^2.0.0",
     "@tbd54566975/dwn-sdk-js": "0.2.4",
-    "@web5/api": "0.8.2-alpha-20231108-1f7a464"
+    "@web5/api": "0.8.2-alpha-20231108-8d2293f"
   },
   "devDependencies": {
     "@electron-toolkit/eslint-config-prettier": "^1.0.1",
