@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <title>Electron</title>
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta content="script-src 'self' blob:" http-equiv="Content-Security-Policy" />
+
+    <!-- TODO: #69 - Unsafe-eval is a temporary unblock for Sodium WASM -->
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-eval' blob:;" />
 
     <link href="./assets/styles.css" type="text/css" rel="stylesheet" />
   </head>
