@@ -74,7 +74,7 @@ const checkWeb5 = async (Web5) => {
 
   try {
     const { status } = await result.web5.dwn.records.read({
-      message: { recordId: result.record._recordId },
+      message: { filter: { recordId: result.record._recordId } },
     });
 
     result.readStatus = status;

@@ -12,6 +12,7 @@ module.exports = function (api) {
             stream: "stream-browserify",
             buffer: "@craftzdog/react-native-buffer",
             "bn.js": "react-native-bignumber",
+            "node:crypto": "react-native-quick-crypto",
           },
         },
       ],
