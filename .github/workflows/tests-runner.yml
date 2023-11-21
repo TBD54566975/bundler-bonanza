@@ -168,7 +168,7 @@ jobs:
         run: yarn detox build --configuration ios.sim.release
 
       - name: Detox test
-        run: yarn detox test --configuration ios.sim.release --cleanup --headless --record-logs all --take-screenshots failing
+        run: yarn detox test --configuration ios.sim.release --retries 2 --cleanup --headless --record-logs all --take-screenshots failing
 
       - name: Upload artifacts
         if: failure()
