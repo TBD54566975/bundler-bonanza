@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@tbd54566975/dwn-sdk-js':
-        specifier: 0.2.4
-        version: 0.2.4
+        specifier: 0.2.6
+        version: 0.2.6
       '@web5/api':
         specifier: 0.8.3-alpha-20231121-0e08575
         version: 0.8.3-alpha-20231121-0e08575
