@@ -252,7 +252,7 @@ const writeData = async (
   dwn,
   didKey,
   RecordsWrite,
-  authorizationSigner,
+  signer,
   DataStream,
   message
 ) => {
@@ -262,9 +262,9 @@ const writeData = async (
 
   const recordsWrite = message // existing message: this is a write update
     ? await RecordsWrite.createFrom({
-        unsignedRecordsWriteMessage: message,
+        recordsWriteMessage: message,
         data: data,
-        authorizationSigner,
+        signer,
       })
     : // else, create a brand new record write message
       await RecordsWrite.create({
@@ -272,7 +272,7 @@ const writeData = async (
         dataFormat: "plain/text",
         published: true,
         schema: "yeeter/post",
-        authorizationSigner,
+        signer,
       });
 
   // get the DWN to process the RecordsWrite
@@ -296,16 +296,10 @@ const writeData = async (
   };
 };
 
-const deleteData = async (
-  recordId,
-  dwn,
-  didKey,
-  RecordsDelete,
-  authorizationSigner
-) => {
+const deleteData = async (recordId, dwn, didKey, RecordsDelete, signer) => {
   const recordsDelete = await RecordsDelete.create({
     recordId,
-    authorizationSigner,
+    signer,
   });
   const deleteResult = await dwn.processMessage(
     didKey.did,
