@@ -145,6 +145,14 @@ jobs:
       - name: Install CocoaPods
         run: NO_FLIPPER=1 cd ios && pod install ; cd ..
 
+      - name: Save CocoaPods
+        uses: actions/cache/save@v3
+        if: always()
+        id: save-cocoapods
+        with:
+          path: tests/reactnative/ios/Pods
+          key: ${{ runner.os }}-pods-${{ hashFiles('tests/reactnative/ios/Podfile.lock') }}
+
       - name: Cache Detox build
         id: cache-detox-build
         uses: actions/cache@v3
@@ -157,6 +165,14 @@ jobs:
       - name: Detox build
         if: steps.cache-detox-build.outputs.cache-hit != 'true'
         run: yarn detox build --configuration ios.sim.release
+
+      - name: Save Detox Build
+        uses: actions/cache/save@v3
+        if: always()
+        id: save-detox-build
+        with:
+          path: tests/reactnative/ios/build
+          key: ${{ runner.os }}-detox-${{ hashFiles('tests/reactnative/ios/Podfile.lock') }}
 
       - name: Detox test
         run: yarn detox test --configuration ios.sim.release --retries 1 --cleanup --headless --record-logs failing --take-screenshots failing --record-videos failing --loglevel verbose
