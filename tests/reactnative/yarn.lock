@@ -2010,7 +2010,7 @@
   dependencies:
     "@noble/hashes" "1.3.1"
 
-"@noble/curves@^1.2.0":
+"@noble/curves@^1.1.0", "@noble/curves@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@noble/curves/-/curves-1.2.0.tgz#92d7e12e4e49b23105a2555c6984d41733d65c35"
   integrity sha512-oYclrNgRaM9SsBUBVbb8M6DTV7ZHRTKugureoYEncY5c65HOmRzvSiTE3y5CYaPYJA/GVkrhXEoF0M3Ya9PMnw==
@@ -2324,6 +2324,36 @@
   integrity sha512-V4BG07kuYSUkTCSBHG8G8TNhM+F19jXFWnQtzj+we8DrkpSBCee9Z3Ms8yiGer/dlmhe35/Xdgyo3/0rQKg7YA==
   dependencies:
     "@sinonjs/commons" "^3.0.0"
+
+"@tbd54566975/dwn-sdk-js@0.2.4":
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/@tbd54566975/dwn-sdk-js/-/dwn-sdk-js-0.2.4.tgz#8af8f62689f84e9fae470b61bacab8711836c519"
+  integrity sha512-d2/8o0sA+kNqyyFovReyviczABPyi5wPNuaS7oPojrmMDN2GC+okifF/rqr4qO393Dk/m07ngk8eXnPPk/oiMQ==
+  dependencies:
+    "@ipld/dag-cbor" "9.0.3"
+    "@js-temporal/polyfill" "0.4.4"
+    "@noble/ed25519" "2.0.0"
+    "@noble/secp256k1" "2.0.0"
+    abstract-level "1.0.3"
+    ajv "8.12.0"
+    blockstore-core "4.2.0"
+    cross-fetch "4.0.0"
+    eciesjs "0.4.0"
+    flat "5.0.2"
+    interface-blockstore "5.2.3"
+    interface-store "5.1.2"
+    ipfs-unixfs-exporter "13.1.5"
+    ipfs-unixfs-importer "15.1.5"
+    level "8.0.0"
+    lodash "4.17.21"
+    lru-cache "9.1.2"
+    ms "2.1.3"
+    multiformats "11.0.2"
+    randombytes "2.1.0"
+    readable-stream "4.4.0"
+    ulidx "2.1.0"
+    uuid "8.3.2"
+    varint "6.0.0"
 
 "@tbd54566975/dwn-sdk-js@0.2.6":
   version "0.2.6"
@@ -4143,6 +4173,13 @@ easy-stack@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/easy-stack/-/easy-stack-1.0.1.tgz#8afe4264626988cabb11f3c704ccd0c835411066"
   integrity sha512-wK2sCs4feiiJeFXn3zvY0p41mdU5VUgbgs1rNsc/y5ngFUijdWd+iIN8eoyuZHKB8xN6BL4PdWmzqFmxNg6V2w==
+
+eciesjs@0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/eciesjs/-/eciesjs-0.4.0.tgz#44d2ae963683dfd29a1e26ddcd847fc191b5b99a"
+  integrity sha512-z4dEeaH16xxYVgtxJ8YVwpifH4Keg4gyp5F451mnDNwbAN3MgL5jcoEQGpqJrapv/zW8KwDnXG21Dw5B0hqvmw==
+  dependencies:
+    "@noble/curves" "^1.1.0"
 
 eciesjs@0.4.5:
   version "0.4.5"
