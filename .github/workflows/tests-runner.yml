@@ -94,7 +94,7 @@ jobs:
   # reference: https://github.com/remarkablemark/react-native-cli-quickstart/blob/master/.github/workflows/e2e-ios.yml
   test-rn-ios:
     timeout-minutes: 60
-    runs-on: macos-13 # adds an extra vcpu for free
+    runs-on: macos-latest
     defaults:
       run:
         working-directory: ./tests/reactnative
