@@ -144,7 +144,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ios/Pods
-          key: ${{ runner.os }}-pods-${{ hashFiles('Podfile.lock') }}
+          key: ${{ runner.os }}-pods-${{ hashFiles('tests/reactnative/ios/Podfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-pods-
 
@@ -156,7 +156,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ios/build
-          key: ${{ runner.os }}-detox-${{ hashFiles('Podfile.lock') }}
+          key: ${{ runner.os }}-detox-${{ hashFiles('tests/reactnative/ios/Podfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-detox-
 
