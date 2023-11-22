@@ -598,6 +598,11 @@
   resolved "https://registry.yarnpkg.com/@noble/ciphers/-/ciphers-0.1.4.tgz#96327dca147829ed9eee0d96cfdf7c57915765f0"
   integrity sha512-d3ZR8vGSpy3v/nllS+bD/OMN5UZqusWiQqkyj7AwzTnhXFH72pF5oB4Ach6DQ50g5kXxC28LdaYBEpsyv9KOUQ==
 
+"@noble/ciphers@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@noble/ciphers/-/ciphers-0.3.0.tgz#6ba3090afdc7a7051393486f6af210e62e0f04ec"
+  integrity sha512-ldbrnOjmNRwFdXcTM6uXDcxpMIFrbzAWNnpBPp4oTJTFF0XByGD6vf45WrehZGXRQTRVV+Zm8YP+EgEf+e4cWA==
+
 "@noble/curves@1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@noble/curves/-/curves-1.1.0.tgz#f13fc667c89184bc04cccb9b11e8e7bae27d8c3d"
@@ -605,7 +610,7 @@
   dependencies:
     "@noble/hashes" "1.3.1"
 
-"@noble/curves@^1.1.0":
+"@noble/curves@^1.1.0", "@noble/curves@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@noble/curves/-/curves-1.2.0.tgz#92d7e12e4e49b23105a2555c6984d41733d65c35"
   integrity sha512-oYclrNgRaM9SsBUBVbb8M6DTV7ZHRTKugureoYEncY5c65HOmRzvSiTE3y5CYaPYJA/GVkrhXEoF0M3Ya9PMnw==
@@ -622,7 +627,7 @@
   resolved "https://registry.yarnpkg.com/@noble/hashes/-/hashes-1.3.1.tgz#8831ef002114670c603c458ab8b11328406953a9"
   integrity sha512-EbqwksQwz9xDRGfDST86whPBgM65E0OH/pCgqW0GBVzO22bNE+NuIbeTb714+IfSjU3aRk47EUvXIb5bTsenKA==
 
-"@noble/hashes@1.3.2":
+"@noble/hashes@1.3.2", "@noble/hashes@^1.3.2":
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/@noble/hashes/-/hashes-1.3.2.tgz#6f26dbc8fbc7205873ce3cee2f690eba0d421b39"
   integrity sha512-MVC8EAQp7MvEcm30KWENFjgR+Mkmf+D189XJTkFIlwohU5hcBbn1ZkKq7KVTi2Hme3PMGF390DaL52beVrIihQ==
@@ -728,6 +733,36 @@
     multiformats "11.0.2"
     randombytes "2.1.0"
     readable-stream "4.4.0"
+    ulidx "2.1.0"
+    uuid "8.3.2"
+    varint "6.0.0"
+
+"@tbd54566975/dwn-sdk-js@0.2.8":
+  version "0.2.8"
+  resolved "https://registry.yarnpkg.com/@tbd54566975/dwn-sdk-js/-/dwn-sdk-js-0.2.8.tgz#56775b9b8d6e54fb8626af5c53837c05af5b2a53"
+  integrity sha512-oiKk+ekAQO94bUkt6yk+xkDY8uCGmNC+rKaYQLhAoTrhYrczeRSuDT04F5/vPBT5K6NfAoRcQsIyBmvgRCUvgA==
+  dependencies:
+    "@ipld/dag-cbor" "9.0.3"
+    "@js-temporal/polyfill" "0.4.4"
+    "@noble/ed25519" "2.0.0"
+    "@noble/secp256k1" "2.0.0"
+    abstract-level "1.0.3"
+    ajv "8.12.0"
+    blockstore-core "4.2.0"
+    cross-fetch "4.0.0"
+    eciesjs "0.4.5"
+    flat "5.0.2"
+    interface-blockstore "5.2.3"
+    interface-store "5.1.2"
+    ipfs-unixfs-exporter "13.1.5"
+    ipfs-unixfs-importer "15.1.5"
+    level "8.0.0"
+    lodash "4.17.21"
+    lru-cache "9.1.2"
+    ms "2.1.3"
+    multiformats "11.0.2"
+    randombytes "2.1.0"
+    readable-stream "4.4.2"
     ulidx "2.1.0"
     uuid "8.3.2"
     varint "6.0.0"
@@ -2010,6 +2045,15 @@ eciesjs@0.4.0:
   integrity sha512-z4dEeaH16xxYVgtxJ8YVwpifH4Keg4gyp5F451mnDNwbAN3MgL5jcoEQGpqJrapv/zW8KwDnXG21Dw5B0hqvmw==
   dependencies:
     "@noble/curves" "^1.1.0"
+
+eciesjs@0.4.5:
+  version "0.4.5"
+  resolved "https://registry.yarnpkg.com/eciesjs/-/eciesjs-0.4.5.tgz#35c48963e6942687da2bc93eb5b612ebf6a0bbfb"
+  integrity sha512-2zSRIygO48LpdS95Rwt9ryIkJNO37IdbkjRsnYyAn7gx7e4WPBNimnk6jGNdx2QQYr/VJRPnSVdwQpO5bycYZw==
+  dependencies:
+    "@noble/ciphers" "^0.3.0"
+    "@noble/curves" "^1.2.0"
+    "@noble/hashes" "^1.3.2"
 
 ejs@^3.1.8:
   version "3.1.9"

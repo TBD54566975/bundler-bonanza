@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@tbd54566975/dwn-sdk-js": "0.2.4",
+    "@tbd54566975/dwn-sdk-js": "0.2.8",
     "@web5/api": "0.8.2"
   },
   "scripts": {
