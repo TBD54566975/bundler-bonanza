@@ -133,12 +133,6 @@ jobs:
           HOMEBREW_NO_AUTO_UPDATE: 1
           HOMEBREW_NO_INSTALL_CLEANUP: 1
 
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          bundler-cache: true
-          ruby-version: 2.7.6
-
       - name: Cache CocoaPods
         id: cache-cocoapods
         uses: actions/cache@v3
@@ -172,7 +166,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: test-rn-ios-detox-artifacts
-          path: artifacts
+          path: tests/reactnative/artifacts
 
   test-browsers:
     timeout-minutes: 15
@@ -245,7 +239,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
