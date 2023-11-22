@@ -5,8 +5,5 @@
     "test": "npm run test:web5 && npm run test:dwn",
     "test:web5": "node web5-test.js",
     "test:dwn": "node dwn-sdk-test.js"
-  },
-  "dependencies": {
-    "@tbd54566975/dwn-sdk-js": "^0.2.4"
   }
 }

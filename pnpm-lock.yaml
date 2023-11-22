@@ -111,17 +111,9 @@ importers:
         specifier: 5.1.6
         version: 5.1.6
 
-  tests/node-cjs:
-    dependencies:
-      '@tbd54566975/dwn-sdk-js':
-        specifier: ^0.2.4
-        version: 0.2.4
+  tests/node-cjs: {}
 
-  tests/node-esm:
-    dependencies:
-      '@tbd54566975/dwn-sdk-js':
-        specifier: ^0.2.4
-        version: 0.2.4
+  tests/node-esm: {}
 
   tests/vite:
     devDependencies:
