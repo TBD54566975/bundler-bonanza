@@ -133,9 +133,9 @@ jobs:
           HOMEBREW_NO_AUTO_UPDATE: 1
           HOMEBREW_NO_INSTALL_CLEANUP: 1
 
-      - name: Cache CocoaPods
-        id: cache-cocoapods
-        uses: actions/cache@v3
+      - name: Restore CocoaPods
+        id: restore-cocoapods
+        uses: actions/cache/restore@v3
         with:
           path: tests/reactnative/ios/Pods
           key: ${{ runner.os }}-pods-${{ hashFiles('tests/reactnative/ios/Podfile.lock') }}
@@ -153,17 +153,15 @@ jobs:
           path: tests/reactnative/ios/Pods
           key: ${{ runner.os }}-pods-${{ hashFiles('tests/reactnative/ios/Podfile.lock') }}
 
-      - name: Cache Detox build
-        id: cache-detox-build
-        uses: actions/cache@v3
+      - name: Restore Detox build
+        id: restore-detox-build
+        uses: actions/cache/restore@v3
         with:
           path: tests/reactnative/ios/build
           key: ${{ runner.os }}-detox-${{ hashFiles('tests/reactnative/ios/Podfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-detox-
 
       - name: Detox build
-        if: steps.cache-detox-build.outputs.cache-hit != 'true'
+        if: steps.restore-detox-build.outputs.cache-hit != 'true'
         run: yarn detox build --configuration ios.sim.release
 
       - name: Save Detox Build
