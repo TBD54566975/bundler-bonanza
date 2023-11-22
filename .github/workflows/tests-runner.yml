@@ -94,7 +94,7 @@ jobs:
   # reference: https://github.com/remarkablemark/react-native-cli-quickstart/blob/master/.github/workflows/e2e-ios.yml
   test-rn-ios:
     timeout-minutes: 60
-    runs-on: macos-13
+    runs-on: macos-13 # adds an extra vcpu for free
     defaults:
       run:
         working-directory: ./tests/reactnative
@@ -108,7 +108,7 @@ jobs:
         with:
           cache: yarn
           node-version: 18
-          cache-dependency-path: ./tests/reactnative/yarn.lock
+          cache-dependency-path: yarn.lock
 
       - name: Install Yarn dependencies
         run: yarn --frozen-lockfile --prefer-offline
@@ -139,43 +139,40 @@ jobs:
           bundler-cache: true
           ruby-version: 2.7.6
 
-      # - name: Cache CocoaPods
-      #   id: cache-cocoapods
-      #   uses: actions/cache@v3
-      #   with:
-      #     path: tests/reactnative/ios/Pods
-      #     key: ${{ runner.os }}-pods-${{ hashFiles('tests/reactnative/ios/Podfile.lock') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-pods-
+      - name: Cache CocoaPods
+        id: cache-cocoapods
+        uses: actions/cache@v3
+        with:
+          path: ios/Pods
+          key: ${{ runner.os }}-pods-${{ hashFiles('Podfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pods-
 
       - name: Install CocoaPods
-        # if: steps.cache-cocoapods.outputs.cache-hit != 'true'
-        run: cd ios ; pod install ; cd -
-
-      - name: Detox rebuild framework cache
-        run: yarn detox rebuild-framework-cache
+        run: NO_FLIPPER=1 cd ios && pod install ; cd ..
 
       - name: Cache Detox build
         id: cache-detox-build
         uses: actions/cache@v3
         with:
-          path: tests/reactnative/ios/build
-          key: ${{ runner.os }}-detox-build
+          path: ios/build
+          key: ${{ runner.os }}-detox-${{ hashFiles('Podfile.lock') }}
           restore-keys: |
-            ${{ runner.os }}-detox-build
+            ${{ runner.os }}-detox-
 
       - name: Detox build
+        if: steps.cache-detox-build.outputs.cache-hit != 'true'
         run: yarn detox build --configuration ios.sim.release
 
       - name: Detox test
-        run: yarn detox test --configuration ios.sim.release --retries 2 --cleanup --headless --record-logs failing --take-screenshots failing --record-videos failing --loglevel verbose
+        run: yarn detox test --configuration ios.sim.release --retries 1 --cleanup --headless --record-logs failing --take-screenshots failing --record-videos failing --loglevel verbose
 
       - name: Upload artifacts
         if: failure()
         uses: actions/upload-artifact@v3
         with:
           name: test-rn-ios-detox-artifacts
-          path: tests/reactnative/artifacts
+          path: artifacts
 
   test-browsers:
     timeout-minutes: 15

@@ -28,7 +28,7 @@ export default defineConfig({
     },
     {
       name: "mobile-safari",
-      use: { ...devices["iPhone 12"] },
+      use: { ...devices["iPhone 14"] },
     },
   ],
 });
