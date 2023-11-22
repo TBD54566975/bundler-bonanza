@@ -108,7 +108,7 @@ jobs:
         with:
           cache: yarn
           node-version: 18
-          cache-dependency-path: yarn.lock
+          cache-dependency-path: ./tests/reactnative/yarn.lock
 
       - name: Install Yarn dependencies
         run: yarn --frozen-lockfile --prefer-offline
