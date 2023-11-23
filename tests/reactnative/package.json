@@ -7,7 +7,7 @@
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web",
-    "test":"concurrently -k -n 'Metro,Detox' -c 'cyan,magenta' 'yarn start' 'yarn detox test --configuration ios.sim.debug --retries 1 --cleanup --headless --record-logs failing --take-screenshots failing --record-videos failing --loglevel verbose' "
+    "test":"concurrently --kill-others-on-fail -n 'Metro,Detox' -c 'cyan,magenta' 'yarn start' 'yarn detox test --configuration ios.sim.debug --retries 1 --cleanup --headless --record-logs failing --take-screenshots failing --record-videos failing --loglevel verbose' "
   },
   "dependencies": {
     "@craftzdog/react-native-buffer": "6.0.5",
