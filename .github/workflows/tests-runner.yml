@@ -147,7 +147,7 @@ jobs:
 
       - name: Save CocoaPods
         uses: actions/cache/save@v3
-        if: always()
+        if: success()
         id: save-cocoapods
         with:
           path: tests/reactnative/ios/Pods
@@ -162,18 +162,18 @@ jobs:
 
       - name: Detox build
         if: steps.restore-detox-build.outputs.cache-hit != 'true'
-        run: yarn detox build --configuration ios.sim.release
+        run: yarn detox build --configuration ios.sim.debug
 
       - name: Save Detox Build
         uses: actions/cache/save@v3
-        if: always()
+        if: success()
         id: save-detox-build
         with:
           path: tests/reactnative/ios/build
           key: ${{ runner.os }}-detox-${{ hashFiles('tests/reactnative/ios/Podfile.lock') }}
 
       - name: Detox test
-        run: yarn detox test --configuration ios.sim.release --retries 1 --cleanup --headless --record-logs failing --take-screenshots failing --record-videos failing --loglevel verbose
+        run: yarn detox test --configuration ios.sim.debug --retries 1 --cleanup --headless --record-logs failing --take-screenshots failing --record-videos failing --loglevel verbose
 
       - name: Upload artifacts
         if: failure()
