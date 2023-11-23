@@ -172,8 +172,8 @@ jobs:
           path: tests/reactnative/ios/build
           key: ${{ runner.os }}-detox-${{ hashFiles('tests/reactnative/ios/Podfile.lock') }}
 
-      - name: Detox test
-        run: yarn detox test --configuration ios.sim.debug --retries 1 --cleanup --headless --record-logs failing --take-screenshots failing --record-videos failing --loglevel verbose
+      - name: Run tests
+        run: yarn test
 
       - name: Upload artifacts
         if: failure()
