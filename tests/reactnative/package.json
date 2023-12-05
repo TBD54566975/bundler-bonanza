@@ -7,16 +7,16 @@
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web",
-    "test":"concurrently --success first -k -n 'Detox,Metro' -c 'cyan,magenta' 'yarn detox test --configuration ios.sim.debug --retries 1 --cleanup --headless --record-logs failing --take-screenshots failing --record-videos failing --loglevel verbose' 'yarn start'"
+    "test": "concurrently --success first -k -n 'Detox,Metro' -c 'cyan,magenta' 'yarn detox test --configuration ios.sim.debug --retries 1 --cleanup --headless --record-logs failing --take-screenshots failing --record-videos failing --loglevel verbose' 'yarn start'"
   },
   "dependencies": {
     "@craftzdog/react-native-buffer": "6.0.5",
     "@tbd54566975/web5-react-native-metro-config": "1.0.0",
     "@tbd54566975/web5-react-native-polyfills": "^0.2.1",
     "@types/react": "18.2.38",
-    "@web5/api": "0.8.3-alpha-20231121-0e08575",
-    "@web5/dids": "0.2.2-alpha-20231121-0e08575",
-    "@web5/identity-agent": "0.2.4-alpha-20231121-0e08575",
+    "@web5/api": "0.8.3-rc.0",
+    "@web5/dids": "0.2.3-rc.0",
+    "@web5/identity-agent": "0.2.5-rc.0",
     "expo": "49.0.20",
     "expo-splash-screen": "0.22.0",
     "expo-status-bar": "1.7.1",
