@@ -32,7 +32,7 @@ jobs:
 
     steps:
       - name: ⬇️ Checkout source
-        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
+        uses: actions/checkout@v4
 
       - name: 📦 Install pnpm
         uses: pnpm/action-setup@v2
@@ -40,7 +40,7 @@ jobs:
           version: 8
 
       - name: ⚙️ Set up Node.js
-        uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c # v3.6.0
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           registry-url: https://registry.npmjs.org/
@@ -67,7 +67,7 @@ jobs:
 
     steps:
       - name: ⬇️ Checkout source
-        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
+        uses: actions/checkout@v4
 
       - name: 📦 Install pnpm
         uses: pnpm/action-setup@v2
@@ -75,7 +75,7 @@ jobs:
           version: 8
 
       - name: ⚙️ Set up Node.js
-        uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c # v3.6.0
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           registry-url: https://registry.npmjs.org/
@@ -101,10 +101,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           cache: yarn
           node-version: 18
@@ -133,42 +133,47 @@ jobs:
           HOMEBREW_NO_AUTO_UPDATE: 1
           HOMEBREW_NO_INSTALL_CLEANUP: 1
 
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
+      - name: Restore CocoaPods
+        id: restore-cocoapods
+        uses: actions/cache/restore@v3
         with:
-          bundler-cache: true
-          ruby-version: 2.7.6
-
-      # - name: Cache CocoaPods
-      #   id: cache-cocoapods
-      #   uses: actions/cache@v3
-      #   with:
-      #     path: tests/reactnative/ios/Pods
-      #     key: ${{ runner.os }}-pods-${{ hashFiles('tests/reactnative/ios/Podfile.lock') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-pods-
+          path: tests/reactnative/ios/Pods
+          key: ${{ runner.os }}-pods-${{ hashFiles('tests/reactnative/ios/Podfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pods-
 
       - name: Install CocoaPods
-        # if: steps.cache-cocoapods.outputs.cache-hit != 'true'
-        run: cd ios ; pod install ; cd -
+        run: NO_FLIPPER=1 cd ios && pod install ; cd ..
 
-      - name: Detox rebuild framework cache
-        run: yarn detox rebuild-framework-cache
+      - name: Save CocoaPods
+        uses: actions/cache/save@v3
+        if: success()
+        id: save-cocoapods
+        with:
+          path: tests/reactnative/ios/Pods
+          key: ${{ runner.os }}-pods-${{ hashFiles('tests/reactnative/ios/Podfile.lock') }}
 
-      - name: Cache Detox build
-        id: cache-detox-build
-        uses: actions/cache@v3
+      - name: Restore Detox build
+        id: restore-detox-build
+        uses: actions/cache/restore@v3
         with:
           path: tests/reactnative/ios/build
-          key: ${{ runner.os }}-detox-build
-          restore-keys: |
-            ${{ runner.os }}-detox-build
+          key: ${{ runner.os }}-detox-${{ hashFiles('tests/reactnative/ios/Podfile.lock') }}
 
       - name: Detox build
-        run: yarn detox build --configuration ios.sim.release
+        if: steps.restore-detox-build.outputs.cache-hit != 'true'
+        run: yarn detox build --configuration ios.sim.debug
 
-      - name: Detox test
-        run: yarn detox test --configuration ios.sim.release --cleanup --headless --record-logs all --take-screenshots failing
+      - name: Save Detox Build
+        uses: actions/cache/save@v3
+        if: success()
+        id: save-detox-build
+        with:
+          path: tests/reactnative/ios/build
+          key: ${{ runner.os }}-detox-${{ hashFiles('tests/reactnative/ios/Podfile.lock') }}
+
+      - name: Run tests
+        run: yarn test
 
       - name: Upload artifacts
         if: failure()
@@ -196,9 +201,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
 
@@ -248,7 +253,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v3

@@ -19,6 +19,16 @@ pnpm test:web5
 pnpm test:dwn
 ```
 
+# Testing release candidates with Bundler Bonanza
+
+1. In the root package.json update to the release candidate's versions and run `pnpm install`
+2. In `/tests/reactnative/` run `yarn add package@rcversion` for each package you're intending to test
+
+   > Conditionally: you may need to run `npx pod-install@latest` if you've changed iOS native dependencies but this is only relevant for mobile developers changing native packages
+
+3. In `/tests/electron/` run `yarn add package@rcversion` for each package you're intending to test
+4. Push the changes on a branch to remote and open a PR to run the test suites
+
 # `dwn-sdk-js`
 
 > **Note**
