@@ -17,7 +17,7 @@ const checkWeb5 = async (Web5) => {
       ...web5TestsResultRaw,
       success: true,
       dataCid: record?.dataCid,
-      did: did?.connectedDid.substr(0, 32) + "...",
+      did: did?.substr(0, 32) + "...",
     };
     return JSON.stringify(web5TestsResults, undefined, 2);
   } catch (error) {
