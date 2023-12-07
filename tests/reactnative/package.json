@@ -7,6 +7,7 @@
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web",
+    "build:tests": "yarn detox build --configuration ios.sim.debug",
     "test": "concurrently --success first -k -n 'Detox,Metro' -c 'cyan,magenta' 'yarn detox test --configuration ios.sim.debug --retries 1 --cleanup --headless --record-logs failing --take-screenshots failing --record-videos failing --loglevel verbose' 'yarn start'"
   },
   "dependencies": {
