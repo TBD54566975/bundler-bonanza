@@ -22,7 +22,7 @@ export default function App() {
           ...web5TestsResultRaw,
           success: true,
           dataCid: record?.dataCid,
-          did: did?.connectedDid.substr(0, 32) + "...",
+          did: did?.substr(0, 32) + "...",
         };
         const web5TestsResultsStr = JSON.stringify(
           web5TestsResults,
