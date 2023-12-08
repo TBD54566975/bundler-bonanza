@@ -8,8 +8,8 @@ importers:
         specifier: 0.2.4
         version: 0.2.4
       '@web5/api':
-        specifier: 0.8.3-rc.0
-        version: 0.8.3-rc.0
+        specifier: 0.8.3
+        version: 0.8.3
     devDependencies:
       playwright:
         specifier: ^1.39.0
@@ -3711,14 +3711,14 @@ packages:
       eslint-visitor-keys: 3.4.3
     dev: false
 
-  /@web5/agent@0.2.5-rc.0:
-    resolution: {integrity: sha512-LomSI5F6W+64U0jtx6y/2juPDQMCCh1aD7avAhc9Dk+vwTJVFQ5jwFEcdgx2SIfEnMFRpVaEXzd7RbVxxPqFNA==}
+  /@web5/agent@0.2.5:
+    resolution: {integrity: sha512-Z9JY/43Yrg0xKK26y/iZFdHNtVf/k9XLxw8mXP5zfYidrqfAgVR0i4LKA7qZKfUSxC7/uaD/STYYIKpNByd/cw==}
     engines: {node: '>=18.0.0'}
     dependencies:
       '@tbd54566975/dwn-sdk-js': 0.2.8
-      '@web5/common': 0.2.2-rc.0
+      '@web5/common': 0.2.2
       '@web5/crypto': 0.2.2
-      '@web5/dids': 0.2.3-rc.0
+      '@web5/dids': 0.2.3
       level: 8.0.0
       readable-stream: 4.4.2
       readable-web-to-node-stream: 3.0.2
@@ -3727,16 +3727,16 @@ packages:
       - supports-color
     dev: false
 
-  /@web5/api@0.8.3-rc.0:
-    resolution: {integrity: sha512-AK0P4OKo7cDE1JkLAuWXd8Wr8Nepj/GA8DuqOcMhRd2AnWU3pEOdhWSU+oIpnLo52vIEWOuGP6uixLLTeW/cxQ==}
+  /@web5/api@0.8.3:
+    resolution: {integrity: sha512-YXQ++ZShtd5LeFRqEMGlhVqJ7Zg5P6bMequpaLl068bCGjtjCwiFFgDtM1KeL36IAzQ4pFLFyj9aTGZ/JgCXHA==}
     engines: {node: '>=18.0.0'}
     dependencies:
       '@tbd54566975/dwn-sdk-js': 0.2.8
-      '@web5/agent': 0.2.5-rc.0
-      '@web5/common': 0.2.2-rc.0
+      '@web5/agent': 0.2.5
+      '@web5/common': 0.2.2
       '@web5/crypto': 0.2.2
-      '@web5/dids': 0.2.3-rc.0
-      '@web5/user-agent': 0.2.5-rc.0
+      '@web5/dids': 0.2.3
+      '@web5/user-agent': 0.2.5
       level: 8.0.0
       ms: 2.1.3
       readable-stream: 4.4.2
@@ -3754,8 +3754,8 @@ packages:
       multiformats: 11.0.2
     dev: false
 
-  /@web5/common@0.2.2-rc.0:
-    resolution: {integrity: sha512-S7de/WSHe5djdeV0PJHerVvF+389azyKyo5kflHb0i5E7vnFZAAhGe+V+k1B8T3AhiPidKoySkNWp3l9mqMuXA==}
+  /@web5/common@0.2.2:
+    resolution: {integrity: sha512-dRn6SmALExeTLMTK/W5ozGarfaddK+Lraf5OjuIGLAaLfcX1RWx3oDMoY5Hr9LjfxHJC8mGXB8DnKflbeYJRgA==}
     engines: {node: '>=18.0.0'}
     dependencies:
       level: 8.0.0
@@ -3773,13 +3773,13 @@ packages:
       '@web5/common': 0.2.1
     dev: false
 
-  /@web5/dids@0.2.3-rc.0:
-    resolution: {integrity: sha512-rkSqc3faHJB6RncL+VBR78O4nKJz++1tTiawPjAzSnUOK8IIUad0OYvfnZK6sKBDfSy9/Q/YjvI9eWltlLusww==}
+  /@web5/dids@0.2.3:
+    resolution: {integrity: sha512-Y3PHOavNkSyjBxZQEpKE6XueaqemBO5w0UMOnFh4xH6+5B43ENEE4LHIqVyn2bCpfEBGLXENgDZYqyJphBu0pA==}
     engines: {node: '>=18.0.0'}
     dependencies:
       '@decentralized-identity/ion-pow-sdk': 1.0.17
       '@decentralized-identity/ion-sdk': 1.0.1
-      '@web5/common': 0.2.2-rc.0
+      '@web5/common': 0.2.2
       '@web5/crypto': 0.2.2
       did-resolver: 4.1.0
       dns-packet: 5.6.1
@@ -3792,14 +3792,14 @@ packages:
       - supports-color
     dev: false
 
-  /@web5/user-agent@0.2.5-rc.0:
-    resolution: {integrity: sha512-UL56qrCmJ3nsbUWylYOW9cFWl/IhDx0K45Zgvj8hWacj5Fkq4qqTipvdQB2tcfXmiG0L4vU26PABboipJGW5kw==}
+  /@web5/user-agent@0.2.5:
+    resolution: {integrity: sha512-qv5M698C5HSvq30xUgLWtcsbZppjfOH5qZthpTRx4ItL5UWA/eQ9DsQiQeb4vet3uIUy3NHRDIQezclOdwYErw==}
     engines: {node: '>=18.0.0'}
     dependencies:
-      '@web5/agent': 0.2.5-rc.0
-      '@web5/common': 0.2.2-rc.0
+      '@web5/agent': 0.2.5
+      '@web5/common': 0.2.2
       '@web5/crypto': 0.2.2
-      '@web5/dids': 0.2.3-rc.0
+      '@web5/dids': 0.2.3
     transitivePeerDependencies:
       - encoding
       - supports-color
