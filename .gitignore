@@ -5,7 +5,7 @@ INDEX
 dist
 data
 DATA
-node_modules
+node_modules/
 out
 .vscode
 !webpack/dist
