@@ -51,14 +51,14 @@ const checkWeb5 = async (Web5) => {
   };
 
   try {
-    const web5 = await Web5.connect({
+    const { web5, did } = await Web5.connect({
       techPreview: {
         dwnEndpoints: ["http://localhost:3000"],
       },
     });
 
-    result.web5 = web5.web5;
-    result.did = result.web5.did;
+    result.web5 = web5;
+    result.did = did;
   } catch (error) {
     console.error("Web5.connect Error:", error);
   }
@@ -74,7 +74,7 @@ const checkWeb5 = async (Web5) => {
 
   try {
     const { status } = await result.web5.dwn.records.read({
-      message: { filter: { recordId: result.record._recordId } },
+      message: { filter: { recordId: result.record.id } },
     });
 
     result.readStatus = status;
@@ -92,9 +92,14 @@ const checkWeb5 = async (Web5) => {
   }
 
   try {
-    const { status } = await result.record.delete();
+    const { status } = await result.web5.dwn.records.delete({
+      message: { recordId: result.record.id },
+    });
     result.deleteStatus = status.code;
-    result.didDelete = result.record.isDeleted;
+    const { record: shouldBeUndefined } = await result.web5.dwn.records.read({
+      message: { filter: { recordId: result.record.id } },
+    });
+    result.didDelete = (shouldBeUndefined === undefined);
   } catch (error) {
     console.error("Delete Record Error:", error);
   }

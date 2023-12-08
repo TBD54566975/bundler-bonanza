@@ -54,7 +54,7 @@ const checkWeb5 = async (web5) => {
 
   try {
     result.web5 = web5;
-    result.did = result.web5.did;
+    result.did = result.web5.did.agent.agentDid;
   } catch (error) {
     console.error("Web5.connect Error:", error);
   }
@@ -97,9 +97,14 @@ const checkWeb5 = async (web5) => {
   }
 
   try {
-    const { status } = await result.record.delete();
+    const { status } = await result.web5.dwn.records.delete({
+      message: { recordId: result.record.id },
+    });
     result.deleteStatus = status.code;
-    result.didDelete = result.record.isDeleted;
+    const { record: shouldBeUndefined } = await result.web5.dwn.records.read({
+      message: { filter: { recordId: result.record.id } },
+    });
+    result.didDelete = (shouldBeUndefined === undefined);
   } catch (error) {
     console.error("Delete Record Error:", error);
   }

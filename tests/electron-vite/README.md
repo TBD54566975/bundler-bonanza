@@ -8,6 +8,11 @@ A minimal Electron application with TypeScript
 
 ## Project Setup
 
+### Pre-requisites
+
+> [!WARNING]
+> You must use Yarn v1. Later versions (e.g., Yarn 4.x) will cause unexpected issues and test failures.
+
 ### Install
 
 ```bash
