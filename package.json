@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "@tbd54566975/dwn-sdk-js": "0.2.4",
-    "@web5/api": "0.8.3"
+    "@web5/api": "0.8.4"
   },
   "scripts": {
     "test:web5": "pnpm -r --workspace-concurrency 1 --no-bail test:web5",
