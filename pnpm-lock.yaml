@@ -8,8 +8,8 @@ importers:
         specifier: 0.2.4
         version: 0.2.4
       '@web5/api':
-        specifier: 0.8.4-rc.0
-        version: 0.8.4-rc.0
+        specifier: 0.8.4
+        version: 0.8.4
     devDependencies:
       playwright:
         specifier: ^1.39.0
@@ -3759,8 +3759,8 @@ packages:
       - supports-color
     dev: false
 
-  /@web5/api@0.8.4-rc.0:
-    resolution: {integrity: sha512-sdBTZ5FrRtU2MN0BdV65jrPl7aXTIYmCpS2k/IHQxgNZUQ7SHZm38MfRV4OSZNPJiintUifG4WkJzUcdUO/7BQ==}
+  /@web5/api@0.8.4:
+    resolution: {integrity: sha512-3kqh7KQeeffsOBi+K5Vhpa59+ZgdI1em16drrRd7h59Jj4m8a09Enhw7WjWNLre7rTG84hQqB9+rpS1VHnOaKQ==}
     engines: {node: '>=18.0.0'}
     dependencies:
       '@tbd54566975/dwn-sdk-js': 0.2.10

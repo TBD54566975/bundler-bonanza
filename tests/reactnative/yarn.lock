@@ -2581,10 +2581,10 @@
     readable-stream "4.4.2"
     readable-web-to-node-stream "3.0.2"
 
-"@web5/api@0.8.4-rc.0":
-  version "0.8.4-rc.0"
-  resolved "https://registry.yarnpkg.com/@web5/api/-/api-0.8.4-rc.0.tgz#ad3458b4f013baefa9357361136eb50c783ff905"
-  integrity sha512-sdBTZ5FrRtU2MN0BdV65jrPl7aXTIYmCpS2k/IHQxgNZUQ7SHZm38MfRV4OSZNPJiintUifG4WkJzUcdUO/7BQ==
+"@web5/api@0.8.4":
+  version "0.8.4"
+  resolved "https://registry.yarnpkg.com/@web5/api/-/api-0.8.4.tgz#b78ea5b54b44345764db87b64a8f552e68514468"
+  integrity sha512-3kqh7KQeeffsOBi+K5Vhpa59+ZgdI1em16drrRd7h59Jj4m8a09Enhw7WjWNLre7rTG84hQqB9+rpS1VHnOaKQ==
   dependencies:
     "@tbd54566975/dwn-sdk-js" "0.2.10"
     "@web5/agent" "0.2.5"
