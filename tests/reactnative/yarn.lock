@@ -2346,6 +2346,35 @@
   dependencies:
     "@sinonjs/commons" "^3.0.0"
 
+"@tbd54566975/dwn-sdk-js@0.2.10":
+  version "0.2.10"
+  resolved "https://registry.yarnpkg.com/@tbd54566975/dwn-sdk-js/-/dwn-sdk-js-0.2.10.tgz#64c8c845094fb132dd393294109a38fbee4b381d"
+  integrity sha512-CoKO8+NciwWNzD4xRoAAgeElqQCXKM4Fc+zEHsUWD0M3E9v67hRWiTHI6AenUfQv1RSEB2H4GHUeUOHuEV72uw==
+  dependencies:
+    "@ipld/dag-cbor" "9.0.3"
+    "@js-temporal/polyfill" "0.4.4"
+    "@noble/ed25519" "2.0.0"
+    "@noble/secp256k1" "2.0.0"
+    abstract-level "1.0.3"
+    ajv "8.12.0"
+    blockstore-core "4.2.0"
+    cross-fetch "4.0.0"
+    eciesjs "0.4.5"
+    interface-blockstore "5.2.3"
+    interface-store "5.1.2"
+    ipfs-unixfs-exporter "13.1.5"
+    ipfs-unixfs-importer "15.1.5"
+    level "8.0.0"
+    lodash "4.17.21"
+    lru-cache "9.1.2"
+    ms "2.1.3"
+    multiformats "11.0.2"
+    randombytes "2.1.0"
+    readable-stream "4.4.2"
+    ulidx "2.1.0"
+    uuid "8.3.2"
+    varint "6.0.0"
+
 "@tbd54566975/dwn-sdk-js@0.2.8":
   version "0.2.8"
   resolved "https://registry.yarnpkg.com/@tbd54566975/dwn-sdk-js/-/dwn-sdk-js-0.2.8.tgz#56775b9b8d6e54fb8626af5c53837c05af5b2a53"
@@ -2552,16 +2581,16 @@
     readable-stream "4.4.2"
     readable-web-to-node-stream "3.0.2"
 
-"@web5/api@0.8.3":
-  version "0.8.3"
-  resolved "https://registry.yarnpkg.com/@web5/api/-/api-0.8.3.tgz#aa7e6a30f37187a7b22ef2d7502643dd883c4935"
-  integrity sha512-YXQ++ZShtd5LeFRqEMGlhVqJ7Zg5P6bMequpaLl068bCGjtjCwiFFgDtM1KeL36IAzQ4pFLFyj9aTGZ/JgCXHA==
+"@web5/api@0.8.4-rc.0":
+  version "0.8.4-rc.0"
+  resolved "https://registry.yarnpkg.com/@web5/api/-/api-0.8.4-rc.0.tgz#ad3458b4f013baefa9357361136eb50c783ff905"
+  integrity sha512-sdBTZ5FrRtU2MN0BdV65jrPl7aXTIYmCpS2k/IHQxgNZUQ7SHZm38MfRV4OSZNPJiintUifG4WkJzUcdUO/7BQ==
   dependencies:
-    "@tbd54566975/dwn-sdk-js" "0.2.8"
+    "@tbd54566975/dwn-sdk-js" "0.2.10"
     "@web5/agent" "0.2.5"
     "@web5/common" "0.2.2"
     "@web5/crypto" "0.2.2"
-    "@web5/dids" "0.2.3"
+    "@web5/dids" "0.2.4"
     "@web5/user-agent" "0.2.5"
     level "8.0.0"
     ms "2.1.3"
@@ -2599,6 +2628,22 @@
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/@web5/dids/-/dids-0.2.3.tgz#20da60a7afd06ac8edd2cd995f55d0489ea89a92"
   integrity sha512-Y3PHOavNkSyjBxZQEpKE6XueaqemBO5w0UMOnFh4xH6+5B43ENEE4LHIqVyn2bCpfEBGLXENgDZYqyJphBu0pA==
+  dependencies:
+    "@decentralized-identity/ion-pow-sdk" "1.0.17"
+    "@decentralized-identity/ion-sdk" "1.0.1"
+    "@web5/common" "0.2.2"
+    "@web5/crypto" "0.2.2"
+    did-resolver "4.1.0"
+    dns-packet "5.6.1"
+    level "8.0.0"
+    ms "2.1.3"
+    pkarr "1.1.1"
+    z32 "1.0.1"
+
+"@web5/dids@0.2.4":
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/@web5/dids/-/dids-0.2.4.tgz#e4ab4924d7c73c81621b2216d39d9923a03840b5"
+  integrity sha512-e+m+xgpiM8ydTJgWcPdwmjILLMZYdl2kwahlO22mK0azSKVrg1klpGrUODzqkrWrQ5O0tnOyqEy39FcD5Sy11w==
   dependencies:
     "@decentralized-identity/ion-pow-sdk" "1.0.17"
     "@decentralized-identity/ion-sdk" "1.0.1"
