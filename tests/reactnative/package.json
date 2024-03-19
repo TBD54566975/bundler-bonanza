@@ -15,7 +15,7 @@
     "@tbd54566975/web5-react-native-metro-config": "1.0.0",
     "@tbd54566975/web5-react-native-polyfills": "^0.2.1",
     "@types/react": "18.2.38",
-    "@web5/api": "0.8.4",
+    "@web5/api": "0.9.0-alpha-20240318-86466a9",
     "@web5/dids": "0.2.3",
     "@web5/identity-agent": "0.2.5",
     "expo": "49.0.20",
