@@ -1,4 +1,5 @@
 import { Web5 } from "@web5/api";
+import { DidKey, UniversalResolver } from "@web5/dids";
 import {
   Dwn,
   EventLogLevel,
@@ -9,7 +10,7 @@ import {
   RecordsRead,
   RecordsDelete,
   DataStream,
-  DidKeyResolver,
+  TestDataGenerator,
 } from "@tbd54566975/dwn-sdk-js";
 
 import { checkWeb5, checkDwn } from "../util/browser-check.js";
@@ -25,7 +26,9 @@ const handleCheckDwn = async () => {
   const dwnResult = await checkDwn(
     Dwn,
     DataStream,
-    DidKeyResolver,
+    UniversalResolver,
+    DidKey,
+    TestDataGenerator,
     Jws,
     RecordsWrite,
     RecordsRead,

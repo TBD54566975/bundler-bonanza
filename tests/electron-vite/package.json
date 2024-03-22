@@ -23,8 +23,8 @@
   "dependencies": {
     "@electron-toolkit/preload": "^2.0.0",
     "@electron-toolkit/utils": "^2.0.0",
-    "@tbd54566975/dwn-sdk-js": "0.2.4",
-    "@web5/api": "0.9.0-alpha-20240318-86466a9"
+    "@tbd54566975/dwn-sdk-js": "0.2.21",
+    "@web5/api": "0.9.0-alpha-20240322-d987909"
   },
   "devDependencies": {
     "@electron-toolkit/eslint-config-prettier": "^1.0.1",

@@ -1,4 +1,4 @@
-import { Dwn, DataStream, DidKeyResolver, Jws, RecordsWrite } from '@tbd54566975/dwn-sdk-js';
+import { Dwn, DataStream, TestDataGenerator, Jws, RecordsWrite } from '@tbd54566975/dwn-sdk-js';
 import { DataStoreLevel, EventLogLevel, MessageStoreLevel } from '@tbd54566975/dwn-sdk-js/stores';
 
 export async function testDwn() {

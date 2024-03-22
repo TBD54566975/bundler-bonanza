@@ -9,11 +9,11 @@ importers:
   .:
     dependencies:
       '@tbd54566975/dwn-sdk-js':
-        specifier: 0.2.18
-        version: 0.2.18
+        specifier: 0.2.21
+        version: 0.2.21
       '@web5/api':
-        specifier: 0.9.0-alpha-20240318-86466a9
-        version: 0.9.0-alpha-20240318-86466a9
+        specifier: 0.9.0-alpha-20240322-d987909
+        version: 0.9.0-alpha-20240322-d987909
     devDependencies:
       playwright:
         specifier: ^1.39.0
@@ -114,14 +114,20 @@ importers:
   tests/node-cjs:
     dependencies:
       '@tbd54566975/dwn-sdk-js':
-        specifier: ^0.2.4
-        version: 0.2.4
+        specifier: ^0.2.21
+        version: 0.2.21
+      '@web5/dids':
+        specifier: 0.4.3
+        version: 0.4.3
 
   tests/node-esm:
     dependencies:
       '@tbd54566975/dwn-sdk-js':
-        specifier: ^0.2.4
-        version: 0.2.4
+        specifier: ^0.2.21
+        version: 0.2.21
+      '@web5/dids':
+        specifier: 0.4.3
+        version: 0.4.3
 
   tests/vite:
     devDependencies:
@@ -3018,12 +3024,6 @@ packages:
     resolution: {integrity: sha512-QCOA9cgf3Rc33owG0AYBB9wszz+Ul2kramWN8tXG44Gyciud/tbkEqvxRF/IpqQaBpRBNi9f4jdNxqB2CQCIXg==}
     dev: false
 
-  /@noble/curves@1.2.0:
-    resolution: {integrity: sha512-oYclrNgRaM9SsBUBVbb8M6DTV7ZHRTKugureoYEncY5c65HOmRzvSiTE3y5CYaPYJA/GVkrhXEoF0M3Ya9PMnw==}
-    dependencies:
-      '@noble/hashes': 1.3.2
-    dev: false
-
   /@noble/curves@1.3.0:
     resolution: {integrity: sha512-t01iSXPuN+Eqzb4eBX0S5oubSqXbK/xXa1Ne18Hj8f9pStxztHCE2gfboSp/dZRLSqfuLpRK2nDXDK+W9puocA==}
     dependencies:
@@ -3032,11 +3032,6 @@ packages:
 
   /@noble/ed25519@2.0.0:
     resolution: {integrity: sha512-/extjhkwFupyopDrt80OMWKdLgP429qLZj+z6sYJz90rF2Iz0gjZh2ArMKPImUl13Kx+0EXI2hN9T/KJV0/Zng==}
-    dev: false
-
-  /@noble/hashes@1.3.2:
-    resolution: {integrity: sha512-MVC8EAQp7MvEcm30KWENFjgR+Mkmf+D189XJTkFIlwohU5hcBbn1ZkKq7KVTi2Hme3PMGF390DaL52beVrIihQ==}
-    engines: {node: '>= 16'}
     dev: false
 
   /@noble/hashes@1.3.3:
@@ -3152,7 +3147,7 @@ packages:
   /@scure/bip39@1.2.2:
     resolution: {integrity: sha512-HYf9TUXG80beW+hGAt3TRM8wU6pQoYur9iNypTROm42dorCGmLnFe3eWjz3gOq6G62H2WRh0FCzAR1PI+29zIA==}
     dependencies:
-      '@noble/hashes': 1.3.2
+      '@noble/hashes': 1.3.3
       '@scure/base': 1.1.5
     dev: false
 
@@ -3351,15 +3346,15 @@ packages:
       defer-to-connect: 1.1.3
     dev: false
 
-  /@tbd54566975/dwn-sdk-js@0.2.18:
-    resolution: {integrity: sha512-71K8izqimtsforMBISl4s8VR5El6VtZd6xjs/s7eYsOww3H/wbdVC5KBXeCvGDlfBoTOk62R5eEUm+WEgaOMrw==}
+  /@tbd54566975/dwn-sdk-js@0.2.21:
+    resolution: {integrity: sha512-rave+6mwn2/YBYu5LRwDWaOxvHV51DdMO6OFCLC3gJVOiAAYCmtPlebpdVCanBzqhWITh2qPcIZa7BefoxOPmQ==}
     engines: {node: '>= 18'}
     dependencies:
       '@ipld/dag-cbor': 9.0.3
       '@js-temporal/polyfill': 0.4.4
       '@noble/ed25519': 2.0.0
       '@noble/secp256k1': 2.0.0
-      '@web5/dids': 0.4.1
+      '@web5/dids': 0.4.3
       abstract-level: 1.0.3
       ajv: 8.12.0
       blockstore-core: 4.2.0
@@ -3376,39 +3371,6 @@ packages:
       multiformats: 11.0.2
       randombytes: 2.1.0
       readable-stream: 4.5.2
-      ulidx: 2.1.0
-      uuid: 8.3.2
-      varint: 6.0.0
-    transitivePeerDependencies:
-      - encoding
-      - supports-color
-    dev: false
-
-  /@tbd54566975/dwn-sdk-js@0.2.4:
-    resolution: {integrity: sha512-d2/8o0sA+kNqyyFovReyviczABPyi5wPNuaS7oPojrmMDN2GC+okifF/rqr4qO393Dk/m07ngk8eXnPPk/oiMQ==}
-    engines: {node: '>= 18'}
-    dependencies:
-      '@ipld/dag-cbor': 9.0.3
-      '@js-temporal/polyfill': 0.4.4
-      '@noble/ed25519': 2.0.0
-      '@noble/secp256k1': 2.0.0
-      abstract-level: 1.0.3
-      ajv: 8.12.0
-      blockstore-core: 4.2.0
-      cross-fetch: 4.0.0
-      eciesjs: 0.4.0
-      flat: 5.0.2
-      interface-blockstore: 5.2.3
-      interface-store: 5.1.2
-      ipfs-unixfs-exporter: 13.1.5
-      ipfs-unixfs-importer: 15.1.5
-      level: 8.0.0
-      lodash: 4.17.21
-      lru-cache: 9.1.2
-      ms: 2.1.3
-      multiformats: 11.0.2
-      randombytes: 2.1.0
-      readable-stream: 4.4.0
       ulidx: 2.1.0
       uuid: 8.3.2
       varint: 6.0.0
@@ -3729,16 +3691,16 @@ packages:
       eslint-visitor-keys: 3.4.3
     dev: false
 
-  /@web5/agent@0.3.0-alpha-20240318-86466a9:
-    resolution: {integrity: sha512-2C2gvKdiFtxJBP7L4t4dUrtkbCDly13sDZNsrkfdsz4tXfpt4mDvacyibjw0+ojLqUw6SLT8sUYsc297uuNNRg==}
-    engines: {node: '>=20.9.0'}
+  /@web5/agent@0.3.0-alpha-20240322-d987909:
+    resolution: {integrity: sha512-wpsu6qAAggY10r/OoxqYt8PXidNBoFyZByjORCC4jxEMmUwqKDA4+/gMpbAnsQi12KrXzoBnCYHEqIGjohIMoA==}
+    engines: {node: '>=18.0.0'}
     dependencies:
       '@noble/ciphers': 0.4.1
       '@scure/bip39': 1.2.2
-      '@tbd54566975/dwn-sdk-js': 0.2.18
-      '@web5/common': 0.2.4-alpha-20240318-86466a9
-      '@web5/crypto': 0.4.0
-      '@web5/dids': 0.4.1
+      '@tbd54566975/dwn-sdk-js': 0.2.21
+      '@web5/common': 0.2.4-alpha-20240322-d987909
+      '@web5/crypto': 0.4.1-alpha-20240322-d987909
+      '@web5/dids': 0.4.3-alpha-20240322-d987909
       abstract-level: 1.0.4
       ed25519-keygen: 0.4.11
       level: 8.0.0
@@ -3750,32 +3712,23 @@ packages:
       - supports-color
     dev: false
 
-  /@web5/api@0.9.0-alpha-20240318-86466a9:
-    resolution: {integrity: sha512-jbSW2p3oPqoH84cWL+baVOsze8tyBZ/KuhiOxgxMLRZowqI2c2GQqlHEaWTib7CgzXV7AjWZZ1aQsUcBWh3G0Q==}
-    engines: {node: '>=20.9.0'}
+  /@web5/api@0.9.0-alpha-20240322-d987909:
+    resolution: {integrity: sha512-eOGsXbg/8r097poHxoPRp9A+cFbV1mnUU7qci/ao52K3xJVNby8D5muuqSOKdaYHkpu2/RJVoVttiQkT91X+ww==}
+    engines: {node: '>=18.0.0'}
     dependencies:
-      '@web5/agent': 0.3.0-alpha-20240318-86466a9
-      '@web5/common': 0.2.4-alpha-20240318-86466a9
-      '@web5/crypto': 0.4.0
-      '@web5/dids': 0.4.1
-      '@web5/user-agent': 0.3.0-alpha-20240318-86466a9
+      '@web5/agent': 0.3.0-alpha-20240322-d987909
+      '@web5/common': 0.2.4-alpha-20240322-d987909
+      '@web5/crypto': 0.4.1-alpha-20240322-d987909
+      '@web5/dids': 0.4.3-alpha-20240322-d987909
+      '@web5/user-agent': 0.3.0-alpha-20240322-d987909
     transitivePeerDependencies:
       - encoding
       - supports-color
     dev: false
 
-  /@web5/common@0.2.3:
-    resolution: {integrity: sha512-WTbIS6l5inrQTS5cwOoQP5KEuUHZqOWCKCDAA62qGUn4QyySolog9Gt2HCNUEClIzzk/d5DHcpBgLCadHoJ6rQ==}
+  /@web5/common@0.2.4:
+    resolution: {integrity: sha512-h7I+FbAzTbkQWnv5RZCtE1lFsOzwssvcr4aQuQvO1mx8qTjzl5gGXhFIpl6JB9aSE2FayNUV6kQBID8Sb5HXTQ==}
     engines: {node: '>=18.0.0'}
-    dependencies:
-      level: 8.0.0
-      multiformats: 11.0.2
-      readable-stream: 4.4.2
-    dev: false
-
-  /@web5/common@0.2.4-alpha-20240318-86466a9:
-    resolution: {integrity: sha512-gyg0XjUufMj2IoM8p45GAILmZ10vMHauwtTj64GAsxKIBn7s3enFvWOe/KMugadxuAGnn4FwboMKjAuCrikoPw==}
-    engines: {node: '>=20.9.0'}
     dependencies:
       '@isaacs/ttlcache': 1.4.1
       level: 8.0.0
@@ -3783,37 +3736,74 @@ packages:
       readable-stream: 4.4.2
     dev: false
 
-  /@web5/crypto@0.4.0:
-    resolution: {integrity: sha512-GIKn2CizQKeATvHQqmC4ky26b3q2pJOd2GjIYsOSw/3Y3QIEm3holDGqu9FHs6kacmr6u0Pv5ELvccs58+cKEg==}
+  /@web5/common@0.2.4-alpha-20240322-d987909:
+    resolution: {integrity: sha512-vrEzJWJlaUaYx2hEiA7AEGU8MoW5j1pHvbdpEH35xSkULf648Gc3H7yKiReHNwu3GxO6CuudUR4W34bOpfkSaQ==}
+    engines: {node: '>=18.0.0'}
+    dependencies:
+      '@isaacs/ttlcache': 1.4.1
+      level: 8.0.0
+      multiformats: 11.0.2
+      readable-stream: 4.4.2
+    dev: false
+
+  /@web5/crypto@0.4.1:
+    resolution: {integrity: sha512-23LxbdnpTnHBfspqin2L+qy0UKPgdx212SUg6K1pgj2oTvP7gyCKDOyN6yJ4HhexlT0AQxZ6TJ5reoTVn8Cu+g==}
     engines: {node: '>=18.0.0'}
     dependencies:
       '@noble/ciphers': 0.4.1
       '@noble/curves': 1.3.0
       '@noble/hashes': 1.3.3
-      '@web5/common': 0.2.3
+      '@web5/common': 0.2.4
     dev: false
 
-  /@web5/dids@0.4.1:
-    resolution: {integrity: sha512-EY55euXdDfdFMef2k8DeOrGmStBRhwvoai/JuJbUdCGDpvgwdoZWXPkGEkFr4VZQsfR7R7rNFMlsYw3VRPUVJw==}
+  /@web5/crypto@0.4.1-alpha-20240322-d987909:
+    resolution: {integrity: sha512-G4fImnCRJnakVQAtqwkJzTadFog43EMUP0OZYfLVocDLNCIeQ6ea2/lKQXGiH8yMiAFyKUXJ3lAvPKt6kN20ig==}
+    engines: {node: '>=18.0.0'}
+    dependencies:
+      '@noble/ciphers': 0.4.1
+      '@noble/curves': 1.3.0
+      '@noble/hashes': 1.3.3
+      '@web5/common': 0.2.4-alpha-20240322-d987909
+    dev: false
+
+  /@web5/dids@0.4.3:
+    resolution: {integrity: sha512-VyTG8dY7iY3j8O055/wBFoGU5Xu1rwTF0RJpFazUE/6W3IuZEYAFTNl2mZ5KSuNRDT1f0VcwebuXW9PbzGuAaw==}
     engines: {node: '>=18.0.0'}
     dependencies:
       '@decentralized-identity/ion-sdk': 1.0.1
       '@dnsquery/dns-packet': 6.1.1
-      '@web5/common': 0.2.3
-      '@web5/crypto': 0.4.0
+      '@web5/common': 0.2.4
+      '@web5/crypto': 0.4.1
+      abstract-level: 1.0.4
       bencode: 4.0.0
+      buffer: 6.0.3
       level: 8.0.0
       ms: 2.1.3
     dev: false
 
-  /@web5/user-agent@0.3.0-alpha-20240318-86466a9:
-    resolution: {integrity: sha512-teLSvztLQXOOrQH+sBhZo7tXgYPVy4crXmHVJlsWA6q8t0ULLYb1jFgPVlHuJwInDNujYG++P0bm2V8K0lF6DQ==}
-    engines: {node: '>=20.9.0'}
+  /@web5/dids@0.4.3-alpha-20240322-d987909:
+    resolution: {integrity: sha512-NAhEDLnCD5HUPW6ENaDPr0CZ7WQOiBL+xEVLqkgB9OB+z1f3byVcmHMvPwW2VoqEkmpnpDS6M5GNWWWQQz4OJQ==}
+    engines: {node: '>=18.0.0'}
     dependencies:
-      '@web5/agent': 0.3.0-alpha-20240318-86466a9
-      '@web5/common': 0.2.4-alpha-20240318-86466a9
-      '@web5/crypto': 0.4.0
-      '@web5/dids': 0.4.1
+      '@decentralized-identity/ion-sdk': 1.0.1
+      '@dnsquery/dns-packet': 6.1.1
+      '@web5/common': 0.2.4-alpha-20240322-d987909
+      '@web5/crypto': 0.4.1-alpha-20240322-d987909
+      abstract-level: 1.0.4
+      bencode: 4.0.0
+      buffer: 6.0.3
+      level: 8.0.0
+      ms: 2.1.3
+    dev: false
+
+  /@web5/user-agent@0.3.0-alpha-20240322-d987909:
+    resolution: {integrity: sha512-qpgyOGRhAf/5kJz8fr16x/Xwg5+33DLy8KLc3fXPPqlLj84c2OX+wB0SF7fQYHKsS8zfhiAia31qH4UezWgZkQ==}
+    engines: {node: '>=18.0.0'}
+    dependencies:
+      '@web5/agent': 0.3.0-alpha-20240322-d987909
+      '@web5/common': 0.2.4-alpha-20240322-d987909
+      '@web5/crypto': 0.4.1-alpha-20240322-d987909
+      '@web5/dids': 0.4.3-alpha-20240322-d987909
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -4561,7 +4551,7 @@ packages:
   /browser-level@1.0.1:
     resolution: {integrity: sha512-XECYKJ+Dbzw0lbydyQuJzwNXtOpbMSq737qxJN11sIRTErOMShvDpbzTlgju7orJKvx4epULolZAuJGLzCmWRQ==}
     dependencies:
-      abstract-level: 1.0.3
+      abstract-level: 1.0.4
       catering: 2.1.1
       module-error: 1.0.2
       run-parallel-limit: 1.1.0
@@ -4837,7 +4827,7 @@ packages:
     engines: {node: '>=12'}
     requiresBuild: true
     dependencies:
-      abstract-level: 1.0.3
+      abstract-level: 1.0.4
       catering: 2.1.1
       module-error: 1.0.2
       napi-macros: 2.2.2
@@ -5669,19 +5659,13 @@ packages:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
     dev: false
 
-  /eciesjs@0.4.0:
-    resolution: {integrity: sha512-z4dEeaH16xxYVgtxJ8YVwpifH4Keg4gyp5F451mnDNwbAN3MgL5jcoEQGpqJrapv/zW8KwDnXG21Dw5B0hqvmw==}
-    dependencies:
-      '@noble/curves': 1.2.0
-    dev: false
-
   /eciesjs@0.4.5:
     resolution: {integrity: sha512-2zSRIygO48LpdS95Rwt9ryIkJNO37IdbkjRsnYyAn7gx7e4WPBNimnk6jGNdx2QQYr/VJRPnSVdwQpO5bycYZw==}
     engines: {node: '>=16.0.0'}
     dependencies:
       '@noble/ciphers': 0.3.0
-      '@noble/curves': 1.2.0
-      '@noble/hashes': 1.3.2
+      '@noble/curves': 1.3.0
+      '@noble/hashes': 1.3.3
     dev: false
 
   /ed25519-keygen@0.4.11:
@@ -6472,11 +6456,6 @@ packages:
       flatted: 3.2.9
       keyv: 4.5.3
       rimraf: 3.0.2
-    dev: false
-
-  /flat@5.0.2:
-    resolution: {integrity: sha512-b6suED+5/3rTpUBdG1gupIl8MPFCAMA0QXwmljLhvCUKcUvdE4gWky9zpuGCcXHOsz4J9wPGNWq6OKpmIzz3hQ==}
-    hasBin: true
     dev: false
 
   /flatted@3.2.9:
@@ -9773,16 +9752,6 @@ packages:
       inherits: 2.0.4
       string_decoder: 1.3.0
       util-deprecate: 1.0.2
-
-  /readable-stream@4.4.0:
-    resolution: {integrity: sha512-kDMOq0qLtxV9f/SQv522h8cxZBqNZXuXNyjyezmfAAuribMyVXziljpQ/uQhfE1XLg2/TLTW2DsnoE4VAi/krg==}
-    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
-    dependencies:
-      abort-controller: 3.0.0
-      buffer: 6.0.3
-      events: 3.3.0
-      process: 0.11.10
-    dev: false
 
   /readable-stream@4.4.2:
     resolution: {integrity: sha512-Lk/fICSyIhodxy1IDK2HazkeGjSmezAWX2egdtJnYhtzKEsBPJowlI6F6LPb5tqIQILrMbx22S5o3GuJavPusA==}
