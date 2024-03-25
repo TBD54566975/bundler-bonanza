@@ -128,7 +128,7 @@ const checkDwn = async (
       dwn,
       didKey,
       RecordsWrite,
-      authorizationSigner,
+      signer,
       DataStream,
       message
     );
@@ -159,7 +159,7 @@ const checkDwn = async (
       dwn,
       didKey,
       RecordsDelete,
-      authorizationSigner
+      signer
     );
     console.info({ deleteStatus });
     result.deleteStatus = deleteStatus;
