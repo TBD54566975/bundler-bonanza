@@ -25,10 +25,10 @@ const handleCheckDwn = async () => {
   const dwnTestOutput = document.getElementById("dwn-results");
   const dwnResult = await checkDwn(
     Dwn,
-    DataStream,
     UniversalResolver,
     DidKey,
     TestDataGenerator,
+    DataStream,
     Jws,
     RecordsWrite,
     RecordsRead,
