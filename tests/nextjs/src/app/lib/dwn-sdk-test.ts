@@ -1,5 +1,5 @@
 import { Dwn, DataStream, TestDataGenerator, Jws, RecordsWrite } from '@tbd54566975/dwn-sdk-js';
-import { DataStoreLevel, EventLogLevel, MessageStoreLevel } from '@tbd54566975/dwn-sdk-js/stores';
+import { DataStoreLevel, EventLogLevel, MessageStoreLevel } from '@tbd54566975/dwn-sdk-js';
 
 export async function testDwn() {
   const messageStore = new MessageStoreLevel();
@@ -8,7 +8,7 @@ export async function testDwn() {
   const dwn = await Dwn.create({ messageStore, dataStore, eventLog });
   
   // generate a did:key DID
-  const didKey = await DidKeyResolver.generate();
+  const didKey = await TestDataGenerator.generateDidKeyPersona();
   
   // create some data
   const encoder = new TextEncoder();
@@ -20,7 +20,7 @@ export async function testDwn() {
     dataFormat: 'application/json',
     published: true,
     schema: 'yeeter/post',
-    authorizationSignatureInput: Jws.createSignatureInput(didKey)
+    signer: Jws.createSigner(didKey)
   });
   
   // get the DWN to process the RecordsWrite

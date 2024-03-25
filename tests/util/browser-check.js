@@ -33,10 +33,10 @@ const checkWeb5 = async (Web5) => {
 
 const checkDwn = async (
   Dwn,
-  DataStream,
   UniversalResolver,
   DidKey,
   TestDataGenerator,
+  DataStream,
   Jws,
   RecordsWrite,
   RecordsRead,
