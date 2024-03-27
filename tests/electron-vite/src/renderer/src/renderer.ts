@@ -15,8 +15,9 @@ import {
   TestDataGenerator
 } from '@tbd54566975/dwn-sdk-js'
 
-import browserCheck from '../../../../util/browser-check.js'
-const { checkWeb5, checkDwn } = browserCheck
+// import '../../util/webcrypto-polyfill.js'
+import checkWeb5 from '../../util/web5-test.js'
+import checkDwn from '../../util/dwn-test.js'
 
 if (typeof window !== 'undefined') {
   window.Buffer = Buffer

@@ -87,9 +87,19 @@ import {
   TestDataGenerator
 } from '@tbd54566975/dwn-sdk-js'
 
-import '../../../util/node-polyfill.js'
-import checkWeb5 from '../../../util/web5-test.js'
-import checkDwn from '../../../util/dwn-test.js'
+
+import '../util/webcrypto-polyfill.js'
+import { AesKwProvider, SubtleCrypto } from 'webcrypto-core'
+import { AwalaAesKwProvider } from '../util/awala-aes-provider'
+// This must be running on Electron, so let's use a pure JavaScript implementation of AES-KW:
+// https://github.com/relaycorp/relaynet-core-js/issues/367
+const providers = (crypto.subtle as SubtleCrypto).providers;
+console.log('providers', providers)
+const nodejsAesKwProvider = providers.get('AES-KW') as AesKwProvider;
+providers.set(new AwalaAesKwProvider(nodejsAesKwProvider));
+
+import checkWeb5 from '../util/web5-test.js'
+import checkDwn from '../util/dwn-test.js'
 
 let web5Error
 let dwnError

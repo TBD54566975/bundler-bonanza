@@ -1,17 +1,14 @@
 import { defineConfig, externalizeDepsPlugin } from 'electron-vite'
-import nodePolyfills from 'vite-plugin-node-stdlib-browser'
-import CommonJs from 'vite-plugin-commonjs'
-
-console.info(CommonJs)
+import { nodePolyfills } from 'vite-plugin-node-polyfills'
 
 export default defineConfig({
   main: {
-    plugins: [externalizeDepsPlugin(), CommonJs() as any]
+    plugins: [externalizeDepsPlugin()]
   },
   preload: {
     plugins: [externalizeDepsPlugin()]
   },
   renderer: {
-    plugins: [nodePolyfills(), CommonJs()]
+    plugins: [nodePolyfills()]
   }
 })

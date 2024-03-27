@@ -1,10 +1,11 @@
 {
-  "name": "electron-vite",
+  "name": "electron-vite2",
   "version": "1.0.0",
   "description": "A minimal Electron application with TypeScript",
   "main": "./out/main/index.js",
   "author": "example.com",
-  "homepage": "https://www.electronjs.org",
+  "homepage": "https://electron-vite.org",
+  "type": "module",
   "scripts": {
     "format": "prettier --write .",
     "lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
@@ -21,27 +22,30 @@
     "test": "playwright test"
   },
   "dependencies": {
-    "@electron-toolkit/preload": "^2.0.0",
-    "@electron-toolkit/utils": "^2.0.0",
+    "@electron-toolkit/preload": "^3.0.0",
+    "@electron-toolkit/utils": "^3.0.0",
+    "@peculiar/webcrypto": "^1.4.5",
+    "@stablelib/aes-kw": "^1.0.1",
     "@tbd54566975/dwn-sdk-js": "0.2.21",
     "@web5/api": "0.9.0-alpha-20240322-d987909",
-    "@web5/dids": "0.4.3"
+    "@web5/dids": "0.4.3",
+    "node-stdlib-browser": "^1.2.0",
+    "pkijs": "^3.0.16",
+    "webcrypto-core": "^1.7.8"
   },
   "devDependencies": {
-    "@electron-toolkit/eslint-config-prettier": "^1.0.1",
-    "@electron-toolkit/eslint-config-ts": "^1.0.0",
+    "@electron-toolkit/eslint-config-prettier": "^2.0.0",
+    "@electron-toolkit/eslint-config-ts": "^1.0.1",
     "@electron-toolkit/tsconfig": "^1.0.1",
-    "@playwright/test": "^1.39.0",
-    "@types/node": "^18.17.5",
-    "electron": "^25.6.0",
-    "electron-builder": "^24.6.3",
-    "electron-vite": "^1.0.27",
-    "eslint": "^8.47.0",
-    "node-stdlib-browser": "^1.2.0",
-    "prettier": "^3.0.2",
-    "typescript": "^5.1.6",
-    "vite": "^4.4.9",
-    "vite-plugin-commonjs": "^0.10.0",
-    "vite-plugin-node-stdlib-browser": "^0.2.1"
+    "@playwright/test": "^1.42.1",
+    "@types/node": "^18.19.9",
+    "electron": "^29.1.5",
+    "electron-builder": "^24.13.3",
+    "electron-vite": "^2.1.0",
+    "eslint": "^8.56.0",
+    "prettier": "^3.2.4",
+    "typescript": "^5.4.3",
+    "vite": "^5.0.12",
+    "vite-plugin-node-polyfills": "^0.21.0"
   }
 }
