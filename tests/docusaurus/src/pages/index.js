@@ -3,6 +3,7 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 
 import browserCheck from "../../../util/browser-check";
+
 const { checkWeb5, checkDwn } = browserCheck;
 
 export default function Home() {
@@ -28,13 +29,17 @@ export default function Home() {
         RecordsRead,
         RecordsDelete,
         DataStream,
-        DidKeyResolver,
+        TestDataGenerator,
       } = await import("@tbd54566975/dwn-sdk-js");
+
+      const { UniversalResolver, DidKey } = await import("@web5/dids");
 
       const dwnResult = await checkDwn(
         Dwn,
+        UniversalResolver,
+        DidKey,
+        TestDataGenerator,
         DataStream,
-        DidKeyResolver,
         Jws,
         RecordsWrite,
         RecordsRead,

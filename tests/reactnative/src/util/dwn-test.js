@@ -58,8 +58,8 @@ const checkResult = (result) => {
 
 const checkDwn = async (
   dwn,
+  TestDataGenerator,
   DataStream,
-  DidKeyResolver,
   Jws,
   RecordsWrite,
   RecordsRead,
@@ -85,10 +85,10 @@ const checkDwn = async (
   }
   result.dwn = dwn;
 
-  const didKey = await generateDidKey(DidKeyResolver);
+  const didKey = await TestDataGenerator.generateDidKeyPersona();
   result.didKey = didKey;
 
-  const authorizationSigner = Jws.createSigner(didKey);
+  const signer = Jws.createSigner(didKey);
 
   const greetings = "Hello, World!";
   const {
@@ -100,7 +100,7 @@ const checkDwn = async (
     dwn,
     didKey,
     RecordsWrite,
-    authorizationSigner,
+    signer,
     DataStream
   );
   result.recordId = recordId;
@@ -128,7 +128,7 @@ const checkDwn = async (
       dwn,
       didKey,
       RecordsWrite,
-      authorizationSigner,
+      signer,
       DataStream,
       message
     );
@@ -159,7 +159,7 @@ const checkDwn = async (
       dwn,
       didKey,
       RecordsDelete,
-      authorizationSigner
+      signer
     );
     console.info({ deleteStatus });
     result.deleteStatus = deleteStatus;
@@ -201,17 +201,6 @@ function streamToString(stream) {
     stream.on("end", () => resolve(Buffer.concat(chunks).toString("utf8")));
   });
 }
-
-const generateDidKey = async (DidKeyResolver) => {
-  const didKey = await DidKeyResolver.generate();
-
-  if (!didKey) {
-    // early abort because there's no DID to run the tests
-    throw new Error("Unable to generate DID");
-  }
-
-  return didKey;
-};
 
 const readData = async (recordId, dwn, didKey, RecordsRead) => {
   const recordsRead = await RecordsRead.create({ filter: { recordId } });
@@ -258,7 +247,7 @@ const writeData = async (
   const writeResult = await dwn.processMessage(
     didKey.did,
     recordsWrite.message,
-    dataStream
+    { dataStream }
   );
 
   if (writeResult.status.code !== 202) {

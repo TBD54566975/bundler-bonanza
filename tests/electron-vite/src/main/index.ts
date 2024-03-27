@@ -72,18 +72,19 @@ app.on('window-all-closed', () => {
 
 // In this file you can include the rest of your app"s specific main process
 // code. You can also put them in separate files and require them here.
+import { DidKey, UniversalResolver } from '@web5/dids';
 import { Web5 } from '@web5/api'
 import {
   Dwn,
   DataStream,
-  DidKeyResolver,
   Jws,
   RecordsWrite,
   RecordsRead,
   RecordsDelete,
   DataStoreLevel,
   EventLogLevel,
-  MessageStoreLevel
+  MessageStoreLevel,
+  TestDataGenerator
 } from '@tbd54566975/dwn-sdk-js'
 
 import '../../../util/node-polyfill.js'
@@ -113,8 +114,10 @@ async function initDwn(): Promise<void> {
   try {
     await checkDwn(
       Dwn,
+      UniversalResolver,
+      DidKey,
+      TestDataGenerator,
       DataStream,
-      DidKeyResolver,
       Jws,
       RecordsWrite,
       RecordsRead,

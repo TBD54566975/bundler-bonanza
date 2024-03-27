@@ -33,8 +33,10 @@ const checkWeb5 = async (Web5) => {
 
 const checkDwn = async (
   Dwn,
+  UniversalResolver,
+  DidKey,
+  TestDataGenerator,
   DataStream,
-  DidKeyResolver,
   Jws,
   RecordsWrite,
   RecordsRead,
@@ -50,8 +52,10 @@ const checkDwn = async (
       ...testsResultsRaw
     } = await dwnTest(
       Dwn,
+      UniversalResolver,
+      DidKey,
+      TestDataGenerator,
       DataStream,
-      DidKeyResolver,
       Jws,
       RecordsWrite,
       RecordsRead,

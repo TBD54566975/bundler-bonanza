@@ -1,17 +1,18 @@
 import { Buffer } from 'buffer'
 import { Web5 } from '@web5/api'
 
+import { DidKey, UniversalResolver } from '@web5/dids';
 import {
   Dwn,
   DataStream,
-  DidKeyResolver,
   Jws,
   RecordsWrite,
   RecordsRead,
   RecordsDelete,
   DataStoreLevel,
   EventLogLevel,
-  MessageStoreLevel
+  MessageStoreLevel,
+  TestDataGenerator
 } from '@tbd54566975/dwn-sdk-js'
 
 import browserCheck from '../../../../util/browser-check.js'
@@ -37,8 +38,10 @@ async function initWeb5(): Promise<void> {
 async function initDwn(): Promise<void> {
   const result = await checkDwn(
     Dwn,
+    UniversalResolver,
+    DidKey,
+    TestDataGenerator,
     DataStream,
-    DidKeyResolver,
     Jws,
     RecordsWrite,
     RecordsRead,

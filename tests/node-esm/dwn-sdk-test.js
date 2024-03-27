@@ -1,9 +1,10 @@
 import "../util/node-polyfill.js";
 
+import { DidKey, UniversalResolver } from '@web5/dids';
+
 import {
   Dwn,
   DataStream,
-  DidKeyResolver,
   Jws,
   RecordsWrite,
   RecordsRead,
@@ -11,14 +12,17 @@ import {
   DataStoreLevel,
   EventLogLevel,
   MessageStoreLevel,
+  TestDataGenerator,
 } from "@tbd54566975/dwn-sdk-js";
 
 import checkDwn from "../util/dwn-test.js";
 
 checkDwn(
   Dwn,
+  UniversalResolver,
+  DidKey,
+  TestDataGenerator,
   DataStream,
-  DidKeyResolver,
   Jws,
   RecordsWrite,
   RecordsRead,
