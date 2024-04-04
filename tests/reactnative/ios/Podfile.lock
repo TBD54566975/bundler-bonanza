@@ -347,13 +347,14 @@ PODS:
   - react-native-blob-jsi-helper (0.3.1):
     - React
     - React-Core
-  - react-native-quick-base64 (2.0.7):
+  - react-native-quick-base64 (2.0.6):
     - React-Core
-  - react-native-quick-crypto (0.6.1):
+  - react-native-quick-crypto (0.6.3):
     - OpenSSL-Universal
     - React
     - React-callinvoker
     - React-Core
+    - ReactCommon
   - React-NativeModulesApple (0.72.7):
     - hermes-engine
     - React-callinvoker
@@ -444,6 +445,21 @@ PODS:
     - glog
     - RCT-Folly (= 2021.07.22.00)
     - React-debug
+  - ReactCommon (0.72.7):
+    - React-logger (= 0.72.7)
+    - ReactCommon/turbomodule (= 0.72.7)
+  - ReactCommon/turbomodule (0.72.7):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2021.07.22.00)
+    - React-callinvoker (= 0.72.7)
+    - React-cxxreact (= 0.72.7)
+    - React-jsi (= 0.72.7)
+    - React-logger (= 0.72.7)
+    - React-perflogger (= 0.72.7)
+    - ReactCommon/turbomodule/bridging (= 0.72.7)
+    - ReactCommon/turbomodule/core (= 0.72.7)
   - ReactCommon/turbomodule/bridging (0.72.7):
     - DoubleConversion
     - glog
@@ -502,7 +518,7 @@ DEPENDENCIES:
   - react-native-bignumber (from `../node_modules/react-native-bignumber`)
   - react-native-blob-jsi-helper (from `../node_modules/react-native-blob-jsi-helper`)
   - react-native-quick-base64 (from `../node_modules/react-native-quick-base64`)
-  - react-native-quick-crypto (from `../node_modules/react-native-quick-crypto`)
+  - "react-native-quick-crypto (from `../node_modules/@tbd54566975/react-native-quick-crypto`)"
   - React-NativeModulesApple (from `../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
@@ -596,7 +612,7 @@ EXTERNAL SOURCES:
   react-native-quick-base64:
     :path: "../node_modules/react-native-quick-base64"
   react-native-quick-crypto:
-    :path: "../node_modules/react-native-quick-crypto"
+    :path: "../node_modules/@tbd54566975/react-native-quick-crypto"
   React-NativeModulesApple:
     :path: "../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios"
   React-perflogger:
@@ -669,8 +685,8 @@ SPEC CHECKSUMS:
   React-logger: 8edc785c47c8686c7962199a307015e2ce9a0e4f
   react-native-bignumber: 7e2ded0f4e56c5a5ed23ba913a865d7604642d45
   react-native-blob-jsi-helper: 13c10135af4614dbc0712afba5960784cd44f043
-  react-native-quick-base64: a5dbe4528f1453e662fcf7351029500b8b63e7bb
-  react-native-quick-crypto: 455c1b411db006dba1026a30681ececb19180187
+  react-native-quick-base64: 62290829c619fbabca4c41cfec75ae759d08fc1c
+  react-native-quick-crypto: edf34ddacda7eff8d637518cdfa7a57da2bb9049
   React-NativeModulesApple: b6868ee904013a7923128892ee4a032498a1024a
   React-perflogger: 31ea61077185eb1428baf60c0db6e2886f141a5a
   React-RCTActionSheet: 392090a3abc8992eb269ef0eaa561750588fc39d
@@ -693,4 +709,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 0709ed34f6abde08be98401663e9301f1b7842e3
 
-COCOAPODS: 1.14.2
+COCOAPODS: 1.15.2

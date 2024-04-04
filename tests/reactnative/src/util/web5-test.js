@@ -1,5 +1,3 @@
-import "./webcrypto-polyfill.js";
-
 function checkResult(result) {
   // console.info({ result });
   const errors = [];
@@ -40,7 +38,7 @@ function checkResult(result) {
   }
 }
 
-const checkWeb5 = async (web5) => {
+const testWeb5 = async (web5) => {
   let result = {
     web5: null,
     did: null,
@@ -104,7 +102,7 @@ const checkWeb5 = async (web5) => {
     const { record: shouldBeUndefined } = await result.web5.dwn.records.read({
       message: { filter: { recordId: result.record.id } },
     });
-    result.didDelete = (shouldBeUndefined === undefined);
+    result.didDelete = shouldBeUndefined === undefined;
   } catch (error) {
     console.error("Delete Record Error:", error);
   }
@@ -114,4 +112,4 @@ const checkWeb5 = async (web5) => {
   return result;
 };
 
-export default checkWeb5;
+export default testWeb5;

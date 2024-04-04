@@ -32,11 +32,19 @@ const initMemoryDwn = async () => {
       location: "EVENTLOG",
     });
     const didResolver = new UniversalResolver({ didResolvers: [DidKey] });
-    dwn = await Dwn.create({ didResolver, messageStore, dataStore, eventLog })
+    dwn = await Dwn.create({ didResolver, messageStore, dataStore, eventLog });
 
     console.info("Memory-Level DWN initialized");
 
-    const result = await checkDwn(dwn, TestDataGenerator, DataStream, Jws, RecordsWrite, RecordsRead, RecordsDelete);
+    const result = await checkDwn(
+      dwn,
+      TestDataGenerator,
+      DataStream,
+      Jws,
+      RecordsWrite,
+      RecordsRead,
+      RecordsDelete
+    );
     return result;
   }
 
@@ -49,7 +57,7 @@ const getDwn = () => {
   return dwn;
 };
 
-export const DwnManager = {
+export const DwnNoWeb5 = {
   initMemoryDwn,
   getDwn,
 };

@@ -1,5 +1,3 @@
-import "./webcrypto-polyfill.js";
-
 const checkResult = (result) => {
   console.info({ result });
   const errors = [];
@@ -95,14 +93,7 @@ const checkDwn = async (
     recordId,
     message,
     statusCode: writeStatus,
-  } = await writeData(
-    greetings,
-    dwn,
-    didKey,
-    RecordsWrite,
-    signer,
-    DataStream
-  );
+  } = await writeData(greetings, dwn, didKey, RecordsWrite, signer, DataStream);
   result.recordId = recordId;
   result.writeStatus = writeStatus;
   console.info({ writeData: { recordId, writeStatus } });

@@ -22,7 +22,13 @@ export class MemoryLevelStore implements KeyValueStore<string, any> {
   }
 
   async get(key: string): Promise<any> {
-    return await this.store.get(key);
+    try {
+      return await this.store.get(key);
+    } catch (error: any) {
+      // Don't throw when a key wasn't found.
+      if (error.notFound) return undefined;
+      throw error;
+    }
   }
 
   async set(key: string, value: any): Promise<void> {
