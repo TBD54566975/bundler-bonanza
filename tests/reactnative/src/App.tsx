@@ -23,7 +23,7 @@ export default function App() {
           ...web5TestsResultRaw,
           success: true,
           dataCid: record?.dataCid,
-          did: did?.substr(0, 32) + "...",
+          did: did?.uri.substr(0, 32) + "...",
         };
         const web5TestsResultsStr = JSON.stringify(
           web5TestsResults,
