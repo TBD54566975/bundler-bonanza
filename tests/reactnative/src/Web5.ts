@@ -124,7 +124,14 @@ const initAgent = async () => {
     syncApi,
   });
 
-  await agent.start({ password: "unprotectedpass" });
+  const password = "unprotectedpass";
+  let recoveryPhrase: string|undefined;
+
+  if (await agent.firstLaunch()) {
+    recoveryPhrase = await agent.initialize({ password, recoveryPhrase });
+  }
+
+  await agent.start({ password });
   await startSync();
 };
 
