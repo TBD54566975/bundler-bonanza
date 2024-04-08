@@ -8,6 +8,6 @@
   },
   "dependencies": {
     "@tbd54566975/dwn-sdk-js": "^0.2.21",
-    "@web5/dids": "0.4.3"
+    "@web5/dids": "1.0.0"
   }
 }
