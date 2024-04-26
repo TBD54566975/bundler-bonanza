@@ -16,7 +16,7 @@
     "@craftzdog/react-native-buffer": "6.0.5",
     "@peculiar/webcrypto": "1.4.6",
     "@tbd54566975/react-native-quick-crypto": "0.6.3",
-    "@tbd54566975/web5-react-native-metro-config": "1.0.1",
+    "@tbd54566975/web5-react-native-metro-config": "^1.0.3",
     "@tbd54566975/web5-react-native-polyfills": "0.2.1",
     "@types/react": "18.2.74",
     "@web5/agent": "0.0.0-next-41ac378-20240426204935",
