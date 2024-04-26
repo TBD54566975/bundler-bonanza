@@ -1,8 +1,10 @@
 require("../util/node-polyfill");
+
+const { DidKey, UniversalResolver } = require('@web5/dids');
+
 const {
   Dwn,
   DataStream,
-  DidKeyResolver,
   Jws,
   RecordsWrite,
   RecordsRead,
@@ -10,14 +12,17 @@ const {
   MessageStoreLevel,
   DataStoreLevel,
   EventLogLevel,
+  TestDataGenerator,
 } = require("@tbd54566975/dwn-sdk-js");
 
 const checkDwn = require("../util/dwn-test");
 
 checkDwn(
   Dwn,
+  UniversalResolver,
+  DidKey,
+  TestDataGenerator,
   DataStream,
-  DidKeyResolver,
   Jws,
   RecordsWrite,
   RecordsRead,

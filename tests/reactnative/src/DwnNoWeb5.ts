@@ -1,3 +1,4 @@
+import { DidKey, UniversalResolver } from "@web5/dids";
 import {
   Dwn,
   EventLogLevel,
@@ -8,7 +9,7 @@ import {
   RecordsRead,
   RecordsDelete,
   DataStream,
-  DidKeyResolver,
+  TestDataGenerator,
 } from "@tbd54566975/dwn-sdk-js";
 import { MemoryLevel } from "memory-level";
 import checkDwn from "./util/dwn-test";
@@ -30,12 +31,20 @@ const initMemoryDwn = async () => {
       createLevelDatabase: async (_, options?) => new MemoryLevel(options),
       location: "EVENTLOG",
     });
-
-    dwn = await Dwn.create({ messageStore, dataStore, eventLog })
+    const didResolver = new UniversalResolver({ didResolvers: [DidKey] });
+    dwn = await Dwn.create({ didResolver, messageStore, dataStore, eventLog });
 
     console.info("Memory-Level DWN initialized");
 
-    const result = await checkDwn(dwn, DataStream, DidKeyResolver, Jws, RecordsWrite, RecordsRead, RecordsDelete);
+    const result = await checkDwn(
+      dwn,
+      TestDataGenerator,
+      DataStream,
+      Jws,
+      RecordsWrite,
+      RecordsRead,
+      RecordsDelete
+    );
     return result;
   }
 
@@ -48,7 +57,7 @@ const getDwn = () => {
   return dwn;
 };
 
-export const DwnManager = {
+export const DwnNoWeb5 = {
   initMemoryDwn,
   getDwn,
 };

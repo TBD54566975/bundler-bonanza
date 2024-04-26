@@ -132,6 +132,10 @@ jobs:
         env:
           HOMEBREW_NO_AUTO_UPDATE: 1
           HOMEBREW_NO_INSTALL_CLEANUP: 1
+      
+      # useful to debug supported devices in action runner
+      # - name: List available simulator devices
+      #   run: applesimutils --list
 
       - name: Restore CocoaPods
         id: restore-cocoapods

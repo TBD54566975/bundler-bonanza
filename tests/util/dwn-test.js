@@ -58,8 +58,10 @@ const checkResult = (result) => {
 
 const checkDwn = async (
   Dwn,
+  UniversalResolver,
+  DidKey,
+  TestDataGenerator,
   DataStream,
-  DidKeyResolver,
   Jws,
   RecordsWrite,
   RecordsRead,
@@ -84,16 +86,18 @@ const checkDwn = async (
 
   const dwn = await initializeDwn(
     Dwn,
+    UniversalResolver,
+    DidKey,
     MessageStoreLevel,
     DataStoreLevel,
     EventLogLevel
   );
   result.dwn = dwn;
 
-  const didKey = await generateDidKey(DidKeyResolver);
+  const didKey = await TestDataGenerator.generateDidKeyPersona();
   result.didKey = didKey;
 
-  const authorizationSigner = Jws.createSigner(didKey);
+  const signer = Jws.createSigner(didKey);
 
   const greetings = "Hello, World!";
   const {
@@ -105,7 +109,7 @@ const checkDwn = async (
     dwn,
     didKey,
     RecordsWrite,
-    authorizationSigner,
+    signer,
     DataStream
   );
   result.recordId = recordId;
@@ -133,7 +137,7 @@ const checkDwn = async (
       dwn,
       didKey,
       RecordsWrite,
-      authorizationSigner,
+      signer,
       DataStream,
       message
     );
@@ -164,7 +168,7 @@ const checkDwn = async (
       dwn,
       didKey,
       RecordsDelete,
-      authorizationSigner
+      signer,
     );
     console.info({ deleteStatus });
     result.deleteStatus = deleteStatus;
@@ -207,6 +211,8 @@ function streamToString(stream) {
 
 const initializeDwn = async (
   Dwn,
+  UniversalResolver,
+  DidKey,
   MessageStoreLevel,
   DataStoreLevel,
   EventLogLevel
@@ -214,7 +220,8 @@ const initializeDwn = async (
   const messageStore = new MessageStoreLevel();
   const dataStore = new DataStoreLevel();
   const eventLog = new EventLogLevel();
-  const dwn = await Dwn.create({ messageStore, dataStore, eventLog });
+  const didResolver = new UniversalResolver({ didResolvers: [DidKey] });
+  const dwn = await Dwn.create({ didResolver, messageStore, dataStore, eventLog });
 
   if (!dwn) {
     // early abort because there's no DWN to test
@@ -222,17 +229,6 @@ const initializeDwn = async (
   }
 
   return dwn;
-};
-
-const generateDidKey = async (DidKeyResolver) => {
-  const didKey = await DidKeyResolver.generate();
-
-  if (!didKey) {
-    // early abort because there's no DID to run the tests
-    throw new Error("Unable to generate DID");
-  }
-
-  return didKey;
 };
 
 const readData = async (recordId, dwn, didKey, RecordsRead) => {
@@ -252,7 +248,7 @@ const writeData = async (
   dwn,
   didKey,
   RecordsWrite,
-  authorizationSigner,
+  signer,
   DataStream,
   message
 ) => {
@@ -262,9 +258,9 @@ const writeData = async (
 
   const recordsWrite = message // existing message: this is a write update
     ? await RecordsWrite.createFrom({
-        unsignedRecordsWriteMessage: message,
-        data: data,
-        authorizationSigner,
+        data,
+        signer,
+        recordsWriteMessage: message,
       })
     : // else, create a brand new record write message
       await RecordsWrite.create({
@@ -272,7 +268,7 @@ const writeData = async (
         dataFormat: "plain/text",
         published: true,
         schema: "yeeter/post",
-        authorizationSigner,
+        signer,
       });
 
   // get the DWN to process the RecordsWrite
@@ -280,7 +276,7 @@ const writeData = async (
   const writeResult = await dwn.processMessage(
     didKey.did,
     recordsWrite.message,
-    dataStream
+    { dataStream }
   );
 
   if (writeResult.status.code !== 202) {
@@ -301,11 +297,11 @@ const deleteData = async (
   dwn,
   didKey,
   RecordsDelete,
-  authorizationSigner
+  signer,
 ) => {
   const recordsDelete = await RecordsDelete.create({
     recordId,
-    authorizationSigner,
+    signer,
   });
   const deleteResult = await dwn.processMessage(
     didKey.did,

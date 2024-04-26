@@ -1,28 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { DwnManager } from "./DwnManager";
-
-import { Web5 } from "@web5/api";
-import { getWeb5 } from "./Web5Manager";
+import { DwnNoWeb5 } from "./DwnNoWeb5";
+import { getWeb5 } from "./Web5";
+import testWeb5 from "./util/web5-test";
 
 export default function App() {
   const [dwnTestsResults, setDwnTestsResults] = useState("");
   const [web5TestResults, setWeb5TestsResults] = useState("");
 
   useEffect(() => {
-    const loadWeb5AndTestsResults = async () => {
+    const runWeb5Tests = async () => {
+      const web5 = await getWeb5();
+
       try {
         const {
           web5: _web5,
           record,
           did,
           ...web5TestsResultRaw
-        } = await getWeb5();
+        } = await testWeb5(web5);
         const web5TestsResults = {
           ...web5TestsResultRaw,
           success: true,
           dataCid: record?.dataCid,
-          did: did?.substr(0, 32) + "...",
+          did: did?.uri.substr(0, 32) + "...",
         };
         const web5TestsResultsStr = JSON.stringify(
           web5TestsResults,
@@ -42,13 +43,13 @@ export default function App() {
       }
     };
 
-    const loadDwnAndTestsResults = async () => {
+    const runDwnNoWeb5Tests = async () => {
       try {
         const {
           dwn: _dwn,
           didKey,
           ...testsResultsRaw
-        } = await DwnManager.initMemoryDwn();
+        } = await DwnNoWeb5.initMemoryDwn();
         const testsResults = {
           ...testsResultsRaw,
           success: true,
@@ -68,20 +69,9 @@ export default function App() {
       }
     };
 
-    loadDwnAndTestsResults();
-    loadWeb5AndTestsResults();
+    runDwnNoWeb5Tests();
+    runWeb5Tests();
   }, []);
-
-  const onTestWeb5Press = async () => {
-    try {
-      // TODO: fix this with a custom rn agent
-      const { web5, did } = await Web5.connect();
-      console.info("connected", { web5, did });
-      // await checkWeb5(Web5);
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
   return (
     <View style={styles.container}>

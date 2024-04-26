@@ -1,5 +1,6 @@
 import { Buffer } from "buffer";
 
+import { DidKey, UniversalResolver } from "@web5/dids";
 import {
   Dwn,
   EventLogLevel,
@@ -10,7 +11,7 @@ import {
   RecordsRead,
   RecordsDelete,
   DataStream,
-  DidKeyResolver,
+  TestDataGenerator,
 } from "@tbd54566975/dwn-sdk-js";
 import { Web5 } from "@web5/api";
 
@@ -38,8 +39,10 @@ async function displayResults() {
 
   const dwnResult = await checkDwn(
     Dwn,
+    UniversalResolver,
+    DidKey,
+    TestDataGenerator,
     DataStream,
-    DidKeyResolver,
     Jws,
     RecordsWrite,
     RecordsRead,

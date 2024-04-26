@@ -4,11 +4,15 @@ import { registerRootComponent } from "expo";
 
 import { polyfillBlob } from "./src/util/blob-polyfill";
 
+import { Crypto } from "@peculiar/webcrypto";
+
 if (!global.structuredClone) {
   global.structuredClone = require("realistic-structured-clone");
 }
 
 polyfillBlob();
+
+global.crypto.subtle = new Crypto().subtle;
 
 import App from "./src/App";
 
