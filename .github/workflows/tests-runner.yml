@@ -243,6 +243,7 @@ jobs:
           retention-days: 30
 
   test-electron:
+    if: false  # We are skipping `test-electron` due to the lack of support for `AES-KW` key wrapping. Will revisit.
     timeout-minutes: 60
     strategy:
       fail-fast: false
