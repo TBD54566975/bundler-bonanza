@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "@tbd54566975/dwn-sdk-js": "0.3.1",
-    "@web5/api": "0.9.3-alpha-20240429-a39b1eb",
+    "@web5/api": "0.9.3",
     "@web5/dids": "1.0.1"
   },
   "scripts": {
