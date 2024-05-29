@@ -635,11 +635,6 @@
   resolved "https://registry.yarnpkg.com/@noble/hashes/-/hashes-1.3.3.tgz#39908da56a4adc270147bb07968bf3b16cfe1699"
   integrity sha512-V7/fPHgl+jsVPXqqeOzT8egNj2iBIVt+ECeMMG8TdcnTikP3oaBtUVqpT/gYCR68aEBJSF+XbYUxStjbFMqIIA==
 
-"@noble/hashes@1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@noble/hashes/-/hashes-1.4.0.tgz#45814aa329f30e4fe0ba49426f49dfccdd066426"
-  integrity sha512-V1JJ1WTRUqHHrOSh597hURcMqVKVGL/ea3kv0gSnEdsEZ0/+VyPghM1lMNGc00z7CIQorSvbKpuJkxvuHbvdbg==
-
 "@noble/secp256k1@2.0.0", "@noble/secp256k1@^2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@noble/secp256k1/-/secp256k1-2.0.0.tgz#c214269d45e0233ad6a8ae5104655453636e253d"
@@ -951,17 +946,17 @@
   resolved "https://registry.yarnpkg.com/@ungap/structured-clone/-/structured-clone-1.2.0.tgz#756641adb587851b5ccb3e095daf27ae581c8406"
   integrity sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==
 
-"@web5/agent@0.3.8-alpha-20240528-cc47014":
-  version "0.3.8-alpha-20240528-cc47014"
-  resolved "https://registry.yarnpkg.com/@web5/agent/-/agent-0.3.8-alpha-20240528-cc47014.tgz#4b0b3d03eeb73cecf451a6b0b2cfdfc024d493e1"
-  integrity sha512-JsND0y488FUaXf6kdZTcbRdiQT79rSmZwY5XUuk6vq+mJeIN/+2nMRvWvACyAHKVn3dULl6HBfAxsaSnEtR6lA==
+"@web5/agent@0.3.8":
+  version "0.3.8"
+  resolved "https://registry.yarnpkg.com/@web5/agent/-/agent-0.3.8.tgz#f85b15dd7d813fcca22f2ac9b63283dbff375365"
+  integrity sha512-uQLHqlYzAuO/y/l24oDHoTFjxsq3RF6sYt8iGsqUZr6OxDo3YaSBQiu/3Kd/dRv3wXDe1neeu6aoCG5Lp6x48g==
   dependencies:
     "@noble/ciphers" "0.4.1"
     "@scure/bip39" "1.2.2"
     "@tbd54566975/dwn-sdk-js" "0.3.5"
-    "@web5/common" "1.0.1-alpha-20240528-cc47014"
-    "@web5/crypto" "1.0.1-alpha-20240528-cc47014"
-    "@web5/dids" "1.1.0-alpha-20240528-cc47014"
+    "@web5/common" "1.0.0"
+    "@web5/crypto" "1.0.0"
+    "@web5/dids" "1.1.0"
     abstract-level "1.0.4"
     ed25519-keygen "0.4.11"
     isomorphic-ws "^5.0.0"
@@ -970,16 +965,16 @@
     readable-web-to-node-stream "3.0.2"
     ulidx "2.1.0"
 
-"@web5/api@0.9.4-alpha-20240528-cc47014":
-  version "0.9.4-alpha-20240528-cc47014"
-  resolved "https://registry.yarnpkg.com/@web5/api/-/api-0.9.4-alpha-20240528-cc47014.tgz#8ba2900daecb6d2ed3a4b88cf3049e301aa11925"
-  integrity sha512-Ojq3tsZ4BOA9sWA50Z8EP+kFtYrmtdhAO9dxI7LGLKrUtqzqi9d9nYulv5u6xqzlQvY3scXZdbFKQmBCoXmheQ==
+"@web5/api@0.9.4":
+  version "0.9.4"
+  resolved "https://registry.yarnpkg.com/@web5/api/-/api-0.9.4.tgz#b09d583ff4d59f624808824abe76f725437b57f8"
+  integrity sha512-ubAvlEkiXMgpkagSmh4RAch5RqdH587Sd9By3eLHpbI7pqJVCTi3rrSIhCJ3I3PLswRlXx78Llb+7nRHB2rvpQ==
   dependencies:
-    "@web5/agent" "0.3.8-alpha-20240528-cc47014"
-    "@web5/common" "1.0.1-alpha-20240528-cc47014"
-    "@web5/crypto" "1.0.1-alpha-20240528-cc47014"
-    "@web5/dids" "1.1.0-alpha-20240528-cc47014"
-    "@web5/user-agent" "0.3.8-alpha-20240528-cc47014"
+    "@web5/agent" "0.3.8"
+    "@web5/common" "1.0.0"
+    "@web5/crypto" "1.0.0"
+    "@web5/dids" "1.1.0"
+    "@web5/user-agent" "0.3.8"
 
 "@web5/common@1.0.0":
   version "1.0.0"
@@ -991,16 +986,6 @@
     multiformats "11.0.2"
     readable-stream "4.4.2"
 
-"@web5/common@1.0.1-alpha-20240528-cc47014":
-  version "1.0.1-alpha-20240528-cc47014"
-  resolved "https://registry.yarnpkg.com/@web5/common/-/common-1.0.1-alpha-20240528-cc47014.tgz#9621d7735c7ef25f31c240b84a55dad6a1fa9a2e"
-  integrity sha512-JU+JN2CQ56ddMJdtCFBFNvDcfrzAfYgmxK6RZ3cAqcrRuofJ5tTsN4MBWjft2yrQH9jmua0vi8T3OOu912Y/8A==
-  dependencies:
-    "@isaacs/ttlcache" "1.4.1"
-    level "8.0.1"
-    multiformats "13.1.0"
-    readable-stream "4.4.2"
-
 "@web5/crypto@1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@web5/crypto/-/crypto-1.0.0.tgz#98aa012fd4a5a2f4a8311c3acb710e1b62ec23ee"
@@ -1010,16 +995,6 @@
     "@noble/curves" "1.3.0"
     "@noble/hashes" "1.3.3"
     "@web5/common" "1.0.0"
-
-"@web5/crypto@1.0.1-alpha-20240528-cc47014":
-  version "1.0.1-alpha-20240528-cc47014"
-  resolved "https://registry.yarnpkg.com/@web5/crypto/-/crypto-1.0.1-alpha-20240528-cc47014.tgz#9936433cdec82667a561e2a2cf3affd1ec9e6dc8"
-  integrity sha512-McC7AXXzmE5u65GcuFq3GlTnv5f/F1sTPlsIRXM/TnzJEHiXT5M3zs39hf7cPo5mkTmAKTyTbOI+ehgeENCaoQ==
-  dependencies:
-    "@noble/ciphers" "0.4.1"
-    "@noble/curves" "1.3.0"
-    "@noble/hashes" "1.4.0"
-    "@web5/common" "1.0.1-alpha-20240528-cc47014"
 
 "@web5/dids@1.1.0":
   version "1.1.0"
@@ -1036,30 +1011,15 @@
     level "8.0.1"
     ms "2.1.3"
 
-"@web5/dids@1.1.0-alpha-20240528-cc47014":
-  version "1.1.0-alpha-20240528-cc47014"
-  resolved "https://registry.yarnpkg.com/@web5/dids/-/dids-1.1.0-alpha-20240528-cc47014.tgz#abf2569b44ac3a1453ad8cb0f29131b8092a10f1"
-  integrity sha512-IllJwmVGvDaWfjhossDGTDrYuUkeS2lWUc8OTtrlqqBpQ7o9VhdiNyEy1z5uhieqE61U3j25ybD3MpmQ0C8AiQ==
+"@web5/user-agent@0.3.8":
+  version "0.3.8"
+  resolved "https://registry.yarnpkg.com/@web5/user-agent/-/user-agent-0.3.8.tgz#aae6a2dca79d54c1e863e39c3512c8593b719f5d"
+  integrity sha512-gGkahalx5WBuMW23WrWX7b0EWHnAxWj+ZSPoGiK5i5TiXUi5B/LEHAH4kmD8OZBlNua6SefK5rAz0AY4nEGZ8A==
   dependencies:
-    "@decentralized-identity/ion-sdk" "1.0.4"
-    "@dnsquery/dns-packet" "6.1.1"
-    "@web5/common" "1.0.1-alpha-20240528-cc47014"
-    "@web5/crypto" "1.0.1-alpha-20240528-cc47014"
-    abstract-level "1.0.4"
-    bencode "4.0.0"
-    buffer "6.0.3"
-    level "8.0.1"
-    ms "2.1.3"
-
-"@web5/user-agent@0.3.8-alpha-20240528-cc47014":
-  version "0.3.8-alpha-20240528-cc47014"
-  resolved "https://registry.yarnpkg.com/@web5/user-agent/-/user-agent-0.3.8-alpha-20240528-cc47014.tgz#92ed54cdb9fd824485079550af5fbfbd1628cf77"
-  integrity sha512-Az/WBAKBx2SFm3k1LMAUChbrk7l7sA08wymW30B9qlybT7smzNhvbMZqVdDmLKQe0NI+nR6vbljbrGBjrXrrlQ==
-  dependencies:
-    "@web5/agent" "0.3.8-alpha-20240528-cc47014"
-    "@web5/common" "1.0.1-alpha-20240528-cc47014"
-    "@web5/crypto" "1.0.1-alpha-20240528-cc47014"
-    "@web5/dids" "1.1.0-alpha-20240528-cc47014"
+    "@web5/agent" "0.3.8"
+    "@web5/common" "1.0.0"
+    "@web5/crypto" "1.0.0"
+    "@web5/dids" "1.1.0"
 
 "@xmldom/xmldom@^0.8.8":
   version "0.8.10"
@@ -3447,11 +3407,6 @@ multiformats@11.0.2, multiformats@^11.0.0, multiformats@^11.0.2:
   version "11.0.2"
   resolved "https://registry.yarnpkg.com/multiformats/-/multiformats-11.0.2.tgz#b14735efc42cd8581e73895e66bebb9752151b60"
   integrity sha512-b5mYMkOkARIuVZCpvijFj9a6m5wMVLC7cf/jIPd5D/ARDOfLC5+IFkbgDXQgcU2goIsTD/O9NY4DI/Mt4OGvlg==
-
-multiformats@13.1.0:
-  version "13.1.0"
-  resolved "https://registry.yarnpkg.com/multiformats/-/multiformats-13.1.0.tgz#5aa9d2175108a448fc3bdb54ba8a3d0b6cab3ac3"
-  integrity sha512-HzdtdBwxsIkzpeXzhQ5mAhhuxcHbjEHH+JQoxt7hG/2HGFjjwyolLo7hbaexcnhoEuV4e0TNJ8kkpMjiEYY4VQ==
 
 multiformats@^12.0.1, multiformats@^12.1.3:
   version "12.1.3"

@@ -24,7 +24,7 @@
     "@electron-toolkit/preload": "^2.0.0",
     "@electron-toolkit/utils": "^2.0.0",
     "@tbd54566975/dwn-sdk-js": "0.3.5",
-    "@web5/api": "0.9.4-alpha-20240528-cc47014",
+    "@web5/api": "0.9.4",
     "@web5/dids": "1.1.0"
   },
   "devDependencies": {
