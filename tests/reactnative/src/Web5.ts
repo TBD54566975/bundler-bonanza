@@ -19,7 +19,7 @@ import {
   DataStoreLevel,
   EventLogLevel,
 } from "@tbd54566975/dwn-sdk-js";
-import { getTechPreviewDwnEndpoints, Web5 } from "@web5/api";
+import { Web5 } from "@web5/api";
 import { type Level } from "level";
 import ms from "ms";
 import { DidDht, DidJwk, DidResolverCacheLevel } from "@web5/dids";
@@ -34,7 +34,8 @@ export const getWeb5 = async () => {
   await initAgent();
   console.info("agent initialized!");
 
-  const serviceEndpointNodes = await getTechPreviewDwnEndpoints();
+  //TODO: This needs to be updated!!
+  const serviceEndpointNodes = [ 'https://dwn.tbddev.org/dwn0' ];
 
   console.info("creating identity...!!!");
   // Generate a new Identity for the end-user.
