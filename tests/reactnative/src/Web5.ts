@@ -18,6 +18,7 @@ import {
   MessageStoreLevel,
   DataStoreLevel,
   EventLogLevel,
+  ResumableTaskStoreLevel,
 } from "@tbd54566975/dwn-sdk-js";
 import { Web5 } from "@web5/api";
 import { type Level } from "level";
@@ -115,6 +116,10 @@ const initAgent = async () => {
         location: "DWN_EVENTLOG",
         createLevelDatabase,
       }),
+      resumableTaskStore: new ResumableTaskStoreLevel({
+        location: "DWN_RESUMABLETASKSTORE",
+        createLevelDatabase,
+      })
     }),
   });
 
