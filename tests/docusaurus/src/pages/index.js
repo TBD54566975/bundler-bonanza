@@ -3,7 +3,6 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 
 import browserCheck from "../../../util/browser-check";
-import { ResumableTaskStoreLevel } from "@tbd54566975/dwn-sdk-js";
 
 const { checkWeb5, checkDwn } = browserCheck;
 
@@ -31,6 +30,7 @@ export default function Home() {
         RecordsDelete,
         DataStream,
         TestDataGenerator,
+        ResumableTaskStoreLevel
       } = await import("@tbd54566975/dwn-sdk-js");
 
       const { UniversalResolver, DidKey } = await import("@web5/dids");
