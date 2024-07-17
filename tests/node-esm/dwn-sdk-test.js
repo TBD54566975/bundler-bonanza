@@ -13,6 +13,7 @@ import {
   EventLogLevel,
   MessageStoreLevel,
   TestDataGenerator,
+  ResumableTaskStoreLevel
 } from "@tbd54566975/dwn-sdk-js";
 
 import checkDwn from "../util/dwn-test.js";
@@ -29,5 +30,6 @@ checkDwn(
   RecordsDelete,
   MessageStoreLevel,
   DataStoreLevel,
-  EventLogLevel
+  EventLogLevel,
+  ResumableTaskStoreLevel
 );

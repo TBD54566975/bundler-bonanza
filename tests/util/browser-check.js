@@ -43,7 +43,8 @@ const checkDwn = async (
   RecordsDelete,
   MessageStoreLevel,
   DataStoreLevel,
-  EventLogLevel
+  EventLogLevel,
+  ResumableTaskStoreLevel
 ) => {
   try {
     const {
@@ -62,7 +63,8 @@ const checkDwn = async (
       RecordsDelete,
       MessageStoreLevel,
       DataStoreLevel,
-      EventLogLevel
+      EventLogLevel,
+      ResumableTaskStoreLevel
     );
     const testsResults = {
       ...testsResultsRaw,

@@ -3,6 +3,7 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 
 import browserCheck from "../../../util/browser-check";
+import { ResumableTaskStoreLevel } from "@tbd54566975/dwn-sdk-js";
 
 const { checkWeb5, checkDwn } = browserCheck;
 
@@ -46,7 +47,8 @@ export default function Home() {
         RecordsDelete,
         MessageStoreLevel,
         DataStoreLevel,
-        EventLogLevel
+        EventLogLevel,
+        ResumableTaskStoreLevel
       );
       setDwn(dwnResult);
     }
