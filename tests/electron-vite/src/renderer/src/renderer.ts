@@ -12,7 +12,8 @@ import {
   DataStoreLevel,
   EventLogLevel,
   MessageStoreLevel,
-  TestDataGenerator
+  TestDataGenerator,
+  ResumableTaskStoreLevel
 } from '@tbd54566975/dwn-sdk-js'
 
 import browserCheck from '../../../../util/browser-check.js'
@@ -48,7 +49,8 @@ async function initDwn(): Promise<void> {
     RecordsDelete,
     MessageStoreLevel,
     DataStoreLevel,
-    EventLogLevel
+    EventLogLevel,
+    ResumableTaskStoreLevel
   )
   replaceText('#dwn-results', result)
 }

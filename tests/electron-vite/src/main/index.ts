@@ -84,7 +84,8 @@ import {
   DataStoreLevel,
   EventLogLevel,
   MessageStoreLevel,
-  TestDataGenerator
+  TestDataGenerator,
+  ResumableTaskStoreLevel
 } from '@tbd54566975/dwn-sdk-js'
 
 import '../../../util/node-polyfill.js'
@@ -124,7 +125,8 @@ async function initDwn(): Promise<void> {
       RecordsDelete,
       MessageStoreLevel,
       DataStoreLevel,
-      EventLogLevel
+      EventLogLevel,
+      ResumableTaskStoreLevel
     )
   } catch (error) {
     dwnError = error

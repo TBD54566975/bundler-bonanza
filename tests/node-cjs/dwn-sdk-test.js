@@ -13,6 +13,7 @@ const {
   DataStoreLevel,
   EventLogLevel,
   TestDataGenerator,
+  ResumableTaskStoreLevel
 } = require("@tbd54566975/dwn-sdk-js");
 
 const checkDwn = require("../util/dwn-test");
@@ -29,5 +30,6 @@ checkDwn(
   RecordsDelete,
   MessageStoreLevel,
   DataStoreLevel,
-  EventLogLevel
+  EventLogLevel,
+  ResumableTaskStoreLevel
 );

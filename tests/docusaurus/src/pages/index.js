@@ -30,6 +30,7 @@ export default function Home() {
         RecordsDelete,
         DataStream,
         TestDataGenerator,
+        ResumableTaskStoreLevel
       } = await import("@tbd54566975/dwn-sdk-js");
 
       const { UniversalResolver, DidKey } = await import("@web5/dids");
@@ -46,7 +47,8 @@ export default function Home() {
         RecordsDelete,
         MessageStoreLevel,
         DataStoreLevel,
-        EventLogLevel
+        EventLogLevel,
+        ResumableTaskStoreLevel
       );
       setDwn(dwnResult);
     }

@@ -5,6 +5,7 @@ INDEX
 dist
 data
 DATA
+RESUMABLE-TASK-STORE
 node_modules/
 out
 .vscode

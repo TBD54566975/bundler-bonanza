@@ -12,6 +12,7 @@ import {
   RecordsDelete,
   DataStream,
   TestDataGenerator,
+  ResumableTaskStoreLevel
 } from "@tbd54566975/dwn-sdk-js";
 import { Web5 } from "@web5/api";
 
@@ -49,7 +50,8 @@ async function displayResults() {
     RecordsDelete,
     MessageStoreLevel,
     DataStoreLevel,
-    EventLogLevel
+    EventLogLevel,
+    ResumableTaskStoreLevel
   );
   dwnResultsElement.textContent = dwnResult;
 

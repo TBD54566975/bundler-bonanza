@@ -11,6 +11,7 @@ import {
   RecordsDelete,
   DataStream,
   TestDataGenerator,
+  ResumableTaskStoreLevel,
 } from "@tbd54566975/dwn-sdk-js";
 
 import { checkWeb5, checkDwn } from "../util/browser-check.js";
@@ -35,7 +36,8 @@ const handleCheckDwn = async () => {
     RecordsDelete,
     MessageStoreLevel,
     DataStoreLevel,
-    EventLogLevel
+    EventLogLevel,
+    ResumableTaskStoreLevel
   );
   dwnTestOutput.innerHTML = dwnResult;
 };

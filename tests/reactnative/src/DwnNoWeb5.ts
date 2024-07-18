@@ -10,6 +10,7 @@ import {
   RecordsDelete,
   DataStream,
   TestDataGenerator,
+  ResumableTaskStoreLevel
 } from "@tbd54566975/dwn-sdk-js";
 import { MemoryLevel } from "memory-level";
 import checkDwn from "./util/dwn-test";
@@ -31,8 +32,13 @@ const initMemoryDwn = async () => {
       createLevelDatabase: async (_, options?) => new MemoryLevel(options),
       location: "EVENTLOG",
     });
+
+    const resumableTaskStore = new ResumableTaskStoreLevel({
+      createLevelDatabase: async (_, options?) => new MemoryLevel(options),
+      location: "RESUMABLE-TASK-STORE"
+    });
     const didResolver = new UniversalResolver({ didResolvers: [DidKey] });
-    dwn = await Dwn.create({ didResolver, messageStore, dataStore, eventLog });
+    dwn = await Dwn.create({ didResolver, messageStore, dataStore, eventLog, resumableTaskStore });
 
     console.info("Memory-Level DWN initialized");
 

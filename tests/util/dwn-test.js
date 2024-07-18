@@ -68,7 +68,8 @@ const checkDwn = async (
   RecordsDelete,
   MessageStoreLevel,
   DataStoreLevel,
-  EventLogLevel
+  EventLogLevel,
+  ResumableTaskStoreLevel,
 ) => {
   const result = {
     dwn: null,
@@ -90,7 +91,8 @@ const checkDwn = async (
     DidKey,
     MessageStoreLevel,
     DataStoreLevel,
-    EventLogLevel
+    EventLogLevel,
+    ResumableTaskStoreLevel
   );
   result.dwn = dwn;
 
@@ -215,13 +217,15 @@ const initializeDwn = async (
   DidKey,
   MessageStoreLevel,
   DataStoreLevel,
-  EventLogLevel
+  EventLogLevel,
+  ResumableTaskStoreLevel
 ) => {
   const messageStore = new MessageStoreLevel();
   const dataStore = new DataStoreLevel();
   const eventLog = new EventLogLevel();
   const didResolver = new UniversalResolver({ didResolvers: [DidKey] });
-  const dwn = await Dwn.create({ didResolver, messageStore, dataStore, eventLog });
+  const resumableTaskStore = new ResumableTaskStoreLevel();
+  const dwn = await Dwn.create({ didResolver, messageStore, dataStore, eventLog, resumableTaskStore });
 
   if (!dwn) {
     // early abort because there's no DWN to test
