@@ -36,7 +36,7 @@ export const getWeb5 = async () => {
   console.info("agent initialized!");
 
   //TODO: This needs to be updated!!
-  const serviceEndpointNodes = [ 'https://dwn.tbddev.org/dwn0' ];
+  const serviceEndpointNodes = [ 'https://dwn.tbddev.org/beta' ];
 
   console.info("creating identity...!!!");
   // Generate a new Identity for the end-user.

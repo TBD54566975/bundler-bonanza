@@ -735,41 +735,10 @@
   dependencies:
     defer-to-connect "^2.0.0"
 
-"@tbd54566975/dwn-sdk-js@0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@tbd54566975/dwn-sdk-js/-/dwn-sdk-js-0.4.0.tgz#4c31f5801f8755dc7b5c06bed2163f3f6ba0c464"
-  integrity sha512-eBDjIZQEsxAagKwDbHKzML00/jXlnRN9FLnV9Qx/4UkxZdKRM7IXghFnTRE7aYkwQS8nveAVcijBw46ARSPKcw==
-  dependencies:
-    "@ipld/dag-cbor" "9.0.3"
-    "@js-temporal/polyfill" "0.4.4"
-    "@noble/ciphers" "0.5.3"
-    "@noble/ed25519" "2.0.0"
-    "@noble/secp256k1" "2.0.0"
-    "@web5/dids" "1.1.0"
-    abstract-level "1.0.3"
-    ajv "8.12.0"
-    blockstore-core "4.2.0"
-    cross-fetch "4.0.0"
-    eciesjs "0.4.5"
-    interface-blockstore "5.2.3"
-    interface-store "5.1.2"
-    ipfs-unixfs-exporter "13.1.5"
-    ipfs-unixfs-importer "15.1.5"
-    level "8.0.0"
-    lodash "4.17.21"
-    lru-cache "9.1.2"
-    ms "2.1.3"
-    multiformats "11.0.2"
-    randombytes "2.1.0"
-    readable-stream "4.5.2"
-    ulidx "2.1.0"
-    uuid "8.3.2"
-    varint "6.0.0"
-
-"@tbd54566975/dwn-sdk-js@0.4.3":
-  version "0.4.3"
-  resolved "https://registry.yarnpkg.com/@tbd54566975/dwn-sdk-js/-/dwn-sdk-js-0.4.3.tgz#03cfc8b949719ced426f0db51b27256ddce683a9"
-  integrity sha512-ZV6dXOUkz8nmepElcTSnN8nHpTesS7xYgRry79JqoBwCEjx/TLjSRojwfcV2RhqQuvIaIUtRRDOFrTZ9Vex7pA==
+"@tbd54566975/dwn-sdk-js@0.4.4":
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/@tbd54566975/dwn-sdk-js/-/dwn-sdk-js-0.4.4.tgz#49838d0f3559f499fb896bdda9f4c259cbce9cf3"
+  integrity sha512-i4jBrKOn6ypaFQJLNG8Kc9AvR1nmZrq3A+9M4O9xiDbH60+QMPf2HsNuVOTu6Ve9V7IU8NorI/GoSryD0TknpQ==
   dependencies:
     "@ipld/dag-cbor" "9.0.3"
     "@js-temporal/polyfill" "0.4.4"
@@ -991,14 +960,14 @@
   resolved "https://registry.yarnpkg.com/@ungap/structured-clone/-/structured-clone-1.2.0.tgz#756641adb587851b5ccb3e095daf27ae581c8406"
   integrity sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==
 
-"@web5/agent@0.0.0-next-f71ce8a-20240718000106":
-  version "0.0.0-next-f71ce8a-20240718000106"
-  resolved "https://registry.yarnpkg.com/@web5/agent/-/agent-0.0.0-next-f71ce8a-20240718000106.tgz#4aeb1d71b61a86d67fd4416885a357b9dfe84126"
-  integrity sha512-LpJJWCTYfEagMfgFVMbfk6yJubvGzC0Y3MdpefH5Djx3EoHZbaJHPnA0XMptJQGHVgbZk3ML38cPtb+PfmswPw==
+"@web5/agent@0.0.0-next-8222902-20240718015236":
+  version "0.0.0-next-8222902-20240718015236"
+  resolved "https://registry.yarnpkg.com/@web5/agent/-/agent-0.0.0-next-8222902-20240718015236.tgz#4bf6d83b0b67025529c6cf84982893e4e1ec53e5"
+  integrity sha512-krP3WDjVQzYVONN0zMtrsBDge9f7Ac6vKhgQ2oaW/cOSkep/kSMYA2tjLOTE+PZ+Nfh2UDfd2aBM+rKN1yx6hg==
   dependencies:
     "@noble/ciphers" "0.4.1"
     "@scure/bip39" "1.2.2"
-    "@tbd54566975/dwn-sdk-js" "0.4.3"
+    "@tbd54566975/dwn-sdk-js" "0.4.4"
     "@web5/common" "1.0.0"
     "@web5/crypto" "1.0.0"
     "@web5/dids" "1.1.0"
@@ -1010,16 +979,16 @@
     readable-web-to-node-stream "3.0.2"
     ulidx "2.1.0"
 
-"@web5/api@0.0.0-next-f71ce8a-20240718000106":
-  version "0.0.0-next-f71ce8a-20240718000106"
-  resolved "https://registry.yarnpkg.com/@web5/api/-/api-0.0.0-next-f71ce8a-20240718000106.tgz#c46f55a3815762a3199a0059b7b321393f1f208f"
-  integrity sha512-+P24mZTU44PVHDNh5gokEyQzDnNuea4xJb41CfUjHufNyDvEp21iGDJ62O1JkrJ/RhahHrIUFiyOViCDmJEwfA==
+"@web5/api@0.0.0-next-8222902-20240718015236":
+  version "0.0.0-next-8222902-20240718015236"
+  resolved "https://registry.yarnpkg.com/@web5/api/-/api-0.0.0-next-8222902-20240718015236.tgz#4d128ea26f55be6fc710a89f46fb1284c63d29a1"
+  integrity sha512-0dJlrf2ECkzBUQ4vvdso7gKQ7zlJM7HMCysd4N725aJd0RSkyQh82ifIopaSBRwS5nqPHKUpbv/BGUbmoB/+OQ==
   dependencies:
-    "@web5/agent" "0.0.0-next-f71ce8a-20240718000106"
+    "@web5/agent" "0.0.0-next-8222902-20240718015236"
     "@web5/common" "1.0.0"
     "@web5/crypto" "1.0.0"
     "@web5/dids" "1.1.0"
-    "@web5/user-agent" "0.0.0-next-f71ce8a-20240718000106"
+    "@web5/user-agent" "0.0.0-next-8222902-20240718015236"
 
 "@web5/common@1.0.0":
   version "1.0.0"
@@ -1056,12 +1025,12 @@
     level "8.0.1"
     ms "2.1.3"
 
-"@web5/user-agent@0.0.0-next-f71ce8a-20240718000106":
-  version "0.0.0-next-f71ce8a-20240718000106"
-  resolved "https://registry.yarnpkg.com/@web5/user-agent/-/user-agent-0.0.0-next-f71ce8a-20240718000106.tgz#7e1d91bf7e2156f360b6f5c014f22c09780fbbcc"
-  integrity sha512-qd03lhYmgTqGZlIVYc+z/uWJd0BgKpSUReQDavMlb64z3wo1Y8NLMAz0sVtijv3hv0q3RPubKXRJg+qbghhmFg==
+"@web5/user-agent@0.0.0-next-8222902-20240718015236":
+  version "0.0.0-next-8222902-20240718015236"
+  resolved "https://registry.yarnpkg.com/@web5/user-agent/-/user-agent-0.0.0-next-8222902-20240718015236.tgz#1714d2bd4ddaf2efac8b36e6a0001bd4a6f4cd9c"
+  integrity sha512-iE5pH9DqFuzBRu+/9vwb74x/gSLwSXarPJHBRtzO11RIjmJNdAzz4Gpo7tlcKDRpQJcJzhP8i6Gt2MPFhkaLFg==
   dependencies:
-    "@web5/agent" "0.0.0-next-f71ce8a-20240718000106"
+    "@web5/agent" "0.0.0-next-8222902-20240718015236"
     "@web5/common" "1.0.0"
     "@web5/crypto" "1.0.0"
     "@web5/dids" "1.1.0"
