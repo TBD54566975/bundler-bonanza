@@ -83,7 +83,7 @@ const checkWeb5 = async (Web5) => {
   }
 
   try {
-    const { status } = await result.web5.dwn.records.read({
+    const { status, record } = await result.web5.dwn.records.read({
       message: { filter: { recordId: result.record.id } },
     });
 
