@@ -1,3 +1,5 @@
+#### DO NOT MERGE JUST A TEST BRANCH FOR CI
+
 # React Native and Web5 bundling tests
 
 We are going to test bundling using iOS only so as to minimize the amount of env setup.
