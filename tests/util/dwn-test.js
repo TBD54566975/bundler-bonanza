@@ -78,6 +78,8 @@ const checkDwn = async (
     writeStatus: null,
     writtenDataAsExpected: false,
     updateStatus: null,
+    readUpdatedText: null,
+    readUpdatedBytes: null,
     readUpdatedStatus: null,
     updatedDataAsExpected: false,
     deleteStatus: null,
@@ -150,16 +152,18 @@ const checkDwn = async (
   }
 
   try {
-    const { data: updatedData, statusCode: readUpdatedStatus } = await readData(
+    const { data: updatedData, dataBytes: updatedBytes, dataText: updatedText, statusCode: readUpdatedStatus } = await readData(
       recordId,
       dwn,
       didKey,
       RecordsRead
     );
     const updatedDataAsExpected = updatedData === updatedGreetings;
-    console.info({ updatedDataAsExpected, updatedData });
+    console.info({ updatedDataAsExpected, updatedData, updatedBytes, updatedText });
     result.readUpdatedStatus = readUpdatedStatus;
     result.updatedDataAsExpected = updatedDataAsExpected;
+    result.readUpdatedBytes = updatedBytes;
+    result.readUpdatedText = updatedText;
   } catch (error) {
     console.error("read updatedData Error:", error);
   }
@@ -244,7 +248,13 @@ const readData = async (recordId, dwn, didKey, RecordsRead) => {
       ? await streamToString(readResult.record.data)
       : null;
 
-  return { data, statusCode: readResult.status.code };
+  const dataText = readResult.status.code === 200 ?
+    await TextDecoder().decode(await readResult.record.data.bytes()) : null;
+
+  const dataBytes = readResult.status.code === 200 ?
+    await readResult.record.data.bytes() : null;
+
+  return { data, dataText, dataBytes, statusCode: readResult.status.code };
 };
 
 const writeData = async (

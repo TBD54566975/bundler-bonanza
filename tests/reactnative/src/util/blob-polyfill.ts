@@ -46,6 +46,12 @@ function monkeyPatchBlobConstructor() {
  */
 function polyfillBlobStream() {
   if (typeof Blob !== "undefined") {
+    if (!Blob.prototype.arrayBuffer) {
+      Blob.prototype.arrayBuffer = function (): Promise<ArrayBuffer> {
+        const blob = this;
+        return getArrayBuffer(blob);
+      }
+    }
     if (!Blob.prototype.stream) {
       Blob.prototype.stream = function (): ReadableStream<Uint8Array> {
         const blob = this;
