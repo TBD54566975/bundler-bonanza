@@ -23,7 +23,7 @@ import {
 import { Web5 } from "@web5/api";
 import { type Level } from "level";
 import ms from "ms";
-import { DidDht, DidJwk, DidResolverCacheLevel } from "@web5/dids";
+import { DidDht, DidJwk } from "@web5/dids";
 import { CreateLevelDatabaseOptions } from "@tbd54566975/dwn-sdk-js/dist/types/src/store/level-wrapper";
 import { DidResolverCacheMemory } from "./util/did-resolver-cache-memory";
 import { MemoryStore } from "@web5/common";
@@ -36,7 +36,7 @@ export const getWeb5 = async () => {
   console.info("agent initialized!");
 
   //TODO: This needs to be updated!!
-  const serviceEndpointNodes = [ 'https://dwn.tbddev.org/latest' ];
+  const serviceEndpointNodes = [ 'https://dwn.tbddev.org/beta' ];
 
   console.info("creating identity...!!!");
   // Generate a new Identity for the end-user.
