@@ -1,8 +1,8 @@
 {
   "dependencies": {
-    "@tbd54566975/dwn-sdk-js": "0.4.4",
-    "@web5/api": "0.0.0-next-8222902-20240718015236",
-    "@web5/dids": "1.1.0"
+    "@tbd54566975/dwn-sdk-js": "0.4.7",
+    "@web5/api": "0.11.0",
+    "@web5/dids": "1.1.4"
   },
   "scripts": {
     "test:web5": "pnpm -r --workspace-concurrency 1 --no-bail test:web5",

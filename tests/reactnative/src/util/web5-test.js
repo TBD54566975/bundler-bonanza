@@ -14,6 +14,14 @@ function checkResult(result) {
     errors.push("Read status code is not 200!");
   }
 
+  if (!result.readText) {
+    errors.push("Read text was not correct!");
+  }
+
+  if(!result.readBytes) {
+    errors.push("Read bytes was not correct!");
+  }
+
   if (!result.did) {
     errors.push("DID is not defined!");
   }
@@ -44,6 +52,8 @@ const testWeb5 = async (web5) => {
     did: null,
     record: null,
     readStatus: null,
+    readText: null,
+    readBytes: null,
     updateStatus: null,
     didUpdate: false,
     deleteStatus: null,
@@ -71,6 +81,14 @@ const testWeb5 = async (web5) => {
       message: { filter: { recordId: result.record._recordId } },
     });
 
+    const text = await record.data.text();
+    result.readText = text === "Hello!";
+
+    const bytes = await record.data.bytes();
+    const dataText = new TextDecoder().decode(bytes);
+    result.readBytes = dataText === "Hello!";
+
+    // set status at the end, if the data throws status will not be set.
     result.readStatus = status;
   } catch (error) {
     console.error("Read Record Error:", error);

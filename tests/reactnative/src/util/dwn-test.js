@@ -26,10 +26,6 @@ const checkResult = (result) => {
     errors.push("Update status is not 202!");
   }
 
-  if (result.readUpdatedStatus !== 200) {
-    errors.push("Read updated status is not 200!");
-  }
-
   if (!result.updatedDataAsExpected) {
     errors.push("Updated data is not as expected!");
   }

@@ -23,7 +23,7 @@ import {
 import { Web5 } from "@web5/api";
 import { type Level } from "level";
 import ms from "ms";
-import { DidDht, DidJwk, DidResolverCacheLevel } from "@web5/dids";
+import { DidDht, DidJwk } from "@web5/dids";
 import { CreateLevelDatabaseOptions } from "@tbd54566975/dwn-sdk-js/dist/types/src/store/level-wrapper";
 import { DidResolverCacheMemory } from "./util/did-resolver-cache-memory";
 import { MemoryStore } from "@web5/common";
@@ -71,6 +71,10 @@ export const getWeb5 = async () => {
   await agent.identity.manage({ portableIdentity: await identity.export() });
 
   console.info("identity created!");
+
+  await agent.sync.registerIdentity({ did: identity.did.uri, options: { protocols: [] } });
+
+  console.log("identity registered for sync");
 
   const web5 = new Web5({ agent, connectedDid: identity.did.uri });
 
@@ -142,18 +146,6 @@ const initAgent = async () => {
 };
 
 const startSync = async () => {
-  // Register all DIDs under management, as well as the agent's master DID
-  const managedIdentities = await agent.identity.list();
-  const didsToRegister = [
-    agent.agentDid,
-    ...managedIdentities.map((i) => i.did),
-  ];
-  console.info("registering DIDs for sync", { didsToRegister });
-
-  await Promise.all(
-    didsToRegister.map((did) => agent.sync.registerIdentity({ did: did.uri }))
-  );
-
   // TODO: Once selective sync is enabled, only sync for records that the mobile identity agent
   // cares about. We DO NOT want to sync every record the user has in their DWN to their mobile device.
   agent.sync.startSync({ interval: String(ms("2m")) }).catch((error: any) => {
