@@ -241,7 +241,7 @@ const readData = async (recordId, dwn, didKey, RecordsRead) => {
 
   const data =
     readResult.status.code === 200
-      ? await streamToString(readResult.record.data)
+      ? await streamToString(readResult.entry.data)
       : null;
 
   return { data, statusCode: readResult.status.code };

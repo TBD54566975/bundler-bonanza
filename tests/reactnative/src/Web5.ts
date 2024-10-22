@@ -1,6 +1,4 @@
 import { MemoryLevel } from "memory-level";
-import { MemoryLevelStore } from "./util/MemoryStore";
-import testWeb5 from "./util/web5-test";
 
 // diff
 import { Web5IdentityAgent } from "@web5/identity-agent";
@@ -10,9 +8,6 @@ import {
   HdIdentityVault,
   SyncEngineLevel,
   AgentDwnApi,
-  DwnDidStore,
-  InMemoryIdentityStore,
-  InMemoryDidStore,
 } from "@web5/agent";
 import {
   MessageStoreLevel,
@@ -36,7 +31,7 @@ export const getWeb5 = async () => {
   console.info("agent initialized!");
 
   //TODO: This needs to be updated!!
-  const serviceEndpointNodes = [ 'https://dwn.tbddev.org/beta' ];
+  const serviceEndpointNodes = [ 'https://dwn.tbddev.org/latest' ];
 
   console.info("creating identity...!!!");
   // Generate a new Identity for the end-user.
@@ -68,8 +63,6 @@ export const getWeb5 = async () => {
     },
   });
 
-  await agent.identity.manage({ portableIdentity: await identity.export() });
-
   console.info("identity created!");
 
   await agent.sync.registerIdentity({ did: identity.did.uri, options: { protocols: [] } });
@@ -98,7 +91,7 @@ const initAgent = async () => {
 
   // syncApi
   const syncEngine = new SyncEngineLevel({
-    db: new MemoryLevel() as Level,
+    db: new MemoryLevel(),
   });
 
   const syncApi = new AgentSyncApi({ syncEngine });
